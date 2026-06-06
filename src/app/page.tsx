@@ -104,12 +104,6 @@ export default function Home() {
           <div className="col-span-12 md:col-span-2 flex flex-col justify-between">
 
             <pre className="text-xs leading-none">
-{`
-┌─────────────┐
-│ ○       ○   │
-│     ▿       │
-└─────────────┘
-`}
             </pre>
 
             <a

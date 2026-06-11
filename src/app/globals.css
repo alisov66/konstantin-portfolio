@@ -70,7 +70,7 @@
   --button-medium-size: 16px;
   --button-medium-line: 20px;
 
-/* Spacing */
+  /* Spacing */
 
   --space-1: 4px;
   --space-2: 8px;
@@ -95,6 +95,21 @@
   --space-30: 120px;
   --space-32: 128px;
   --space-40: 160px;
+
+  /* Grid */
+
+  --grid-columns: 12;
+  --grid-margin: 120px;
+  --grid-gutter: 20px;
+  --container-max: 1488px;
+
+  /* Breakpoints */
+
+  --bp-mobile: 390px;
+  --bp-tablet: 768px;
+  --bp-laptop: 1280px;
+  --bp-desktop: 1440px;
+  --bp-desktop-xl: 1728px;
 
 }
 

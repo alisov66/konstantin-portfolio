@@ -1,6 +1,8 @@
+import { spacing } from "./spacing";
+
 export const tokens = {
   colors: {
-    bg: {
+    background: {
       beige: "var(--bg-beige)",
       gray: "var(--bg-gray)",
       violet: "var(--bg-violet)",
@@ -14,32 +16,28 @@ export const tokens = {
       accent: "var(--text-accent)",
     },
 
+    button: {
+      primary: {
+        default: "var(--button-primary)",
+        hover: "var(--button-primary-hover)",
+        text: "var(--button-primary-text)",
+      },
+
+      secondary: {
+        default: "var(--button-secondary)",
+        hover: "var(--button-secondary-hover)",
+        selected: "var(--button-secondary-selected)",
+        text: "var(--button-secondary-text)",
+        selectedText: "var(--button-secondary-selected-text)",
+      },
+    },
+
     border: {
       primary: "var(--border-primary)",
     },
   },
 
-  article: {
-    maxWidth: 820,
-
-    h1Gap: 32,
-    h2Gap: 24,
-    h3Gap: 16,
-
-    paragraphGap: 24,
-
-    paragraphToListGap: 16,
-    listGap: 8,
-    listToParagraphGap: 24,
-
-    subsectionGap: 32,
-
-    mediaToCaptionGap: 8,
-    mediaGap: 40,
-
-    sectionGap: 64,
-    chapterGap: 80,
-  },
+  spacing,
 
   grid: {
     columns: 12,
@@ -54,4 +52,6 @@ export const tokens = {
     desktop: 1440,
     desktopXL: 1728,
   },
-};
+} as const;
+
+export type Tokens = typeof tokens;

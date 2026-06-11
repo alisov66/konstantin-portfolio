@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  /* Backgrounds */
+  /* Color variables synced from Figma: Color collection / Mode 1 */
+
+  /* Background */
 
   --bg-beige: #eceae6;
   --bg-gray: #fafafa;
@@ -88,31 +90,51 @@
   --button-medium-size: 16px;
   --button-medium-line: 20px;
 
-  /* Spacing */
+  /* Spacing variables synced from Figma: Spacing collection / Mode 1 */
 
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-7: 28px;
-  --space-8: 32px;
-  --space-9: 36px;
-  --space-10: 40px;
-  --space-11: 44px;
-  --space-12: 48px;
-  --space-13: 52px;
-  --space-14: 56px;
-  --space-15: 60px;
-  --space-16: 64px;
+  /* General spacing */
 
-  --space-18: 72px;
-  --space-20: 80px;
-  --space-24: 96px;
-  --space-30: 120px;
-  --space-32: 128px;
-  --space-40: 160px;
+  --base-1: 4px; /* base/1 */
+  --base-2: 8px; /* base/2 */
+  --base-3: 12px; /* base/3 */
+  --base-4: 16px; /* base/4 */
+  --base-5: 20px; /* base/5 */
+  --base-6: 24px; /* base/6 */
+  --base-7: 28px; /* base/7 */
+  --base-8: 32px; /* base/8 */
+  --base-9: 36px; /* base/9 */
+  --base-10: 40px; /* base/10 */
+  --base-11: 44px; /* base/11 */
+  --base-12: 48px; /* base/12 */
+  --base-13: 52px; /* base/13 */
+  --base-14: 56px; /* base/14 */
+  --base-15: 60px; /* base/15 */
+  --base-16: 64px; /* base/16 */
+  --base-18: 72px; /* base/18 */
+  --base-20: 80px; /* base/20 */
+  --base-24: 96px; /* base/24 */
+  --base-30: 120px; /* base/30 */
+  --base-32: 128px; /* base/32 */
+  --base-40: 160px; /* base/40 */
+
+  /* Article spacing */
+
+  --article-max-width: 820px; /* article/max width */
+  --article-paragraph-gap: 24px; /* article/paragraph gap */
+  --article-h1-gap: 32px; /* article/h1 gap */
+  --article-h2-gap: 24px; /* article/h2 gap */
+  --article-h3-gap: 16px; /* article/h3 gap */
+  --article-paragraph-to-list-gap: 16px; /* article/paragraph to list gap */
+  --article-list-gap: 8px; /* article/list gap */
+  --article-list-to-paragraph-gap: 24px; /* article/list to paragraph gap */
+  --article-subsection-gap: 32px; /* article/subsection gap */
+  --article-media-to-caption-gap: 8px; /* article/media to caption gap */
+  --article-media-gap: 40px; /* article/media gap */
+  --article-section-gap: 64px; /* article/section gap */
+  --article-chapter-gap: 80px; /* article/chapter gap */
+
+  /* Layout spacing */
+  /* No layout spacing variables exist in Figma. */
 
   /* Grid */
 
@@ -129,24 +151,6 @@
   --bp-desktop: 1440px;
   --bp-desktop-xl: 1728px;
 
-  /* Article Layout */
-
-  --article-max-width: 820px;
-
-  /* Vertical Rhythm */
-
-  --article-gap-paragraph: 24px;
-
-  --article-gap-h1-paragraph: 32px;
-  --article-gap-h2-paragraph: 24px;
-  --article-gap-h3-paragraph: 16px;
-
-  --article-gap-paragraph-h2: 64px;
-  --article-gap-paragraph-h3: 40px;
-
-  --article-gap-media: 40px;
-  --article-gap-section: 80px;
-
 }
 
 *,
@@ -161,6 +165,7 @@ html {
 
 body {
   margin: 0;
+  min-height: 100vh;
   background: var(--bg-beige);
   color: var(--text-primary);
   font-family: var(--font-work-sans), var(--font-family);

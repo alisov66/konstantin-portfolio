@@ -102,3 +102,6 @@ export const articleTypography = {
     },
   },
 } as const;
+
+export type TypographyToken = typeof typography;
+export type ArticleTypographyToken = typeof articleTypography;

@@ -35,6 +35,12 @@ export default function TabButton({
     "--tab-button-font-size": `${tokens.typography.button.medium.fontSize}px`,
     "--tab-button-line-height": `${tokens.typography.button.medium.lineHeight}px`,
     "--tab-button-font-weight": tokens.typography.button.medium.fontWeight,
+    "--tab-button-hover-shadow": selected
+      ? "none"
+      : "inset 0 0 0 1px rgb(17 17 17 / 0.04)",
+    "--tab-button-active-shadow": selected
+      ? "none"
+      : "inset 0 0 0 999px rgb(17 17 17 / 0.04)",
   } satisfies TabButtonStyle;
 
   return (
@@ -45,7 +51,7 @@ export default function TabButton({
         "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap",
         "rounded-[var(--tab-button-radius)] bg-[var(--tab-button-bg)] px-[var(--tab-button-padding-x)] py-[var(--tab-button-padding-y)]",
         "text-[length:var(--tab-button-font-size)] font-[var(--tab-button-font-weight)] leading-[var(--tab-button-line-height)] text-[var(--tab-button-text)]",
-        "transition-[background-color,color,transform] duration-[160ms] ease-out hover:-translate-y-px hover:bg-[var(--tab-button-hover-bg)] active:scale-[0.98]",
+        "transition-[background-color,color,box-shadow] duration-[160ms] ease-out hover:bg-[var(--tab-button-hover-bg)] hover:shadow-[var(--tab-button-hover-shadow)] active:shadow-[var(--tab-button-active-shadow)]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className,
       ]

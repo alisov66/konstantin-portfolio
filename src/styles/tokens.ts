@@ -1,4 +1,6 @@
+import { radius } from "./radius";
 import { spacing } from "./spacing";
+import { typography } from "./typography";
 
 export const tokens = {
   colors: {
@@ -38,6 +40,8 @@ export const tokens = {
   },
 
   spacing,
+  radius,
+  typography,
 
   grid: {
     columns: 12,

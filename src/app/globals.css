@@ -136,6 +136,14 @@
   /* Layout spacing */
   /* No layout spacing variables exist in Figma. */
 
+  /* Radius variables synced from Figma: Radius collection / Mode 1 */
+
+  --sm: 4px; /* sm */
+  --md: 8px; /* md */
+  --lg: 16px; /* lg */
+  --xl: 24px; /* xl */
+  --pill: 999px; /* pill */
+
   /* Grid */
 
   --grid-columns: 12;

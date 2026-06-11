@@ -1,38 +1,69 @@
-export const typography = {
+export const fontWeight = {
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+} as const;
+
+const rawTypography = {
   heading: {
     h1: {
       fontSize: 56,
       lineHeight: 64,
-      fontWeight: 500,
-      letterSpacing: 0,
+      fontWeight: fontWeight.medium,
     },
 
     h2: {
       fontSize: 40,
       lineHeight: 48,
-      fontWeight: 500,
-      letterSpacing: 0,
+      fontWeight: fontWeight.medium,
     },
 
     h3: {
       fontSize: 36,
       lineHeight: 44,
-      fontWeight: 600,
-      letterSpacing: 0,
+      fontWeight: fontWeight.semibold,
     },
 
     h4: {
       fontSize: 28,
       lineHeight: 36,
-      fontWeight: 600,
-      letterSpacing: 0,
+      fontWeight: fontWeight.semibold,
     },
 
     h5: {
       fontSize: 20,
       lineHeight: 24,
-      fontWeight: 600,
-      letterSpacing: 0,
+      fontWeight: fontWeight.semibold,
+    },
+  },
+
+  article: {
+    heading: {
+      h1: {
+        fontSize: 56,
+        lineHeight: 64,
+        fontWeight: fontWeight.semibold,
+      },
+
+      h2: {
+        fontSize: 36,
+        lineHeight: 44,
+        fontWeight: fontWeight.semibold,
+      },
+
+      h3: {
+        fontSize: 28,
+        lineHeight: 36,
+        fontWeight: fontWeight.semibold,
+      },
+    },
+
+    body: {
+      paragraph: {
+        fontSize: 20,
+        lineHeight: 36,
+        fontWeight: fontWeight.regular,
+      },
     },
   },
 
@@ -40,22 +71,19 @@ export const typography = {
     mediumBold: {
       fontSize: 20,
       lineHeight: 28,
-      fontWeight: 600,
-      letterSpacing: 0,
+      fontWeight: fontWeight.semibold,
     },
 
     medium: {
       fontSize: 20,
       lineHeight: 28,
-      fontWeight: 400,
-      letterSpacing: 0,
+      fontWeight: fontWeight.regular,
     },
 
     small: {
       fontSize: 16,
       lineHeight: 24,
-      fontWeight: 400,
-      letterSpacing: 0,
+      fontWeight: fontWeight.regular,
     },
   },
 
@@ -63,45 +91,26 @@ export const typography = {
     medium: {
       fontSize: 16,
       lineHeight: 20,
-      fontWeight: 500,
-      letterSpacing: 0,
+      fontWeight: fontWeight.medium,
     },
   },
 } as const;
 
-export const articleTypography = {
-  heading: {
-    h1: {
-      fontSize: 56,
-      lineHeight: 64,
-      fontWeight: 600,
-      letterSpacing: 0,
-    },
+export const typography = {
+  raw: rawTypography,
+  fontWeight,
 
-    h2: {
-      fontSize: 36,
-      lineHeight: 44,
-      fontWeight: 600,
-      letterSpacing: 0,
-    },
+  heading: rawTypography.heading,
 
-    h3: {
-      fontSize: 28,
-      lineHeight: 36,
-      fontWeight: 600,
-      letterSpacing: 0,
-    },
+  article: {
+    h1: rawTypography.article.heading.h1,
+    h2: rawTypography.article.heading.h2,
+    h3: rawTypography.article.heading.h3,
+    paragraph: rawTypography.article.body.paragraph,
   },
 
-  body: {
-    paragraph: {
-      fontSize: 20,
-      lineHeight: 36,
-      fontWeight: 400,
-      letterSpacing: 0,
-    },
-  },
+  body: rawTypography.body,
+  button: rawTypography.button,
 } as const;
 
 export type TypographyToken = typeof typography;
-export type ArticleTypographyToken = typeof articleTypography;

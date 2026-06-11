@@ -45,7 +45,7 @@ export default function TabButton({
         "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap",
         "rounded-[var(--tab-button-radius)] bg-[var(--tab-button-bg)] px-[var(--tab-button-padding-x)] py-[var(--tab-button-padding-y)]",
         "text-[length:var(--tab-button-font-size)] font-[var(--tab-button-font-weight)] leading-[var(--tab-button-line-height)] text-[var(--tab-button-text)]",
-        "transition-colors hover:bg-[var(--tab-button-hover-bg)]",
+        "transition-[background-color,color,transform] duration-[160ms] ease-out hover:-translate-y-px hover:bg-[var(--tab-button-hover-bg)] active:scale-[0.98]",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className,
       ]

@@ -18,8 +18,8 @@ export default function TabButton({
   ...props
 }: TabButtonProps) {
   const textColor = selected
-    ? tokens.colors.button.secondary.selectedText
-    : tokens.colors.button.secondary.text;
+    ? tokens.colors.text.inverted
+    : tokens.colors.text.primary;
 
   const style = {
     "--tab-button-bg": selected

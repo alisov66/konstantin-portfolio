@@ -68,3 +68,37 @@ export const typography = {
     },
   },
 } as const;
+
+export const articleTypography = {
+  heading: {
+    h1: {
+      fontSize: 56,
+      lineHeight: 64,
+      fontWeight: 600,
+      letterSpacing: 0,
+    },
+
+    h2: {
+      fontSize: 36,
+      lineHeight: 44,
+      fontWeight: 600,
+      letterSpacing: 0,
+    },
+
+    h3: {
+      fontSize: 28,
+      lineHeight: 36,
+      fontWeight: 600,
+      letterSpacing: 0,
+    },
+  },
+
+  body: {
+    paragraph: {
+      fontSize: 20,
+      lineHeight: 36,
+      fontWeight: 400,
+      letterSpacing: 0,
+    },
+  },
+} as const;

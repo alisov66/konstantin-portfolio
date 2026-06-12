@@ -120,18 +120,15 @@
   /* Article spacing */
 
   --article-max-width: 820px; /* article/max width */
-  --article-paragraph-gap: 24px; /* article/paragraph gap */
-  --article-h1-gap: 32px; /* article/h1 gap */
-  --article-h2-gap: 24px; /* article/h2 gap */
-  --article-h3-gap: 16px; /* article/h3 gap */
-  --article-paragraph-to-list-gap: 16px; /* article/paragraph to list gap */
-  --article-list-gap: 8px; /* article/list gap */
-  --article-list-to-paragraph-gap: 24px; /* article/list to paragraph gap */
-  --article-subsection-gap: 32px; /* article/subsection gap */
-  --article-media-to-caption-gap: 8px; /* article/media to caption gap */
-  --article-media-gap: 40px; /* article/media gap */
-  --article-section-gap: 64px; /* article/section gap */
-  --article-chapter-gap: 80px; /* article/chapter gap */
+  --article-paragraph-gap: 24px; /* article/paragraphGap */
+  --article-h1-gap: 32px; /* article/h1Gap */
+  --article-h2-gap: 24px; /* article/h2Gap */
+  --article-h3-gap: 16px; /* article/h3Gap */
+  --article-subsection-gap: 32px; /* article/subsectionGap */
+  --article-media-to-caption-gap: 8px; /* article/mediaToCaptionGap */
+  --article-media-gap: 40px; /* article/mediaGap */
+  --article-section-gap: 64px; /* article/sectionGap */
+  --article-chapter-gap: 80px; /* article/chapterGap */
 
   /* Layout spacing */
   /* No layout spacing variables exist in Figma. */

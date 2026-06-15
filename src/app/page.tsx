@@ -1,3 +1,5 @@
+import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#ECEAE5] text-[#111111]">
@@ -122,6 +124,9 @@ export default function Home() {
           <span>Bilbao · Spain</span>
         </div>
       </section>
+
+      <div className="h-[200px]" />
+      <CapabilitiesSection />
     </main>
   );
 }

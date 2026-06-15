@@ -689,7 +689,7 @@ export default function CapabilitiesSection() {
           />
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto rounded-[40px] border border-[var(--border-primary)] bg-[var(--bg-mint-green)]">
+        <div className="min-h-0 flex-1 overflow-y-auto rounded-[40px] bg-[var(--bg-mint-green)]">
           <div className="p-[var(--base-10)]">
             <p
               className="max-w-[1408px]"

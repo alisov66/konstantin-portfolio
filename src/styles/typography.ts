@@ -63,6 +63,7 @@ const rawTypography = {
         fontSize: 20,
         lineHeight: 36,
         fontWeight: fontWeight.regular,
+        paragraphSpacing: 12,
       },
     },
   },

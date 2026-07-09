@@ -3,7 +3,7 @@ import type { HTMLAttributes } from "react";
 import HeroActionGroup from "@/components/ui/HeroActionGroup";
 import HeroButton from "@/components/ui/HeroButton";
 
-const imgTile21 = "https://www.figma.com/api/mcp/asset/072bb412-f0a3-4d8f-ba78-ce9fe0761a60";
+const imgTile21 = "https://www.figma.com/api/mcp/asset/ae6fa120-b750-42fb-8df0-c0459717bf50";
 
 export interface HeroNavigationItem {
   id: string;
@@ -55,12 +55,10 @@ export default function HeroNavigation({
   return (
     <section
       {...props}
-      className={["flex flex-col items-center gap-6 transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]", className]
+      className={["flex flex-col items-center gap-0 transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]", className]
         .filter(Boolean)
         .join(" ")}
     >
-      {showPattern ? <HeroPattern /> : null}
-
       <HeroActionGroup className="gap-3 sm:gap-4">
         {items.map((item) => (
           <HeroButton key={item.id} selected={item.id === activeItem} type="button">
@@ -68,6 +66,8 @@ export default function HeroNavigation({
           </HeroButton>
         ))}
       </HeroActionGroup>
+
+      {showPattern ? <HeroPattern /> : null}
     </section>
   );
 }

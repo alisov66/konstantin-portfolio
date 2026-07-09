@@ -12,44 +12,45 @@ const heroItems = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--bg-beige)] px-6 py-10 text-[var(--text-primary)] sm:px-8 lg:px-12 lg:py-12">
-      <section className="mx-auto flex min-h-screen max-w-[1440px] flex-col items-center justify-center gap-8 px-2 py-8 sm:gap-10 lg:gap-12">
-        <div className="flex w-full flex-col items-center gap-4">
-          <HeroNavigation className="w-full" items={heroItems} />
+      <section className="mx-auto flex min-h-screen max-w-[1440px] flex-col items-center justify-center gap-[40px] px-[120px] pb-[120px] pt-[40px]">
+        <div className="flex w-full flex-col items-center gap-[12px]">
+          <div className="relative size-[80px] overflow-hidden">
+            <img
+              alt="Konstantin Alisov"
+              className="absolute left-[-6%] top-[-6%] size-[112%] max-w-none"
+              src={imgPic}
+            />
+          </div>
 
-          <div className="flex flex-col items-center gap-3">
-            <div className="size-[80px] overflow-hidden rounded-full border border-[var(--border-primary)] bg-[var(--bg-gray)]">
-              <img
-                alt="Konstantin Alisov"
-                className="h-full w-full object-cover"
-                src={imgPic}
-              />
-            </div>
-
-            <div className="text-center">
-              <h1 className="text-[28px] font-semibold leading-[36px] text-[var(--text-primary)]">
-                Konstantin Alisov
-              </h1>
-              <p className="text-[20px] leading-[28px] text-[var(--text-secondary)]">
-                Product designer
-              </p>
-            </div>
+          <div className="flex w-full flex-col items-center gap-[4px] text-center">
+            <h1 className="text-[28px] font-semibold leading-[36px] text-[var(--text-primary)]">
+              Konstantin Alisov
+            </h1>
+            <p className="text-[20px] leading-[28px] text-[var(--text-secondary)]">
+              Product designer
+            </p>
           </div>
         </div>
 
-        <div className="flex max-w-[860px] flex-col items-center gap-5 text-center">
-          <h2 className="text-[56px] font-medium leading-[64px] sm:text-[72px] sm:leading-[80px] lg:text-[80px] lg:leading-[88px]">
+        <div className="flex w-full max-w-[860px] flex-col items-center gap-[24px] text-center">
+          <h2 className="max-w-[800px] text-[80px] font-medium leading-[88px] text-[var(--text-primary)]">
             Designing clarity
             <br />
             in complex systems
           </h2>
 
-          <p className="text-[20px] leading-[28px] text-[var(--text-primary)] sm:text-[22px] sm:leading-[32px]">
+          <p className="max-w-[640px] text-[20px] leading-[28px] text-[var(--text-primary)]">
             The industries changed, but the challenge stayed the same:
             <br />
             helping people understand what to do next.
           </p>
         </div>
 
+        <HeroNavigation
+          activeItem="capabilities"
+          className="w-full"
+          items={heroItems}
+        />
       </section>
     </main>
   );

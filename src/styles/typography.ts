@@ -11,8 +11,8 @@ const rawTypography = {
 
   heading: {
     h1: {
-      fontSize: 56,
-      lineHeight: 64,
+      fontSize: 80,
+      lineHeight: 88,
     },
 
     h2: {

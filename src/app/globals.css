@@ -183,7 +183,10 @@ body {
   min-height: 100vh;
   background: var(--bg-beige);
   color: var(--text-primary);
-  font-family: var(--font-work-sans), var(--font-family);
+  font-family: var(--font-family);
+  font-size: var(--body-medium-size);
+  line-height: var(--body-medium-line);
+  font-weight: var(--body-medium-weight);
 }
 
 h1,
@@ -193,6 +196,48 @@ h4,
 h5,
 p {
   margin: 0;
+}
+
+h1,
+.text-h1 {
+  font-size: var(--h1-size);
+  line-height: var(--h1-line);
+  font-weight: var(--h1-weight);
+}
+
+h2,
+.text-h2 {
+  font-size: var(--h2-size);
+  line-height: var(--h2-line);
+  font-weight: var(--h2-weight);
+}
+
+h3,
+.text-h3 {
+  font-size: var(--h3-size);
+  line-height: var(--h3-line);
+  font-weight: var(--h3-weight);
+}
+
+h4,
+.text-h4 {
+  font-size: var(--h4-size);
+  line-height: var(--h4-line);
+  font-weight: var(--h4-weight);
+}
+
+h5,
+.text-h5 {
+  font-size: var(--h5-size);
+  line-height: var(--h5-line);
+  font-weight: var(--h5-weight);
+}
+
+p,
+.text-body {
+  font-size: var(--body-medium-size);
+  line-height: var(--body-medium-line);
+  font-weight: var(--body-medium-weight);
 }
 
 img {

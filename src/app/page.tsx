@@ -1,132 +1,25 @@
-import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
-
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#ECEAE5] text-[#111111]">
-      <section className="mx-auto flex min-h-screen max-w-[1600px] flex-col px-8 py-8 md:px-16">
+    <main className="min-h-screen bg-[var(--bg-beige)] px-6 py-10 text-[var(--text-primary)] md:px-10">
+      <section className="mx-auto flex min-h-screen max-w-6xl flex-col gap-8">
+        <header className="flex flex-col gap-2 border-b border-[var(--border-primary)] pb-6">
+          <p className="text-sm uppercase tracking-[0.2em] text-[var(--text-secondary)]">
+            Portfolio 2026
+          </p>
+          <h1 className="text-4xl font-semibold sm:text-5xl">
+            New draft coming soon.
+          </h1>
+          <p className="max-w-2xl text-base text-[var(--text-secondary)] sm:text-lg">
+            The previous content has been cleared so the new page can be built cleanly on top of the refreshed design system.
+          </p>
+        </header>
 
-        {/* Top row */}
-
-        <div className="flex items-start justify-between">
-          <div className="flex gap-8">
-            <div>
-              <h1 className="text-5xl leading-none tracking-tight">
-                Konstantin
-                <br />
-                Alisov
-              </h1>
-            </div>
-
-            <div className="max-w-[120px] text-xs uppercase tracking-wider">
-              Product
-              <br />
-              Design
-              <br />
-              Systems
-              <br />
-              Portfolio
-            </div>
-          </div>
-
-          <div className="bg-[#E9DFC6] px-4 py-2 text-right text-sm">
-            Bilbao, Spain
-            <br />
-            2026
-          </div>
-        </div>
-
-        {/* Main content */}
-
-        <div className="mt-20 grid flex-1 grid-cols-12 gap-10">
-
-          {/* Left */}
-
-          <div className="col-span-12 md:col-span-5">
-            <div className="aspect-[4/5] w-full border border-black bg-gradient-to-br from-zinc-300 via-zinc-100 to-zinc-300" />
-
-            <div className="-mt-4 ml-12 inline-block bg-[#E9DFC6] px-4 py-2 text-3xl font-bold">
-              Product Designer →
-            </div>
-          </div>
-
-          {/* Center */}
-
-          <div className="col-span-12 md:col-span-5">
-
-            <div className="inline-block bg-[#B6AEFF] px-4 py-2">
-              <div className="text-7xl leading-none">
-                Designing
-              </div>
-            </div>
-
-            <br />
-
-            <div className="mt-2 inline-block bg-[#B6AEFF] px-4 py-2">
-              <div className="text-7xl leading-none">
-                Complex
-              </div>
-            </div>
-
-            <br />
-
-            <div className="mt-2 inline-block bg-[#B6AEFF] px-4 py-2">
-              <div className="text-7xl leading-none">
-                Software
-              </div>
-            </div>
-
-            <div className="mt-10 max-w-xl text-4xl leading-tight">
-              →
-              Turning enterprise workflows,
-              design systems, and AI-powered tools
-              into products people actually enjoy using.
-            </div>
-
-            <div className="mt-12 flex flex-wrap gap-3">
-              <div className="border border-black px-3 py-1">
-                Platforma
-              </div>
-
-              <div className="border border-black px-3 py-1">
-                Design Systems
-              </div>
-
-              <div className="border border-black px-3 py-1">
-                Enterprise UX
-              </div>
-
-              <div className="border border-black px-3 py-1">
-                AI Prototyping
-              </div>
-            </div>
-          </div>
-
-          {/* Right */}
-
-          <div className="col-span-12 md:col-span-2 flex flex-col justify-between">
-
-            <pre className="text-xs leading-none">
-            </pre>
-
-            <a
-              href="#work"
-              className="inline-block bg-[#56E5CF] px-4 py-3 text-xl"
-            >
-              [ View Work → ]
-            </a>
-          </div>
-        </div>
-
-        {/* Footer */}
-
-        <div className="mt-8 flex justify-between border-t border-black pt-4 text-sm">
-          <span>Product Designer</span>
-          <span>Bilbao · Spain</span>
+        <div className="rounded-[32px] border border-[var(--border-primary)] bg-[var(--bg-gray)] p-8">
+          <p className="text-base text-[var(--text-secondary)]">
+            Send the new draft whenever you’re ready and I’ll turn it into the production page structure.
+          </p>
         </div>
       </section>
-
-      <div className="h-[200px]" />
-      <CapabilitiesSection />
     </main>
   );
 }

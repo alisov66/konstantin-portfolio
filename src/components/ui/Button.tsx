@@ -1,3 +1,5 @@
+import { tokens } from "@/styles/tokens";
+
 type ButtonVariant = "primary" | "secondary";
 
 interface ButtonProps {
@@ -9,22 +11,34 @@ export default function Button({
   children,
   variant = "primary",
 }: ButtonProps) {
-  const styles = {
-    primary:
-      "bg-[var(--button-primary)] text-[var(--button-primary-text)] hover:bg-[var(--button-primary-hover)]",
-
-    secondary:
-      "bg-[var(--button-secondary)] text-[var(--button-secondary-text)] hover:bg-[var(--button-secondary-hover)]",
-  };
+  const buttonTypography = tokens.typography.button.medium;
+  const variantStyles = {
+    primary: {
+      backgroundColor: tokens.colors.button.primary.default,
+      color: tokens.colors.button.primary.text,
+      borderColor: tokens.colors.border.primary,
+      hoverBackgroundColor: tokens.colors.button.primary.hover,
+    },
+    secondary: {
+      backgroundColor: tokens.colors.button.secondary.default,
+      color: tokens.colors.button.secondary.text,
+      borderColor: tokens.colors.border.primary,
+      hoverBackgroundColor: tokens.colors.button.secondary.hover,
+    },
+  }[variant];
 
   return (
     <button
-      className={`
-        px-6 py-3
-        transition-colors
-        border border-[var(--border-primary)]
-        ${styles[variant]}
-      `}
+      className="inline-flex items-center justify-center border px-6 py-3 transition-colors"
+      style={{
+        backgroundColor: variantStyles.backgroundColor,
+        color: variantStyles.color,
+        borderColor: variantStyles.borderColor,
+        borderRadius: tokens.radius.pill,
+        fontSize: `${buttonTypography.fontSize}px`,
+        lineHeight: `${buttonTypography.lineHeight}px`,
+        fontWeight: buttonTypography.fontWeight,
+      }}
     >
       {children}
     </button>

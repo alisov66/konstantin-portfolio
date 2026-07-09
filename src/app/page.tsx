@@ -1,46 +1,20 @@
-import HeroActionGroup from "@/components/ui/HeroActionGroup";
-import HeroButton from "@/components/ui/HeroButton";
+import HeroNavigation from "@/components/ui/HeroNavigation";
 
-const imgTile21 = "https://www.figma.com/api/mcp/asset/072bb412-f0a3-4d8f-ba78-ce9fe0761a60";
 const imgPic = "https://www.figma.com/api/mcp/asset/a05ed144-e408-496b-95f9-139863977c00";
 
-const heroButtons = ["Capabilities", "About", "Contact", "Download CV"];
-
-function HeroPattern() {
-  const positions = Array.from({ length: 49 }, (_, index) => {
-    const row = Math.floor(index / 7);
-    const col = index % 7;
-    const x = (col - 3) * 34;
-    const y = (row - 3) * 34;
-
-    return { x, y };
-  });
-
-  return (
-    <div className="relative mx-auto h-[260px] w-full max-w-[780px]" aria-hidden>
-      {positions.map(({ x, y }, index) => (
-        <img
-          key={`${x}-${y}-${index}`}
-          alt=""
-          className="absolute size-[28px]"
-          src={imgTile21}
-          style={{
-            left: `calc(50% + ${x}px)`,
-            top: `calc(50% + ${y}px)`,
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+const heroItems = [
+  { id: "capabilities", label: "Capabilities" },
+  { id: "about", label: "About" },
+  { id: "contact", label: "Contact" },
+  { id: "cv", label: "Download CV" },
+];
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--bg-beige)] px-6 py-10 text-[var(--text-primary)] sm:px-8 lg:px-12 lg:py-12">
       <section className="mx-auto flex min-h-screen max-w-[1440px] flex-col items-center justify-center gap-8 px-2 py-8 sm:gap-10 lg:gap-12">
         <div className="flex w-full flex-col items-center gap-4">
-          <HeroPattern />
+          <HeroNavigation className="w-full" items={heroItems} />
 
           <div className="flex flex-col items-center gap-3">
             <div className="size-[80px] overflow-hidden rounded-full border border-[var(--border-primary)] bg-[var(--bg-gray)]">
@@ -76,13 +50,6 @@ export default function Home() {
           </p>
         </div>
 
-        <HeroActionGroup className="gap-3 sm:gap-4">
-          {heroButtons.map((label) => (
-            <HeroButton key={label} type="button">
-              {label}
-            </HeroButton>
-          ))}
-        </HeroActionGroup>
       </section>
     </main>
   );

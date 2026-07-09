@@ -1,3 +1,6 @@
+import HeroActionGroup from "@/components/ui/HeroActionGroup";
+import HeroButton from "@/components/ui/HeroButton";
+
 const imgTile21 = "https://www.figma.com/api/mcp/asset/072bb412-f0a3-4d8f-ba78-ce9fe0761a60";
 const imgPic = "https://www.figma.com/api/mcp/asset/a05ed144-e408-496b-95f9-139863977c00";
 
@@ -73,17 +76,13 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+        <HeroActionGroup className="gap-3 sm:gap-4">
           {heroButtons.map((label) => (
-            <a
-              key={label}
-              className="inline-flex items-center justify-center rounded-full border border-[var(--border-primary)] bg-[var(--button-hero)] px-5 py-3 text-[16px] font-semibold leading-[20px] text-[var(--text-primary)] transition-colors hover:bg-[var(--button-hero-hover)]"
-              href="#"
-            >
+            <HeroButton key={label} type="button">
               {label}
-            </a>
+            </HeroButton>
           ))}
-        </div>
+        </HeroActionGroup>
       </section>
     </main>
   );

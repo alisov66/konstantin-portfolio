@@ -26,6 +26,12 @@ export const tokens = {
         text: "var(--button-primary-text)",
       },
 
+      hero: {
+        default: "var(--button-hero)",
+        hover: "var(--button-hero-hover)",
+        text: "var(--button-hero-text)",
+      },
+
       secondary: {
         default: "var(--button-secondary)",
         hover: "var(--button-secondary-hover)",

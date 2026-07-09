@@ -37,7 +37,9 @@ const rawSpacing = {
     "article/chapterGap": "var(--article-chapter-gap)",
   },
 
-  layout: {},
+  layout: {
+    "padding/side": "var(--padding-side)",
+  },
 } as const;
 
 export const spacing = {
@@ -79,5 +81,9 @@ export const spacing = {
     mediaGap: rawSpacing.article["article/mediaGap"],
     sectionGap: rawSpacing.article["article/sectionGap"],
     chapterGap: rawSpacing.article["article/chapterGap"],
+  },
+
+  layout: {
+    sidePadding: rawSpacing.layout["padding/side"],
   },
 } as const;

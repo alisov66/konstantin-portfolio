@@ -1,80 +1,80 @@
 const rawTypography = {
   font: {
-    family: "Work Sans",
+    family: "var(--font-family)",
   },
 
   fontWeight: {
-    regular: 400,
-    medium: 500,
-    semibold: 600,
+    regular: "var(--font-weight-regular)",
+    medium: "var(--font-weight-medium)",
+    semibold: "var(--font-weight-semibold)",
   },
 
   heading: {
     h1: {
-      fontSize: 80,
-      lineHeight: 88,
+      fontSize: "var(--h1-size)",
+      lineHeight: "var(--h1-line)",
     },
 
     h2: {
-      fontSize: 40,
-      lineHeight: 48,
+      fontSize: "var(--h2-size)",
+      lineHeight: "var(--h2-line)",
     },
 
     h3: {
-      fontSize: 36,
-      lineHeight: 44,
+      fontSize: "var(--h3-size)",
+      lineHeight: "var(--h3-line)",
     },
 
     h4: {
-      fontSize: 28,
-      lineHeight: 36,
+      fontSize: "var(--h4-size)",
+      lineHeight: "var(--h4-line)",
     },
 
     h5: {
-      fontSize: 20,
-      lineHeight: 24,
+      fontSize: "var(--h5-size)",
+      lineHeight: "var(--h5-line)",
     },
   },
 
   article: {
     h1: {
-      fontSize: 56,
-      lineHeight: 64,
+      fontSize: "var(--article-h1-size)",
+      lineHeight: "var(--article-h1-line)",
     },
 
     h2: {
-      fontSize: 36,
-      lineHeight: 44,
+      fontSize: "var(--article-h2-size)",
+      lineHeight: "var(--article-h2-line)",
     },
 
     h3: {
-      fontSize: 28,
-      lineHeight: 36,
+      fontSize: "var(--article-h3-size)",
+      lineHeight: "var(--article-h3-line)",
     },
 
     paragraph: {
-      fontSize: 20,
-      lineHeight: 36,
-      paragraphSpacing: 12,
+      fontSize: "var(--article-paragraph-size)",
+      lineHeight: "var(--article-paragraph-line)",
+      paragraphSpacing: "var(--article-paragraph-spacing)",
     },
   },
 
   body: {
     medium: {
-      fontSize: 20,
-      lineHeight: 28,
+      fontSize: "var(--body-medium-size)",
+      lineHeight: "var(--body-medium-line)",
     },
 
     small: {
-      fontSize: 16,
-      lineHeight: 24,
+      fontSize: "var(--body-small-size)",
+      lineHeight: "var(--body-small-line)",
     },
   },
 
   button: {
     medium: {
-      fontSize: 16,
-      lineHeight: 20,
+      fontSize: "var(--button-medium-size)",
+      lineHeight: "var(--button-medium-line)",
     },
   },
 } as const;

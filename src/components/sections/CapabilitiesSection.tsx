@@ -66,13 +66,13 @@ const descriptions: Record<string, string> = {
 type StyleVars = CSSProperties & Record<`--${string}`, string | number>;
 
 function typeStyle(token: {
-  fontSize: number;
-  lineHeight: number;
-  fontWeight: number;
+  fontSize: string | number;
+  lineHeight: string | number;
+  fontWeight: string | number;
 }) {
   return {
     fontSize: token.fontSize,
-    lineHeight: `${token.lineHeight}px`,
+    lineHeight: token.lineHeight,
     fontWeight: token.fontWeight,
   };
 }
@@ -659,16 +659,16 @@ export default function CapabilitiesSection() {
   const [value, setValue] = useState(tabs[0].id);
 
   const sectionStyle: StyleVars = {
-    "--capabilities-page-padding": tokens.spacing.base[30],
+    "--capabilities-page-padding": tokens.spacing.layout.sidePadding,
     "--capabilities-section-gap": tokens.spacing.base[5],
     "--capabilities-card-radius": tokens.radius.pill,
-    "--capabilities-panel-radius": "40px",
+    "--capabilities-panel-radius": tokens.spacing.base[10],
   };
 
   return (
     <section
       id="work"
-      className="flex min-h-screen flex-col bg-[var(--bg-beige)] px-6 py-10 md:px-[var(--capabilities-page-padding)]"
+      className="flex min-h-screen flex-col bg-[var(--bg-beige)] px-[var(--capabilities-page-padding)] py-[var(--base-10)]"
       style={sectionStyle}
     >
       <h2
@@ -679,7 +679,7 @@ export default function CapabilitiesSection() {
       </h2>
       <div style={{ height: tokens.spacing.base[5] }} />
 
-      <div className="flex min-h-[calc(100vh-120px)] w-full flex-1 flex-col overflow-hidden rounded-[40px] border border-[var(--border-primary)] bg-[var(--bg-beige)]">
+      <div className="flex min-h-[calc(100vh-120px)] w-full flex-1 flex-col overflow-hidden rounded-[var(--capabilities-panel-radius)] border border-[var(--border-primary)] bg-[var(--bg-beige)]">
         <div className="shrink-0 bg-[var(--bg-beige)] p-[var(--base-5)]">
           <TabGroup
             className="flex-wrap items-center"
@@ -689,7 +689,7 @@ export default function CapabilitiesSection() {
           />
         </div>
 
-        <div className="min-h-0 flex-1 overflow-y-auto rounded-[40px] bg-[var(--bg-mint-green)]">
+        <div className="min-h-0 flex-1 overflow-y-auto rounded-[var(--capabilities-panel-radius)] bg-[var(--bg-mint-green)]">
           <div className="p-[var(--base-10)]">
             <p
               className="max-w-[1408px]"
@@ -699,7 +699,7 @@ export default function CapabilitiesSection() {
             </p>
           </div>
 
-          <div className="relative rounded-[40px] border border-[var(--border-primary)] bg-[var(--bg-gray)] p-6 md:p-[var(--base-10)]">
+          <div className="relative rounded-[var(--capabilities-panel-radius)] border border-[var(--border-primary)] bg-[var(--bg-gray)] p-[var(--padding-side)] md:p-[var(--base-10)]">
             <div className="mx-auto flex w-full justify-center">
               <ActiveArticle value={value} />
             </div>

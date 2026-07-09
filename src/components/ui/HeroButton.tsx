@@ -27,8 +27,8 @@ export default function HeroButton({
     "--hero-button-radius": tokens.radius.pill,
     "--hero-button-padding-x": tokens.spacing.base[6],
     "--hero-button-padding-y": tokens.spacing.base[4],
-    "--hero-button-font-size": `${tokens.typography.heading.h5.fontSize}px`,
-    "--hero-button-line-height": `${tokens.typography.heading.h5.lineHeight}px`,
+    "--hero-button-font-size": tokens.typography.heading.h5.fontSize,
+    "--hero-button-line-height": tokens.typography.heading.h5.lineHeight,
     "--hero-button-font-weight": tokens.typography.heading.h5.fontWeight,
   } satisfies HeroButtonStyle;
 

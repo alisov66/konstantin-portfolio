@@ -32,8 +32,8 @@ export default function TabButton({
     "--tab-button-radius": tokens.radius.pill,
     "--tab-button-padding-x": tokens.spacing.base[4],
     "--tab-button-padding-y": tokens.spacing.base[2],
-    "--tab-button-font-size": `${tokens.typography.button.medium.fontSize}px`,
-    "--tab-button-line-height": `${tokens.typography.button.medium.lineHeight}px`,
+    "--tab-button-font-size": tokens.typography.button.medium.fontSize,
+    "--tab-button-line-height": tokens.typography.button.medium.lineHeight,
     "--tab-button-font-weight": tokens.typography.button.medium.fontWeight,
     "--tab-button-hover-shadow": selected
       ? "none"

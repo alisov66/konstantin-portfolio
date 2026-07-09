@@ -35,8 +35,8 @@ export default function Button({
         color: variantStyles.color,
         borderColor: variantStyles.borderColor,
         borderRadius: tokens.radius.pill,
-        fontSize: `${buttonTypography.fontSize}px`,
-        lineHeight: `${buttonTypography.lineHeight}px`,
+        fontSize: buttonTypography.fontSize,
+        lineHeight: buttonTypography.lineHeight,
         fontWeight: buttonTypography.fontWeight,
       }}
     >

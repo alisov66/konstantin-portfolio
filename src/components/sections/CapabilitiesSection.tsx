@@ -37,6 +37,36 @@ const images = {
     "https://www.figma.com/api/mcp/asset/c69ed7a2-b144-44a9-9f82-b800ba872db7",
   msaHeader:
     "https://www.figma.com/api/mcp/asset/260d98f1-8acf-49a9-ab10-40b1797b6ec6",
+  complexDecisions1:
+    "https://www.figma.com/api/mcp/asset/82a15ddc-c08a-492f-ac29-5490e7f658ee",
+  complexDecisions2:
+    "https://www.figma.com/api/mcp/asset/7257c808-2f8e-45c5-9ebf-67bf11fab62e",
+  complexDecisions3:
+    "https://www.figma.com/api/mcp/asset/fd3cf7cd-9979-41fd-ae57-1dba65beeefa",
+  complexDecisions4:
+    "https://www.figma.com/api/mcp/asset/1d4419cd-9f50-4892-bc99-90e3f895a240",
+  scalingPlatforma1:
+    "https://www.figma.com/api/mcp/asset/b868dc57-d624-455d-9764-90e5-2fd50931d7af",
+  scalingPlatforma2:
+    "https://www.figma.com/api/mcp/asset/537726da-7539-4694-90e5-2fd50931d7af",
+  scalingPlatforma3:
+    "https://www.figma.com/api/mcp/asset/bdfb31d9-0ad6-44de-841b-52fd18ce1491",
+  scalingPlatforma4:
+    "https://www.figma.com/api/mcp/asset/2793f33b-f973-4d13-a82e-abdffe32be70",
+  financialOps1:
+    "https://www.figma.com/api/mcp/asset/fcd432cb-4588-4995-9ce8-7186c6e7d72c",
+  financialOps2:
+    "https://www.figma.com/api/mcp/asset/ed34a54c-5804-42d0-8e58-5fdfd4ce2e6e",
+  financialOps3:
+    "https://www.figma.com/api/mcp/asset/c89054fc-7bc1-4a43-96ff-c9da3367dd83",
+  financialOps4:
+    "https://www.figma.com/api/mcp/asset/14087f87-1c13-42c4-9775-d01ef76abd30",
+  financialOps5:
+    "https://www.figma.com/api/mcp/asset/534e1b83-5456-47ab-9bbe-44a0b85f9df1",
+  financialOps6:
+    "https://www.figma.com/api/mcp/asset/b4ba4a59-1610-4251-8b4f-fda4969a8722",
+  financialOps7:
+    "https://www.figma.com/api/mcp/asset/5b4f4532-4b9b-416b-b390-4fde4c3e212b",
 };
 
 const tabs: TabGroupTab[] = [
@@ -605,6 +635,935 @@ function DesignSystemsArticle() {
   );
 }
 
+function DocumentationCollaborationArticle() {
+  return (
+    <ArticleShell>
+      <H1>Making complex product decisions understandable</H1>
+      <Gap size={tokens.spacing.article.h1Gap} />
+
+      <Section title="Context">
+        <CopyBlock>
+          <Paragraph>
+            Platforma is used by scientists to explore and visualize complex
+            biological data.
+          </Paragraph>
+          <Paragraph>
+            The feature became a shared dependency for multiple visualization
+            workflows, making consistency and implementation accuracy
+            increasingly important.
+          </Paragraph>
+          <Paragraph>
+            The Data Mapping experience evolved into a sophisticated system
+            involving:
+          </Paragraph>
+          <List>
+            <li>metadata grouping</li>
+            <li>recommendation logic</li>
+            <li>visualization constraints</li>
+            <li>contextual guidance</li>
+            <li>interaction patterns</li>
+          </List>
+          <Paragraph>
+            As the feature grew, communicating design decisions became as
+            important as designing the feature itself.
+          </Paragraph>
+          <Paragraph>
+            Without clear documentation, implementation details, UX rationale,
+            and system behavior could easily become inconsistent across teams.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Challenge">
+        <CopyBlock>
+          <Paragraph>
+            Create documentation that allows designers and engineers to
+            understand both user-facing behavior and the underlying system
+            decisions.
+          </Paragraph>
+          <Paragraph>The documentation needed to:</Paragraph>
+          <List>
+            <li>communicate UX decisions clearly</li>
+            <li>explain recommendation logic</li>
+            <li>support developer implementation</li>
+            <li>remain useful as the system evolves</li>
+            <li>serve as a reference for future workflows</li>
+          </List>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Documentation principles">
+        <Subsection title="Document decisions, not screens">
+          <CopyBlock>
+            <Paragraph>
+              Rather than describing individual interface states, the
+              documentation focuses on the underlying design decisions.
+            </Paragraph>
+            <Paragraph>Each section follows a consistent structure:</Paragraph>
+            <List>
+              <li>Problem</li>
+              <li>What changed</li>
+              <li>Why this improves UX</li>
+            </List>
+            <Paragraph>
+              This makes the reasoning behind the solution easy to understand
+              and revisit.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Documentation pages explaining product decisions"
+          src={images.complexDecisions1}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Separate user value from implementation logic">
+          <CopyBlock>
+            <Paragraph>The documentation distinguishes between:</Paragraph>
+            <List>
+              <li>user-facing benefits</li>
+              <li>implementation logic and system behavior</li>
+            </List>
+            <Paragraph>
+              This separation allows stakeholders to understand the design
+              intent while giving developers enough context to implement the
+              solution correctly.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="System logic documentation"
+          className="aspect-[2514/1832]"
+          src={images.complexDecisions2}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Explain complex behavior through progressive disclosure">
+          <CopyBlock>
+            <Paragraph>
+              Instead of introducing all concepts at once, the documentation
+              breaks interactions into small, understandable parts.
+            </Paragraph>
+            <Paragraph>
+              The documentation introduces concepts incrementally, moving from
+              simple interface improvements to advanced interaction and
+              recommendation logic.
+            </Paragraph>
+            <Paragraph>
+              Each concept is introduced independently before showing how it
+              contributes to the overall experience.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Progressive disclosure documentation map"
+          className="aspect-[1496/960]"
+          src={images.complexDecisions3}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Turn feature decisions into platform knowledge">
+          <Paragraph>
+            The documentation captures reusable interaction patterns rather than
+            feature-specific solutions. This allows future workflows to adopt
+            proven approaches instead of reinventing behavior for each new
+            application.
+          </Paragraph>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Reusable platform knowledge examples"
+          className="aspect-[2440/1024]"
+          src={images.complexDecisions4}
+        />
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Why it mattered">
+        <List>
+          <li>Used as a shared reference by Design and Engineering teams.</li>
+          <li>Used as implementation reference.</li>
+          <li>Captured UX rationale alongside specifications.</li>
+          <li>Established documentation patterns for future workflows.</li>
+        </List>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="My role">
+        <List>
+          <li>
+            Designed the Data Mapping experience, including information
+            architecture, interaction patterns, and recommendation workflows.
+          </li>
+          <li>
+            Defined a documentation framework that captures UX rationale,
+            interaction behavior, and system logic separately.
+          </li>
+          <li>
+            Created reusable documentation patterns for communicating complex
+            product decisions across teams.
+          </li>
+          <li>
+            Partnered with engineering to ensure design intent remained
+            understandable throughout implementation.
+          </li>
+        </List>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Outcome">
+        <Paragraph>
+          The project transformed feature documentation from a one-time
+          specification into reusable product knowledge. The resulting framework
+          helps teams understand not only what the interface does, but why it
+          behaves that way, making future workflows easier to design, implement,
+          and evolve.
+        </Paragraph>
+      </Section>
+    </ArticleShell>
+  );
+}
+
+function ProductDesignScaleArticle() {
+  return (
+    <ArticleShell>
+      <H1>Scaling Platforma from startup website to enterprise product platform</H1>
+      <Gap size={tokens.spacing.article.h1Gap} />
+      <Paragraph>
+        Platforma had grown from a startup product into a complex ecosystem of
+        scientific workflows, deployment options, and developer tools. The
+        website no longer reflected the scale of the platform or helped visitors
+        understand how its components fit together.
+      </Paragraph>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Context">
+        <CopyBlock>
+          <Paragraph>Platforma had evolved beyond its original positioning.</Paragraph>
+          <Paragraph>
+            The company was no longer an early-stage startup with a small set of
+            capabilities. The platform had expanded into a comprehensive
+            ecosystem including:
+          </Paragraph>
+          <List>
+            <li>multiple scientific workflows</li>
+            <li>deployment options</li>
+            <li>SDK and extensibility</li>
+            <li>enterprise infrastructure</li>
+            <li>academic and commercial audiences</li>
+          </List>
+          <Paragraph>
+            The existing website no longer reflected the maturity of the
+            product.
+          </Paragraph>
+          <Paragraph>
+            Information was difficult to navigate, product capabilities were
+            fragmented across pages, and the overall experience did not
+            communicate the scale of the platform.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Challenge">
+        <CopyBlock>
+          <Paragraph>Design the product ecosystem, not individual pages.</Paragraph>
+          <Paragraph>
+            The website was treated as a connected product ecosystem rather than
+            a collection of marketing pages.
+          </Paragraph>
+          <Paragraph>Content was organized around:</Paragraph>
+          <List>
+            <li>Solutions</li>
+            <li>Platform</li>
+            <li>Resources</li>
+            <li>Company</li>
+          </List>
+          <Paragraph>
+            This structure helped visitors understand how individual
+            capabilities relate to the broader platform.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Design principles">
+        <Subsection title="Design the product ecosystem, not individual pages">
+          <CopyBlock>
+            <Paragraph>
+              The website was treated as a connected product ecosystem rather
+              than a collection of marketing pages.
+            </Paragraph>
+            <Paragraph>Content was organized around:</Paragraph>
+            <List>
+              <li>Solutions</li>
+              <li>Platform</li>
+              <li>Resources</li>
+              <li>Company</li>
+            </List>
+            <Paragraph>
+              This structure helped visitors understand how individual
+              capabilities relate to the broader platform.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Platforma product ecosystem navigation model"
+          className="aspect-[2916/672]"
+          src={images.scalingPlatforma1}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Make complex technology understandable">
+          <CopyBlock>
+            <Paragraph>
+              Platforma includes concepts that are unfamiliar to many visitors:
+            </Paragraph>
+            <List>
+              <li>deployment architecture</li>
+              <li>enterprise infrastructure</li>
+              <li>SDK and extensibility</li>
+              <li>scientific workflows</li>
+            </List>
+            <Paragraph>
+              Rather than burying these concepts inside marketing content, the
+              redesign introduced dedicated platform pages that explain how the
+              system works and how its components relate to one another.
+            </Paragraph>
+            <Paragraph>
+              This allows visitors to learn the system progressively and build a
+              clearer mental model of how the platform works.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Platform overview explanation"
+          className="aspect-[2760/1350]"
+          src={images.scalingPlatforma2}
+        />
+        <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+        <List>
+          <li>
+            The Platform Overview page transformed a complex technical
+            architecture into a simple mental model built around infrastructure,
+            user experience, and extensibility.
+          </li>
+        </List>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Organize content around user goals">
+          <CopyBlock>
+            <Paragraph>Visitors arrive with different intentions.</Paragraph>
+            <Paragraph>The website needed to support:</Paragraph>
+            <List>
+              <li>scientists evaluating solutions</li>
+              <li>technical users exploring platform capabilities</li>
+              <li>enterprise buyers assessing deployment options</li>
+              <li>academic users requesting access</li>
+            </List>
+            <Paragraph>
+              Information architecture was designed around visitor intent rather
+              than internal company structure, helping different audiences
+              quickly reach the content most relevant to them.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Platforma visitor intent map"
+          className="aspect-[1560/816]"
+          src={images.scalingPlatforma3}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+
+        <Subsection title="Build trust through transparency">
+          <CopyBlock>
+            <Paragraph>
+              Enterprise customers need confidence before engaging with a
+              platform.
+            </Paragraph>
+            <Paragraph>The redesign introduced dedicated pages explaining:</Paragraph>
+            <List>
+              <li>deployment models</li>
+              <li>infrastructure options</li>
+              <li>security considerations</li>
+              <li>platform architecture</li>
+              <li>open ecosystem principles</li>
+            </List>
+            <Paragraph>
+              Rather than hiding these topics inside marketing content, the
+              redesign made them visible and understandable.
+            </Paragraph>
+            <Paragraph>
+              This reduced ambiguity and helped visitors evaluate whether
+              Platforma could fit their technical and organizational
+              requirements.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Platforma deployment and trust pages"
+          className="aspect-[2762/1792]"
+          src={images.scalingPlatforma4}
+        />
+        <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+        <List>
+          <li>
+            Dedicated platform and deployment pages made infrastructure,
+            deployment options, and operational requirements transparent,
+            helping enterprise teams evaluate Platforma with confidence.
+          </li>
+        </List>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Why it mattered">
+        <List>
+          <li>
+            Unified a fragmented product ecosystem into a coherent platform
+            story.
+          </li>
+          <li>
+            Reduced the gap between scientific workflows, platform capabilities,
+            and deployment infrastructure.
+          </li>
+          <li>Made enterprise requirements visible and understandable.</li>
+          <li>
+            Created a scalable information architecture capable of supporting
+            future solutions and platform growth.
+          </li>
+        </List>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="My role">
+        <List>
+          <li>
+            Led the redesign of Platforma’s website from information
+            architecture through final UI design.
+          </li>
+          <li>
+            Defined the platform information architecture, navigation model, and
+            page hierarchy.
+          </li>
+          <li>
+            Designed key product communication pages including Platform
+            Overview, Deployment, SDK, Solutions, and Resources.
+          </li>
+          <li>
+            Established a scalable structure capable of supporting future
+            products, workflows, and platform growth.
+          </li>
+          <li>
+            Collaborated with leadership, marketing, and engineering teams to
+            align product messaging with business goals.
+          </li>
+        </List>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Outcome">
+        <CopyBlock>
+          <Paragraph>
+            The redesign transformed Platforma’s website from a collection of
+            product pages into a structured platform ecosystem.
+          </Paragraph>
+          <Paragraph>The new information architecture:</Paragraph>
+          <List>
+            <li>
+              connected scientific workflows, platform capabilities, and
+              deployment infrastructure into a coherent story
+            </li>
+            <li>
+              made technical and enterprise concepts easier to discover and
+              understand
+            </li>
+            <li>
+              created dedicated entry points for scientists, technical users,
+              enterprise buyers, and academic researchers
+            </li>
+            <li>
+              established a scalable foundation capable of supporting future
+              solutions and platform growth
+            </li>
+          </List>
+          <Paragraph>
+            The result was a website that communicates Platforma as a unified
+            product ecosystem rather than a collection of individual features,
+            creating a foundation that can scale alongside the product itself.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+    </ArticleShell>
+  );
+}
+
+function MobileExperiencesArticle() {
+  return (
+    <ArticleShell>
+      <H1>Simplifying Financial Operations for Active TRON Users</H1>
+      <Gap size={tokens.spacing.article.h1Gap} />
+
+      <Section title="Context">
+        <CopyBlock>
+          <Paragraph>
+            TR.ENERGY Wallet was designed for active participants of the TRON
+            ecosystem who manage high transaction volumes and substantial crypto
+            assets.
+          </Paragraph>
+          <Paragraph>
+            Unlike traditional wallets focused primarily on storing and
+            transferring funds, these users face additional operational
+            challenges:
+          </Paragraph>
+          <List>
+            <li>minimizing transaction costs;</li>
+            <li>evaluating transaction risk;</li>
+            <li>protecting wallet reputation;</li>
+            <li>managing idle capital.</li>
+          </List>
+          <Paragraph>
+            Most of these workflows are typically spread across multiple tools
+            and services. Users often rely on separate applications for resource
+            management, compliance checks, staking, and portfolio operations.
+          </Paragraph>
+          <Paragraph>
+            The goal was to bring these workflows into a single mobile
+            experience while keeping complex blockchain concepts understandable
+            and actionable.
+          </Paragraph>
+        </CopyBlock>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="TR.ENERGY wallet overview"
+          className="aspect-[3344/1784]"
+          src={images.financialOps1}
+        />
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Challenge">
+        <CopyBlock>
+          <Paragraph>
+            TRON provides powerful mechanisms for reducing transaction costs and
+            managing assets, but many of them require users to understand
+            technical concepts such as Energy, staking, and wallet reputation.
+          </Paragraph>
+          <Paragraph>
+            As the product evolved, the challenge shifted beyond building a
+            wallet.
+          </Paragraph>
+          <Paragraph>The challenge became:</Paragraph>
+          <Paragraph>
+            How might we help users manage costs, risks, and capital without
+            forcing them to become blockchain experts?
+          </Paragraph>
+          <Paragraph>
+            To answer this challenge, the product focused on three operational
+            areas:
+          </Paragraph>
+          <List>
+            <li>transaction cost optimization;</li>
+            <li>risk management;</li>
+            <li>capital efficiency.</li>
+          </List>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Key insights">
+        <ArticleImage
+          alt="Key insights for active TRON users"
+          className="aspect-[2556/824]"
+          src={images.financialOps2}
+        />
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Design principles">
+        <Subsection title="Make invisible information visible">
+          <Paragraph>
+            Surface critical blockchain information directly where decisions
+            happen.
+          </Paragraph>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Support proactive risk managment">
+          <Paragraph>
+            Help users identify and isolate risk before it affects primary
+            assets.
+          </Paragraph>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Keep operational workflows connected">
+          <Paragraph>
+            Reduce dependence on external services and fragmented experiences.
+          </Paragraph>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Preserve context during frequent actions">
+          <Paragraph>
+            Allow users to complete common actions without losing sight of their
+            current portfolio state.
+          </Paragraph>
+        </Subsection>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Surface transaction costs before they become a problem">
+        <Subsection title="Problem">
+          <CopyBlock>
+            <Paragraph>
+              TRON transactions consume network resources known as Energy.
+            </Paragraph>
+            <Paragraph>
+              Without sufficient Energy, users must spend TRX to cover
+              transaction fees. For users making frequent USDT transfers,
+              inefficient resource management can significantly increase
+              operational costs.
+            </Paragraph>
+            <Paragraph>
+              At the same time, Energy is a blockchain-specific concept that
+              many users do not fully understand.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Energy availability in wallet"
+          className="max-w-[450px]"
+          src={images.financialOps3}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Solution">
+          <CopyBlock>
+            <Paragraph>
+              Energy availability was surfaced directly within the portfolio
+              experience alongside token balances.
+            </Paragraph>
+            <Paragraph>Users can immediately understand:</Paragraph>
+            <List>
+              <li>available Energy;</li>
+              <li>estimated transaction capacity;</li>
+              <li>resource consumption status.</li>
+            </List>
+            <Paragraph>
+              The wallet also provides an integrated Energy purchase workflow,
+              allowing users to acquire additional resources without leaving the
+              application.
+            </Paragraph>
+            <Paragraph>
+              Instead of navigating through external services or advanced
+              blockchain settings, users can resolve transaction resource issues
+              directly within the context of their assets.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Outcome">
+          <Paragraph>
+            The wallet transforms a complex blockchain mechanism into an
+            actionable operational tool, helping users reduce transaction costs
+            while maintaining a streamlined workflow.
+          </Paragraph>
+        </Subsection>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Turn compliance data into actionable decisions">
+        <Subsection title="Problem">
+          <CopyBlock>
+            <Paragraph>
+              For active crypto users, asset value is only part of the equation.
+            </Paragraph>
+            <Paragraph>
+              The reputation of incoming funds can affect future transactions,
+              compliance requirements, and wallet credibility.
+            </Paragraph>
+            <Paragraph>
+              Users receiving transfers from unknown sources need a way to
+              evaluate risk before integrating assets into their primary
+              holdings.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Solution">
+          <Paragraph>
+            The wallet introduces a proactive risk-management workflow.
+          </Paragraph>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Risk-management workflow"
+          className="aspect-[3344/1784]"
+          src={images.financialOps4}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="AML verification">
+          <CopyBlock>
+            <Paragraph>Users can perform compliance checks on:</Paragraph>
+            <List>
+              <li>their own wallets;</li>
+              <li>existing assets;</li>
+              <li>external wallet addresses.</li>
+            </List>
+            <Paragraph>
+              This allows users to evaluate risk before accepting incoming
+              funds.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Risk visibility">
+          <CopyBlock>
+            <Paragraph>
+              AML results are surfaced directly within asset cards using clear
+              visual indicators and risk scores.
+            </Paragraph>
+            <Paragraph>
+              Users can identify potential issues without opening detailed
+              reports.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Risk visibility in asset cards"
+          className="aspect-[2518/1784]"
+          src={images.financialOps5}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Transfer wallets">
+          <CopyBlock>
+            <Paragraph>
+              To further reduce risk exposure, the wallet supports multiple
+              accounts.
+            </Paragraph>
+            <Paragraph>
+              A dedicated transfer wallet can be used to receive and verify
+              incoming funds before moving them into primary holdings.
+            </Paragraph>
+            <Paragraph>
+              This allows users to isolate potentially risky transactions while
+              keeping trusted assets separated.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Outcome">
+          <Paragraph>
+            By combining AML verification with dedicated transfer wallets, the
+            product supports a complete risk-management workflow-from evaluating
+            external addresses before a transfer to safely integrating verified
+            assets into long-term holdings.
+          </Paragraph>
+        </Subsection>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Increase capital efficiency within the ecosystem">
+        <ArticleImage
+          alt="Staking within TR.ENERGY wallet"
+          className="max-w-[450px]"
+          src={images.financialOps6}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Problem">
+          <CopyBlock>
+            <Paragraph>
+              Many users maintain significant TRX balances to support
+              transaction-heavy operations and reduce transaction costs through
+              Energy purchases.
+            </Paragraph>
+            <Paragraph>
+              As a result, substantial amounts of capital often remain idle
+              between transactions.
+            </Paragraph>
+            <Paragraph>
+              At the same time, users who want to generate yield are often
+              forced to move assets to external staking platforms, introducing
+              additional complexity and fragmenting their financial workflows.
+            </Paragraph>
+            <Paragraph>
+              The wallet needed a way to help users utilize idle capital without
+              leaving the TR.ENERGY ecosystem.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Solution">
+          <CopyBlock>
+            <Paragraph>
+              Staking capabilities were integrated directly into the wallet
+              experience.
+            </Paragraph>
+            <Paragraph>Users can:</Paragraph>
+            <List>
+              <li>create staking positions;</li>
+              <li>monitor active stakes;</li>
+              <li>review earnings;</li>
+              <li>unstake assets;</li>
+              <li>enable automatic reward reinvestment.</li>
+            </List>
+            <Paragraph>
+              Rather than forcing users to move funds across multiple platforms,
+              the wallet allows them to manage both operational activity and
+              capital utilization within a single ecosystem.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Outcome">
+          <Paragraph>
+            The wallet evolves beyond transaction management and becomes a
+            broader asset-management platform, helping users generate additional
+            value from assets already held within the product.
+          </Paragraph>
+        </Subsection>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Creating a consistent interaction model">
+        <Paragraph>
+          As the number of operational workflows increased, a unified
+          interaction pattern became necessary.
+        </Paragraph>
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <ArticleImage
+          alt="Bottom sheet interaction model"
+          className="aspect-[2518/1784]"
+          src={images.financialOps7}
+        />
+        <Gap size={tokens.spacing.article.mediaGap} />
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Problem">
+          <CopyBlock>
+            <Paragraph>
+              As the product expanded, users needed access to an increasing
+              number of contextual actions, settings, and supporting workflows.
+            </Paragraph>
+            <Paragraph>
+              Traditional navigation patterns would require frequent screen
+              transitions and increase interaction cost.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Solution">
+          <CopyBlock>
+            <Paragraph>
+              A reusable Bottom Sheet interaction model was introduced across
+              the application.
+            </Paragraph>
+            <Paragraph>The pattern is used for:</Paragraph>
+            <List>
+              <li>Energy purchases;</li>
+              <li>account management;</li>
+              <li>currency preferences;</li>
+              <li>contextual settings;</li>
+              <li>lightweight operational workflows.</li>
+            </List>
+            <Paragraph>
+              This allows users to complete common actions without losing
+              visibility of their current portfolio state.
+            </Paragraph>
+          </CopyBlock>
+        </Subsection>
+        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Subsection title="Outcome">
+          <Paragraph>
+            The Bottom Sheet system became a consistent interaction foundation
+            across the product, reducing navigation overhead while maintaining
+            workflow continuity.
+          </Paragraph>
+        </Subsection>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="My role">
+        <CopyBlock>
+          <Paragraph>
+            As the Product Designer, I was responsible for designing key wallet
+            experiences across the product, including Energy management, AML
+            verification workflows, staking functionality, multi-account
+            management, and the reusable interaction patterns used throughout
+            the application.
+          </Paragraph>
+          <Paragraph>
+            My work focused on translating complex blockchain concepts into
+            understandable mobile workflows, helping users manage transaction
+            costs, evaluate risk, and utilize capital without requiring deep
+            technical knowledge of the TRON ecosystem.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+
+      <Gap size={tokens.spacing.article.sectionGap} />
+
+      <Section title="Outcome">
+        <CopyBlock>
+          <Paragraph>
+            TR.ENERGY evolved beyond a traditional crypto wallet into a
+            financial operations platform for active TRON users.
+          </Paragraph>
+          <Paragraph>The product helps users:</Paragraph>
+          <List>
+            <li>optimize transaction costs through Energy management;</li>
+            <li>assess and mitigate asset reputation risks;</li>
+            <li>separate trusted and untrusted transaction flows;</li>
+            <li>generate value from idle capital through staking;</li>
+            <li>manage complex workflows without leaving the mobile experience.</li>
+          </List>
+          <Paragraph>
+            By focusing on costs, risks, and capital efficiency, the wallet
+            supports the operational realities of high-volume TRON participants
+            while keeping advanced blockchain concepts accessible through a
+            mobile-first experience.
+          </Paragraph>
+        </CopyBlock>
+      </Section>
+    </ArticleShell>
+  );
+}
+
 function EmptyArticle({ label }: { label: string }) {
   return (
     <ArticleShell>
@@ -633,6 +1592,18 @@ function ActiveArticle({ value }: { value: string }) {
 
   if (value === "design-systems") {
     return <DesignSystemsArticle />;
+  }
+
+  if (value === "documentation-collaboration") {
+    return <DocumentationCollaborationArticle />;
+  }
+
+  if (value === "product-design-at-scale") {
+    return <ProductDesignScaleArticle />;
+  }
+
+  if (value === "mobile-experiences") {
+    return <MobileExperiencesArticle />;
   }
 
   const label = tabs.find((tab) => tab.id === value)?.label || "Article";

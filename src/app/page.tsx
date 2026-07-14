@@ -24,8 +24,8 @@ function typeStyle(token: {
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--bg-beige)] px-[var(--padding-side)] py-[var(--base-10)] text-[var(--text-primary)] lg:py-[var(--base-12)]">
-      <section className="mx-auto flex min-h-screen max-w-[var(--bp-desktop)] flex-col items-center justify-center gap-[var(--base-10)] px-0 pb-[var(--base-30)] pt-[var(--base-10)] md:px-[var(--padding-side)]">
+    <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
+      <section className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pb-[var(--base-30)] pt-[var(--base-10)]">
         <div className="flex w-full flex-col items-center gap-[var(--base-3)]">
           <div className="relative size-[var(--base-20)] overflow-hidden">
             <img
@@ -51,9 +51,9 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex w-full max-w-[860px] flex-col items-center gap-[var(--base-6)] text-center">
+        <div className="flex w-full flex-col items-center gap-[var(--base-6)] text-center">
           <h2
-            className="max-w-[800px] text-[var(--text-primary)]"
+            className="w-full text-[var(--text-primary)]"
             style={typeStyle(tokens.typography.heading.h1)}
           >
             Designing clarity
@@ -72,7 +72,7 @@ export default function Home() {
         </div>
 
         <HeroNavigation
-          className="w-full"
+          className="shrink-0"
           items={heroItems}
         />
       </section>

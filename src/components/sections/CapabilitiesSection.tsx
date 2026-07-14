@@ -8,23 +8,23 @@ import { tokens } from "@/styles/tokens";
 
 const images = {
   msaOverview:
-    "https://www.figma.com/api/mcp/asset/d60ffbdd-3a4a-4159-b518-e4e38a032018",
+    "https://www.figma.com/api/mcp/asset/ca5d4c0f-2458-4b0b-88d0-d76bff049887",
   msaLayers:
-    "https://www.figma.com/api/mcp/asset/e602cc04-0174-4702-8a0e-41f698ad1f13",
+    "https://www.figma.com/api/mcp/asset/5d344453-280f-4018-912f-cd5c447d79cb",
   msaPinned:
-    "https://www.figma.com/api/mcp/asset/4a32fa63-a73b-4a8a-857e-2b5eef784e52",
+    "https://www.figma.com/api/mcp/asset/d03633fd-1938-4710-9dc3-9cc6a67bd69a",
   msaUnpinned:
-    "https://www.figma.com/api/mcp/asset/c78c9d11-4b4c-49d7-bd4e-e1fa83d098ef",
+    "https://www.figma.com/api/mcp/asset/d504eb7f-354c-4180-8b73-9fcb599cfd2d",
   dataMapping:
-    "https://www.figma.com/api/mcp/asset/4c903eb9-9603-4d0d-a0de-3a974b3f92f2",
+    "https://www.figma.com/api/mcp/asset/1fb6cf85-3236-44e9-bde9-260ae8b0295a",
   variables:
-    "https://www.figma.com/api/mcp/asset/11f7c1a2-dde5-427e-8e99-8aeb33af69b0",
+    "https://www.figma.com/api/mcp/asset/f4475d98-c23b-46ab-bad4-23449b01c777",
   compatibility:
-    "https://www.figma.com/api/mcp/asset/f0a5df56-486a-4d41-a07a-b609a35a3fd5",
+    "https://www.figma.com/api/mcp/asset/2d28b46b-ce0b-4235-b8df-e03f58015ab3",
   mappingDetail:
-    "https://www.figma.com/api/mcp/asset/0aeb6f0e-4c53-49da-80f4-357c0d42a6f1",
+    "https://www.figma.com/api/mcp/asset/b6647543-c269-4f7c-995f-6e8cdaa8d506",
   actionCopy:
-    "https://www.figma.com/api/mcp/asset/a57ff57e-e589-4002-9ba0-e917839ad230",
+    "https://www.figma.com/api/mcp/asset/9b0712f7-dce8-49bd-adab-0d3bdd81b3c4",
   headerArchitecture:
     "https://www.figma.com/api/mcp/asset/a886b57f-b495-4976-956d-5d0238f0adca",
   dialogHeader:
@@ -42,26 +42,10 @@ const images = {
 const tabs: TabGroupTab[] = [
   { id: "complex-workflow-design", label: "Complex workflow design" },
   { id: "design-systems", label: "Design systems" },
-  { id: "technical-communication", label: "Technical communication" },
+  { id: "documentation-collaboration", label: "Documentation & collaboration" },
   { id: "product-design-at-scale", label: "Product design at scale" },
   { id: "mobile-experiences", label: "Mobile experiences" },
-  { id: "documentation-collaboration", label: "Documentation & collaboration" },
 ];
-
-const descriptions: Record<string, string> = {
-  "complex-workflow-design":
-    "Designing intuitive workflows that help users navigate complex tasks with confidence",
-  "design-systems":
-    "Creating scalable interface foundations that keep complex products consistent as they grow",
-  "technical-communication":
-    "Turning technical complexity into clear stories, docs, and implementation guidance",
-  "product-design-at-scale":
-    "Designing patterns and systems that help product teams move faster without losing quality",
-  "mobile-experiences":
-    "Shaping compact, focused interactions for products people carry with them",
-  "documentation-collaboration":
-    "Helping teams share decisions, context, and design rationale with less friction",
-};
 
 type StyleVars = CSSProperties & Record<`--${string}`, string | number>;
 
@@ -659,53 +643,33 @@ export default function CapabilitiesSection() {
   const [value, setValue] = useState(tabs[0].id);
 
   const sectionStyle: StyleVars = {
-    "--capabilities-page-padding": tokens.spacing.layout.sidePadding,
-    "--capabilities-section-gap": tokens.spacing.base[5],
-    "--capabilities-card-radius": tokens.radius.pill,
-    "--capabilities-panel-radius": tokens.spacing.base[10],
+    "--capabilities-column-gap": "100px",
+    "--capabilities-menu-width": "277px",
   };
 
   return (
     <section
       id="work"
-      className="flex min-h-screen flex-col bg-[var(--bg-beige)] px-[var(--capabilities-page-padding)] py-[var(--base-10)]"
+      className="flex w-full flex-col items-start gap-[var(--base-10)] bg-[var(--bg-beige)] px-[var(--padding-side)] pt-[var(--base-10)] lg:flex-row lg:gap-[var(--capabilities-column-gap)]"
       style={sectionStyle}
     >
-      <h2
-        className="w-full text-[var(--text-accent)]"
-        style={typeStyle(tokens.typography.heading.h2)}
-      >
-        capabilities
-      </h2>
-      <div style={{ height: tokens.spacing.base[5] }} />
+      <div className="flex w-full shrink-0 flex-col items-start gap-[var(--base-20)] bg-[var(--bg-beige)] pt-[var(--base-10)] lg:sticky lg:top-0 lg:w-[var(--capabilities-menu-width)]">
+        <h2
+          className="text-center text-[var(--text-accent)]"
+          style={typeStyle(tokens.typography.heading.h2)}
+        >
+          Capabilities
+        </h2>
+        <TabGroup
+          className="flex-wrap items-start"
+          onValueChange={setValue}
+          tabs={tabs}
+          value={value}
+        />
+      </div>
 
-      <div className="flex min-h-[calc(100vh-120px)] w-full flex-1 flex-col overflow-hidden rounded-[var(--capabilities-panel-radius)] border border-[var(--border-primary)] bg-[var(--bg-beige)]">
-        <div className="shrink-0 bg-[var(--bg-beige)] p-[var(--base-5)]">
-          <TabGroup
-            className="flex-wrap items-center"
-            onValueChange={setValue}
-            tabs={tabs}
-            value={value}
-          />
-        </div>
-
-        <div className="min-h-0 flex-1 overflow-y-auto rounded-[var(--capabilities-panel-radius)] bg-[var(--bg-mint-green)]">
-          <div className="p-[var(--base-10)]">
-            <p
-              className="max-w-[1408px]"
-              style={typeStyle(tokens.typography.body.medium)}
-            >
-              {descriptions[value]}
-            </p>
-          </div>
-
-          <div className="relative rounded-[var(--capabilities-panel-radius)] border border-[var(--border-primary)] bg-[var(--bg-gray)] p-[var(--padding-side)] md:p-[var(--base-10)]">
-            <div className="mx-auto flex w-full justify-center">
-              <ActiveArticle value={value} />
-            </div>
-            <div className="pointer-events-none sticky bottom-0 -mx-6 -mb-6 h-[150px] bg-gradient-to-t from-[var(--bg-gray)] to-transparent md:-mx-[var(--base-10)] md:-mb-[var(--base-10)]" />
-          </div>
-        </div>
+      <div className="flex min-w-0 flex-1 flex-col items-start pt-[var(--base-10)]">
+        <ActiveArticle value={value} />
       </div>
     </section>
   );

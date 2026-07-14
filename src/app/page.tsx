@@ -1,3 +1,4 @@
+import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
 import HeroNavigation from "@/components/ui/HeroNavigation";
 import { tokens } from "@/styles/tokens";
 
@@ -76,6 +77,7 @@ export default function Home() {
           items={heroItems}
         />
       </section>
+      <CapabilitiesSection />
     </main>
   );
 }

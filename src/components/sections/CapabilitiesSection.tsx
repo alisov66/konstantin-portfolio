@@ -7,24 +7,32 @@ import TabGroup, { type TabGroupTab } from "@/components/ui/TabGroup";
 import { tokens } from "@/styles/tokens";
 
 const images = {
-  msaOverview:
-    "https://www.figma.com/api/mcp/asset/ca5d4c0f-2458-4b0b-88d0-d76bff049887",
-  msaLayers:
-    "https://www.figma.com/api/mcp/asset/5d344453-280f-4018-912f-cd5c447d79cb",
-  msaPinned:
-    "https://www.figma.com/api/mcp/asset/d03633fd-1938-4710-9dc3-9cc6a67bd69a",
-  msaUnpinned:
-    "https://www.figma.com/api/mcp/asset/d504eb7f-354c-4180-8b73-9fcb599cfd2d",
-  dataMapping:
-    "https://www.figma.com/api/mcp/asset/1fb6cf85-3236-44e9-bde9-260ae8b0295a",
-  variables:
-    "https://www.figma.com/api/mcp/asset/f4475d98-c23b-46ab-bad4-23449b01c777",
-  compatibility:
-    "https://www.figma.com/api/mcp/asset/2d28b46b-ce0b-4235-b8df-e03f58015ab3",
-  mappingDetail:
-    "https://www.figma.com/api/mcp/asset/b6647543-c269-4f7c-995f-6e8cdaa8d506",
-  actionCopy:
-    "https://www.figma.com/api/mcp/asset/9b0712f7-dce8-49bd-adab-0d3bdd81b3c4",
+  msaFig1:
+    "https://www.figma.com/api/mcp/asset/d76f54c0-51f7-4077-b347-a886d8276404",
+  msaFig2:
+    "https://www.figma.com/api/mcp/asset/efc348c9-1759-4331-a278-400f9e5ddf80",
+  msaFig3:
+    "https://www.figma.com/api/mcp/asset/87862f7a-3a2e-4647-9d0f-d65aaf58b330",
+  msaFig4:
+    "https://www.figma.com/api/mcp/asset/cc6f174f-550f-4012-8f45-26c7900e3bf1",
+  msaFig5:
+    "https://www.figma.com/api/mcp/asset/4f8c9851-5636-497d-868c-adb7e74d8816",
+  msaFig6:
+    "https://www.figma.com/api/mcp/asset/d2d3348d-678c-4b74-9b21-9c6bd59a9f48",
+  dataMappingFig1:
+    "https://www.figma.com/api/mcp/asset/50aa8686-6362-4134-a53e-811996fdd105",
+  dataMappingFig2:
+    "https://www.figma.com/api/mcp/asset/19974705-9161-4d1b-a2b8-9ae1b941520d",
+  dataMappingFig3:
+    "https://www.figma.com/api/mcp/asset/2995b689-a881-449f-81df-2f8af8584b52",
+  dataMappingFig4:
+    "https://www.figma.com/api/mcp/asset/2ae864d6-b232-4a31-9ab2-bd4d962866ed",
+  dataMappingFig5:
+    "https://www.figma.com/api/mcp/asset/ca5f7764-d01e-45b8-9d7e-6c46330ff348",
+  dataMappingFig6:
+    "https://www.figma.com/api/mcp/asset/a187c5fe-3cc8-4ec4-9d25-191f9826d830",
+  dataMappingFig7:
+    "https://www.figma.com/api/mcp/asset/69a2b6b1-6d3b-4500-8715-42ae1b743882",
   headerArchitecture:
     "https://www.figma.com/api/mcp/asset/a886b57f-b495-4976-956d-5d0238f0adca",
   dialogHeader:
@@ -220,6 +228,11 @@ function ArticleShell({ children }: { children: ReactNode }) {
 }
 
 function ComplexWorkflowArticle() {
+  const labelStyle = {
+    ...typeStyle(tokens.typography.article.paragraph),
+    fontWeight: tokens.typography.fontWeight.semibold,
+  };
+
   return (
     <div className="flex flex-col">
       <ArticleShell>
@@ -238,11 +251,14 @@ function ComplexWorkflowArticle() {
               while frequently switching focus throughout the analysis process.
             </Paragraph>
           </CopyBlock>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="MSA workspace overview"
+            className="aspect-[2428/1558]"
+            src={images.msaFig1}
+          />
         </Section>
 
-        <Gap size={tokens.spacing.article.mediaGap} />
-        <ArticleImage alt="MSA workspace overview" src={images.msaOverview} />
-        <Gap size={tokens.spacing.article.mediaGap} />
         <Gap size={tokens.spacing.article.sectionGap} />
 
         <Section title="Insights">
@@ -347,9 +363,12 @@ function ComplexWorkflowArticle() {
               </Paragraph>
             </CopyBlock>
           </Subsection>
-
           <Gap size={tokens.spacing.article.mediaGap} />
-          <ArticleImage alt="MSA analytical layers" src={images.msaLayers} />
+          <ArticleImage
+            alt="MSA workspace analytical layers"
+            className="aspect-[2428/1558]"
+            src={images.msaFig2}
+          />
           <Gap size={tokens.spacing.article.mediaGap} />
           <Gap size={tokens.spacing.article.subsectionGap} />
 
@@ -366,29 +385,95 @@ function ComplexWorkflowArticle() {
               <Paragraph>
                 Introduced collapsible states for both the heatmap and alignment grid.
               </Paragraph>
+              <Paragraph>Researchers can switch between:</Paragraph>
+              <List>
+                <li>Overview mode for pattern recognition.</li>
+                <li>Detailed mode for sequence-level inspection.</li>
+              </List>
             </CopyBlock>
           </Subsection>
-
           <Gap size={tokens.spacing.article.mediaGap} />
-          <div className="grid gap-5 md:grid-cols-2">
-            <figure>
-              <ArticleImage alt="Pinned MSA view" src={images.msaPinned} />
-              <Gap size={tokens.spacing.article.mediaToCaptionGap} />
-              <figcaption style={typeStyle(tokens.typography.article.paragraph)}>
-                Pinned
-              </figcaption>
-            </figure>
-            <figure>
-              <ArticleImage alt="Unpinned MSA view" src={images.msaUnpinned} />
-              <Gap size={tokens.spacing.article.mediaToCaptionGap} />
-              <figcaption style={typeStyle(tokens.typography.article.paragraph)}>
-                Unpinned
-              </figcaption>
-            </figure>
-          </div>
+          <p style={labelStyle}>Heatmap</p>
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <ArticleImage
+            alt="Expanded heatmap mode"
+            className="aspect-[2428/1558]"
+            src={images.msaFig3}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Expanded mode reveals labels and detailed values.</li>
+          </List>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Collapsed heatmap mode"
+            className="aspect-[2428/1558]"
+            src={images.msaFig4}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Collapsed mode compresses cells into a fixed-width overview.</li>
+          </List>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <p style={labelStyle}>Alignment grid</p>
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <ArticleImage
+            alt="Expanded alignment grid mode"
+            className="aspect-[2428/1558]"
+            src={images.msaFig5}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Expanded mode supports detailed sequence inspection.</li>
+          </List>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Collapsed alignment grid mode"
+            className="aspect-[2424/1554]"
+            src={images.msaFig6}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>
+              Collapsed mode removes sequence characters and displays alignment
+              patterns at scale.
+            </li>
+          </List>
+          <Gap size={tokens.spacing.article.subsectionGap} />
+
+          <Subsection title="Persistent context during exploration">
+            <Paragraph>
+              Researchers frequently compare alignment patterns against metadata
+              while navigating large datasets horizontally. Without persistent
+              context, important metadata quickly disappears from view.
+              Introduced pinnable metadata columns that remain visible while
+              exploring the alignment. Researchers can maintain context without
+              interrupting navigation.
+            </Paragraph>
+          </Subsection>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Pinned metadata columns"
+            className="aspect-[2424/1554] opacity-20"
+            src={images.msaFig6}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Pinned</li>
+          </List>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Unpinned metadata columns"
+            className="aspect-[2424/1554] opacity-20"
+            src={images.msaFig6}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Unpinned</li>
+          </List>
         </Section>
 
-        <Gap size={tokens.spacing.article.subsectionGap} />
+        <Gap size={tokens.spacing.article.sectionGap} />
 
         <Section title="My role">
           <Paragraph>
@@ -405,7 +490,9 @@ function ComplexWorkflowArticle() {
           <Paragraph>
             Created a flexible analytical environment that supports multiple
             sequence analysis workflows while balancing information density,
-            context preservation, and usability.
+            context preservation, and usability. The workspace adapts to
+            different research goals without forcing researchers to switch
+            between separate tools or interfaces.
           </Paragraph>
         </Section>
       </ArticleShell>
@@ -415,21 +502,23 @@ function ComplexWorkflowArticle() {
       <ArticleShell>
         <H1>Data mapping</H1>
         <Gap size={tokens.spacing.article.h1Gap} />
+
         <Section title="Context">
           <Paragraph>
             Data Mapping controls what information appears on visualizations and
             how it is represented. Users connect metadata to chart variables
             before analysis can begin.
           </Paragraph>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Data mapping interface"
+            className="aspect-[1368/1648] max-h-[542px] max-w-[450px]"
+            src={images.dataMappingFig1}
+          />
         </Section>
-        <Gap size={tokens.spacing.article.mediaGap} />
-        <ArticleImage
-          alt="Data mapping interface"
-          className="max-w-[450px]"
-          src={images.dataMapping}
-        />
-        <Gap size={tokens.spacing.article.mediaGap} />
+
         <Gap size={tokens.spacing.article.sectionGap} />
+
         <Section title="Insights">
           <CopyBlock>
             <Paragraph>
@@ -444,21 +533,52 @@ function ComplexWorkflowArticle() {
             </List>
           </CopyBlock>
         </Section>
+
         <Gap size={tokens.spacing.article.sectionGap} />
+
+        <Section title="Challenge">
+          <CopyBlock>
+            <Paragraph>
+              As the number of available metadata fields grew, finding the right
+              variables and understanding compatibility rules became increasingly
+              difficult.
+            </Paragraph>
+            <Paragraph>
+              Rather than simplifying the workflow by removing functionality, I
+              focused on making complexity easier to navigate. The redesign was
+              guided by four principles: discoverability, guidance, clarity, and
+              flexibility.
+            </Paragraph>
+          </CopyBlock>
+        </Section>
+
+        <Gap size={tokens.spacing.article.sectionGap} />
+
         <Section title="Key improvements">
           <Subsection title="Faster discovery">
-            <Paragraph>
-              Organized variables by biological meaning rather than presenting a
-              flat list.
-            </Paragraph>
+            <CopyBlock>
+              <Paragraph>
+                Organized variables by biological meaning rather than presenting
+                a flat list.
+              </Paragraph>
+              <Paragraph>Examples:</Paragraph>
+              <List>
+                <li>Sequence & Structure</li>
+                <li>V(D)J Annotation</li>
+                <li>SHM & Maturation</li>
+                <li>Clustering & Diversity</li>
+              </List>
+            </CopyBlock>
           </Subsection>
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
-            alt="Variables grouped by biological meaning"
-            className="max-w-[450px]"
-            src={images.variables}
+            alt="Data mapping variables grouped by biological meaning"
+            className="aspect-[1472/1624] max-h-[496px] max-w-[450px]"
+            src={images.dataMappingFig2}
           />
           <Gap size={tokens.spacing.article.mediaGap} />
+          <Gap size={tokens.spacing.article.subsectionGap} />
+
           <Subsection title="Intelligent compatibility guidance">
             <Paragraph>
               Introduced bidirectional guidance between metadata variables and
@@ -466,24 +586,104 @@ function ComplexWorkflowArticle() {
             </Paragraph>
           </Subsection>
           <Gap size={tokens.spacing.article.mediaGap} />
-          <div className="grid gap-5 md:grid-cols-2">
-            <ArticleImage
-              alt="Compatible visualization targets"
-              src={images.compatibility}
-            />
-            <ArticleImage
-              alt="Metadata compatibility detail"
-              src={images.mappingDetail}
-            />
-          </div>
+          <ArticleImage
+            alt="Compatible targets highlighted from a variable"
+            className="max-h-[432px] max-w-[450px]"
+            src={images.dataMappingFig3}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>Hover a variable → compatible targets are highlighted.</li>
+          </List>
           <Gap size={tokens.spacing.article.mediaGap} />
-          <Subsection title="More explicit actions">
+          <ArticleImage
+            alt="Compatible variables highlighted from a target"
+            className="max-h-[733px] max-w-[450px]"
+            src={images.dataMappingFig4}
+          />
+          <Gap size={tokens.spacing.article.mediaToCaptionGap} />
+          <List>
+            <li>
+              Select a target → compatible variables are highlighted as
+              Recommended, Supported, or Forbidden.
+            </li>
+          </List>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <Gap size={tokens.spacing.article.subsectionGap} />
+
+          <Subsection title="Suggested Variables">
+            <Paragraph>
+              Surfaced the most relevant variables to help users get started
+              faster.
+            </Paragraph>
+          </Subsection>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Suggested variables"
+            className="max-h-[474px] max-w-[450px]"
+            src={images.dataMappingFig5}
+          />
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <Gap size={tokens.spacing.article.subsectionGap} />
+
+          <Subsection title="More Explicit Actions">
             <Paragraph>
               Changed ambiguous drag-and-drop instructions into clearer guidance.
             </Paragraph>
           </Subsection>
           <Gap size={tokens.spacing.article.mediaGap} />
-          <ArticleImage alt="Explicit action copy" src={images.actionCopy} />
+          <ArticleImage
+            alt="More explicit data mapping actions"
+            className="max-h-[84px] max-w-[450px]"
+            src={images.dataMappingFig6}
+          />
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <Gap size={tokens.spacing.article.subsectionGap} />
+
+          <Subsection title="Clear mental model">
+            <CopyBlock>
+              <Paragraph>
+                Renamed technical labels to better reflect user goals.
+              </Paragraph>
+              <Paragraph>Before:</Paragraph>
+              <List>
+                <li>Data Mapping</li>
+                <li>Chart Variables</li>
+              </List>
+              <Paragraph>After:</Paragraph>
+              <List>
+                <li>Variables</li>
+                <li>Visual Mapping</li>
+              </List>
+            </CopyBlock>
+          </Subsection>
+          <Gap size={tokens.spacing.article.mediaGap} />
+          <ArticleImage
+            alt="Renamed data mapping labels"
+            className="max-h-[183px] max-w-[450px]"
+            src={images.dataMappingFig7}
+          />
+        </Section>
+
+        <Gap size={tokens.spacing.article.sectionGap} />
+
+        <Section title="My role">
+          <Paragraph>
+            Led the redesign end-to-end, from problem discovery and workflow
+            architecture to interaction design, information architecture, and
+            validation.
+          </Paragraph>
+        </Section>
+
+        <Gap size={tokens.spacing.article.sectionGap} />
+
+        <Section title="Outcome">
+          <Paragraph>
+            Transformed Data Mapping from a configuration-heavy interface into a
+            guided workflow that helps researchers discover relevant metadata,
+            understand compatibility rules, and build visualizations more
+            efficiently.
+          </Paragraph>
         </Section>
       </ArticleShell>
     </div>

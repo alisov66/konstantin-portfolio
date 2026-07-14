@@ -1851,15 +1851,13 @@ export default function CapabilitiesSection() {
     }
 
     const html = document.documentElement;
-    const body = document.body;
-    const previousHtmlScrollBehavior = html.style.scrollBehavior;
-    const previousBodyScrollBehavior = body.style.scrollBehavior;
+    const top = article.getBoundingClientRect().top + window.scrollY;
 
-    html.style.scrollBehavior = "auto";
-    body.style.scrollBehavior = "auto";
-    article.scrollIntoView({ block: "start", behavior: "auto" });
-    html.style.scrollBehavior = previousHtmlScrollBehavior;
-    body.style.scrollBehavior = previousBodyScrollBehavior;
+    html.classList.add("no-smooth-scroll");
+    window.scrollTo({ top, left: 0, behavior: "auto" });
+    requestAnimationFrame(() => {
+      html.classList.remove("no-smooth-scroll");
+    });
   }
 
   function handleValueChange(nextValue: string) {

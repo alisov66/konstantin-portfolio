@@ -150,7 +150,7 @@ function ArticleImage({
     <img
       alt={alt}
       className={[
-        "block w-full object-cover",
+        "block w-full object-contain",
         className,
       ]
         .filter(Boolean)
@@ -512,7 +512,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Data mapping interface"
-            className="aspect-[1368/1648] max-h-[542px] max-w-[450px]"
+            className="aspect-[1368/1648] max-w-[450px]"
             src={images.dataMappingFig1}
           />
         </Section>
@@ -573,7 +573,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Data mapping variables grouped by biological meaning"
-            className="aspect-[1472/1624] max-h-[496px] max-w-[450px]"
+            className="aspect-[1472/1624] max-w-[450px]"
             src={images.dataMappingFig2}
           />
           <Gap size={tokens.spacing.article.mediaGap} />
@@ -588,7 +588,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Compatible targets highlighted from a variable"
-            className="max-h-[432px] max-w-[450px]"
+            className="aspect-[450/432.426] max-w-[450px]"
             src={images.dataMappingFig3}
           />
           <Gap size={tokens.spacing.article.mediaToCaptionGap} />
@@ -598,7 +598,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Compatible variables highlighted from a target"
-            className="max-h-[733px] max-w-[450px]"
+            className="aspect-[450/732.781] max-w-[450px]"
             src={images.dataMappingFig4}
           />
           <Gap size={tokens.spacing.article.mediaToCaptionGap} />
@@ -620,7 +620,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Suggested variables"
-            className="max-h-[474px] max-w-[450px]"
+            className="aspect-[450/473.547] max-w-[450px]"
             src={images.dataMappingFig5}
           />
           <Gap size={tokens.spacing.article.mediaGap} />
@@ -634,7 +634,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="More explicit data mapping actions"
-            className="max-h-[84px] max-w-[450px]"
+            className="aspect-[450/83.721] max-w-[450px]"
             src={images.dataMappingFig6}
           />
           <Gap size={tokens.spacing.article.mediaGap} />
@@ -660,7 +660,7 @@ function ComplexWorkflowArticle() {
           <Gap size={tokens.spacing.article.mediaGap} />
           <ArticleImage
             alt="Renamed data mapping labels"
-            className="max-h-[183px] max-w-[450px]"
+            className="aspect-[450/183.482] max-w-[450px]"
             src={images.dataMappingFig7}
           />
         </Section>
@@ -1460,7 +1460,7 @@ function MobileExperiencesArticle() {
         <Gap size={tokens.spacing.article.mediaGap} />
         <ArticleImage
           alt="Energy availability in wallet"
-          className="max-w-[450px]"
+          className="aspect-[450/474.468] max-w-[450px]"
           src={images.financialOps3}
         />
         <Gap size={tokens.spacing.article.mediaGap} />
@@ -1599,7 +1599,7 @@ function MobileExperiencesArticle() {
       <Section title="Increase capital efficiency within the ecosystem">
         <ArticleImage
           alt="Staking within TR.ENERGY wallet"
-          className="max-w-[450px]"
+          className="aspect-[450/287.664] max-w-[450px]"
           src={images.financialOps6}
         />
         <Gap size={tokens.spacing.article.mediaGap} />

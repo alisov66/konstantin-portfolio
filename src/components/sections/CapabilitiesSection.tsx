@@ -34,17 +34,17 @@ const images = {
   dataMappingFig7:
     "https://www.figma.com/api/mcp/asset/69a2b6b1-6d3b-4500-8715-42ae1b743882",
   headerArchitecture:
-    "https://www.figma.com/api/mcp/asset/a886b57f-b495-4976-956d-5d0238f0adca",
+    "https://www.figma.com/api/mcp/asset/0ff04c36-913c-459c-9d55-49c307a66645",
   dialogHeader:
-    "https://www.figma.com/api/mcp/asset/0843c0b8-78dc-4f63-96bc-619ba5557bd8",
+    "https://www.figma.com/api/mcp/asset/8e5f2a30-6699-47d8-b76b-f20f2b8accdb",
   sheetHeader:
-    "https://www.figma.com/api/mcp/asset/ede45fd5-3e49-4e48-9685-12214df4019e",
+    "https://www.figma.com/api/mcp/asset/48f70349-019f-41a0-b124-ed0e95940b0e",
   workspaceHeader:
-    "https://www.figma.com/api/mcp/asset/aea555b0-bba5-4de4-ba20-7e9800ac74e5",
+    "https://www.figma.com/api/mcp/asset/89340e86-fd97-4fb2-9b93-0211be771fc8",
   hierarchy:
-    "https://www.figma.com/api/mcp/asset/c69ed7a2-b144-44a9-9f82-b800ba872db7",
+    "https://www.figma.com/api/mcp/asset/13d42c2c-c955-48ef-b85d-63fc5e6cdccd",
   msaHeader:
-    "https://www.figma.com/api/mcp/asset/260d98f1-8acf-49a9-ab10-40b1797b6ec6",
+    "https://www.figma.com/api/mcp/asset/8bb54494-d7fb-474d-bb01-62325ed4c29d",
   complexDecisions1:
     "https://www.figma.com/api/mcp/asset/82a15ddc-c08a-492f-ac29-5490e7f658ee",
   complexDecisions2:

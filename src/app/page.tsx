@@ -27,7 +27,7 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
       <section className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pb-[var(--base-30)] pt-[var(--base-10)]">
         <div className="flex w-full flex-col items-center gap-[var(--base-3)]">
-          <div className="relative size-[var(--base-20)] overflow-hidden">
+          <div className="relative size-[80px] shrink-0 overflow-hidden">
             <img
               alt="Konstantin Alisov"
               className="absolute left-[-6%] top-[-6%] size-[112%] max-w-none"

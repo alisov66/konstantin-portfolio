@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import TabGroup, { type TabGroupTab } from "@/components/ui/TabGroup";
 import { tokens } from "@/styles/tokens";
@@ -1836,11 +1836,17 @@ function ActiveArticle({ value }: { value: string }) {
 
 export default function CapabilitiesSection() {
   const [value, setValue] = useState(tabs[0].id);
+  const articleRef = useRef<HTMLDivElement>(null);
 
   const sectionStyle: StyleVars = {
     "--capabilities-column-gap": "100px",
     "--capabilities-menu-width": "277px",
   };
+
+  function handleValueChange(nextValue: string) {
+    setValue(nextValue);
+    articleRef.current?.scrollIntoView({ block: "start" });
+  }
 
   return (
     <section
@@ -1857,13 +1863,16 @@ export default function CapabilitiesSection() {
         </h2>
         <TabGroup
           className="flex-wrap items-start"
-          onValueChange={setValue}
+          onValueChange={handleValueChange}
           tabs={tabs}
           value={value}
         />
       </div>
 
-      <div className="flex min-w-0 flex-1 flex-col items-start pt-[var(--base-10)]">
+      <div
+        ref={articleRef}
+        className="flex min-w-0 flex-1 scroll-mt-[var(--base-10)] flex-col items-start pt-[var(--base-10)]"
+      >
         <ActiveArticle value={value} />
       </div>
     </section>

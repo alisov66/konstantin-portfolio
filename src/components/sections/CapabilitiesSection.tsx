@@ -145,12 +145,15 @@ function ArticleImage({
   alt: string;
   className?: string;
 }) {
+  const hasExplicitWidth = /\bw-(?:\[|full\b)/.test(className || "");
+
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
       alt={alt}
       className={[
-        "block w-full object-contain",
+        "block object-contain",
+        hasExplicitWidth ? "" : "w-full",
         className,
       ]
         .filter(Boolean)

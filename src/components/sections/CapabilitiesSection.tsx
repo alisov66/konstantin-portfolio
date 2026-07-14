@@ -1843,9 +1843,28 @@ export default function CapabilitiesSection() {
     "--capabilities-menu-width": "277px",
   };
 
+  function scrollArticleToStart() {
+    const article = articleRef.current;
+
+    if (!article) {
+      return;
+    }
+
+    const html = document.documentElement;
+    const body = document.body;
+    const previousHtmlScrollBehavior = html.style.scrollBehavior;
+    const previousBodyScrollBehavior = body.style.scrollBehavior;
+
+    html.style.scrollBehavior = "auto";
+    body.style.scrollBehavior = "auto";
+    article.scrollIntoView({ block: "start", behavior: "auto" });
+    html.style.scrollBehavior = previousHtmlScrollBehavior;
+    body.style.scrollBehavior = previousBodyScrollBehavior;
+  }
+
   function handleValueChange(nextValue: string) {
     setValue(nextValue);
-    articleRef.current?.scrollIntoView({ block: "start" });
+    scrollArticleToStart();
   }
 
   return (

@@ -153,30 +153,8 @@
   --bp-desktop-xl: 1728px;
 
   /* Motion */
-  --motion-gentle-duration: 1022ms;
-  --motion-gentle-easing: linear(
-    0,
-    0.008 5%,
-    0.028 10%,
-    0.063 15%,
-    0.115 20%,
-    0.185 25%,
-    0.275 30%,
-    0.382 35%,
-    0.5 40%,
-    0.62 45%,
-    0.732 50%,
-    0.83 55%,
-    0.906 60%,
-    0.958 65%,
-    0.99 70%,
-    1.007 75%,
-    1.014 80%,
-    1.012 85%,
-    1.007 90%,
-    1.002 95%,
-    1 100%
-  );
+  --motion-gentle-duration: 500ms;
+  --motion-gentle-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 @media (max-width: 767px) {

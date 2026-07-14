@@ -122,7 +122,7 @@ function HeroPattern({ state }: { state: HeroNavigationState }) {
 
         return (
           <span
-            className="absolute rounded-full transition-[var(--hero-navigation-dot-transition)]"
+            className="absolute rounded-full [transition:var(--hero-navigation-dot-transition)]"
             key={`tile-${index + 1}`}
             style={dotStyle}
           />
@@ -153,7 +153,7 @@ export default function HeroNavigation({
     <section
       {...props}
       className={[
-        "flex flex-col items-center transition-[var(--hero-navigation-shell-transition)]",
+        "flex flex-col items-center [transition:var(--hero-navigation-shell-transition)]",
         className,
       ]
         .filter(Boolean)

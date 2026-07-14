@@ -153,8 +153,8 @@
   --bp-desktop-xl: 1728px;
 
   /* Motion */
-  --motion-gentle-duration: 500ms;
-  --motion-gentle-easing: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --motion-gentle-duration: 900ms;
+  --motion-gentle-easing: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 @media (max-width: 767px) {

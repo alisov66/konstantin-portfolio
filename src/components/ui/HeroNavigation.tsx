@@ -1,9 +1,87 @@
-import type { HTMLAttributes } from "react";
+"use client";
+
+import type { CSSProperties, HTMLAttributes } from "react";
+import { useState } from "react";
 
 import HeroActionGroup from "@/components/ui/HeroActionGroup";
 import HeroButton from "@/components/ui/HeroButton";
 
-const imgTile21 = "https://www.figma.com/api/mcp/asset/ae6fa120-b750-42fb-8df0-c0459717bf50";
+type HeroNavigationState = "default" | "capabilities" | "about" | "contact" | "cv";
+
+type Dot = readonly [x: number, y: number, size: number];
+
+type HeroNavigationStyle = CSSProperties &
+  Record<`--hero-navigation-${string}`, string | number>;
+
+const dotsByState: Record<HeroNavigationState, readonly Dot[]> = {
+  default: [
+    [65, 19, 28], [133, 19, 28], [201, 19, 28], [349, 19, 28], [417, 19, 28], [485, 19, 28],
+    [31, 51, 28], [99, 51, 28], [167, 51, 28], [275, 51, 28], [383, 51, 28], [451, 51, 28], [519, 51, 28],
+    [-3, 83, 28], [65, 83, 28], [133, 83, 28], [241, 83, 28], [309, 83, 28], [417, 83, 28], [485, 83, 28], [553, 83, 28],
+    [31, 115, 28], [99, 115, 28], [207, 115, 28], [275, 115, 28], [343, 115, 28], [451, 115, 28], [519, 115, 28],
+    [-3, 147, 28], [65, 147, 28], [133, 147, 28], [241, 147, 28], [309, 147, 28], [417, 147, 28], [485, 147, 28], [553, 147, 28],
+    [31, 179, 28], [99, 179, 28], [167, 179, 28], [275, 179, 28], [383, 179, 28], [451, 179, 28], [519, 179, 28],
+    [65, 211, 28], [133, 211, 28], [201, 211, 28], [349, 211, 28], [417, 211, 28], [485, 211, 28],
+  ],
+  capabilities: [
+    [231.54, 59, 12.77], [257.08, 59, 12.77], [282.62, 59, 12.77], [308.15, 59, 12.77], [333.69, 59, 12.77],
+    [218.77, 71.77, 12.77], [244.31, 71.77, 12.77], [269.85, 71.77, 12.77], [295.38, 71.77, 12.77], [320.92, 71.77, 12.77], [346.46, 71.77, 12.77],
+    [206, 84.54, 12.77], [231.54, 84.54, 12.77], [257.08, 84.54, 12.77], [308.15, 84.54, 12.77], [333.69, 84.54, 12.77], [359.23, 84.54, 12.77],
+    [218.77, 97.31, 12.77], [244.31, 97.31, 12.77], [269.85, 97.31, 12.77], [295.38, 97.31, 12.77], [320.92, 97.31, 12.77], [346.46, 97.31, 12.77],
+    [206, 110.08, 12.77], [257.08, 110.08, 12.77], [282.62, 110.08, 12.77], [308.15, 110.08, 12.77], [359.23, 110.08, 12.77],
+    [218.77, 122.85, 12.77], [244.31, 122.85, 12.77], [269.85, 122.85, 12.77], [295.38, 122.85, 12.77], [320.92, 122.85, 12.77], [346.46, 122.85, 12.77],
+    [231.54, 135.62, 12.77], [257.08, 135.62, 12.77], [282.62, 135.62, 12.77], [308.15, 135.62, 12.77], [333.69, 135.62, 12.77],
+    [244.31, 148.38, 12.77], [269.85, 148.38, 12.77], [295.38, 148.38, 12.77], [320.92, 148.38, 12.77],
+    [257.08, 161.15, 12.77], [282.62, 161.15, 12.77], [308.15, 161.15, 12.77],
+    [269.85, 173.92, 12.77], [295.38, 173.92, 12.77], [282.62, 186.69, 12.77],
+  ],
+  about: [
+    [256.62, 44, 13.15], [282.92, 44, 13.15], [309.23, 44, 13.15],
+    [243.46, 57.15, 13.15], [322.38, 57.15, 13.15],
+    [230.31, 70.31, 13.15], [335.54, 70.31, 13.15],
+    [217.15, 83.46, 13.15], [348.69, 83.46, 13.15],
+    [204, 96.62, 13.15], [230.31, 96.62, 13.15], [243.46, 96.62, 13.15], [256.62, 96.62, 13.15], [282.92, 96.62, 13.15], [309.23, 96.62, 13.15], [322.38, 96.62, 13.15], [335.54, 96.62, 13.15], [361.85, 96.62, 13.15],
+    [217.15, 109.77, 13.15], [230.31, 109.77, 13.15], [243.46, 109.77, 13.15], [282.92, 109.77, 13.15], [322.38, 109.77, 13.15], [335.54, 109.77, 13.15], [348.69, 109.77, 13.15],
+    [204, 122.92, 13.15], [282.92, 122.92, 13.15], [361.85, 122.92, 13.15],
+    [269.77, 136.08, 13.15], [282.92, 136.08, 13.15],
+    [204, 149.23, 13.15], [361.85, 149.23, 13.15],
+    [217.15, 162.38, 13.15], [256.62, 162.38, 13.15], [269.77, 162.38, 13.15], [282.92, 162.38, 13.15], [296.08, 162.38, 13.15], [309.23, 162.38, 13.15], [348.69, 162.38, 13.15],
+    [230.31, 175.54, 13.15], [269.77, 175.54, 13.15], [282.92, 175.54, 13.15], [296.08, 175.54, 13.15], [335.54, 175.54, 13.15],
+    [243.46, 188.69, 13.15], [322.38, 188.69, 13.15],
+    [256.62, 201.85, 13.15], [282.92, 201.85, 13.15], [309.23, 201.85, 13.15],
+  ],
+  contact: [
+    [275.08, 59, 12.77], [287.85, 59, 12.77],
+    [249.54, 71.77, 12.77], [262.31, 71.77, 12.77], [300.62, 71.77, 12.77], [313.38, 71.77, 12.77],
+    [236.77, 84.54, 12.77], [326.15, 84.54, 12.77], [338.92, 84.54, 12.77],
+    [224, 97.31, 12.77], [262.31, 97.31, 12.77], [275.08, 97.31, 12.77], [287.85, 97.31, 12.77], [313.38, 97.31, 12.77], [351.69, 97.31, 12.77],
+    [211.23, 110.08, 12.77], [249.54, 110.08, 12.77], [300.62, 110.08, 12.77], [313.38, 110.08, 12.77], [351.69, 110.08, 12.77],
+    [211.23, 122.85, 12.77], [249.54, 122.85, 12.77], [313.38, 122.85, 12.77], [351.69, 122.85, 12.77], [390, 122.85, 12.77],
+    [211.23, 135.62, 12.77], [249.54, 135.62, 12.77], [300.62, 135.62, 12.77], [313.38, 135.62, 12.77], [338.92, 135.62, 12.77], [390, 135.62, 12.77],
+    [224, 148.38, 12.77], [262.31, 148.38, 12.77], [275.08, 148.38, 12.77], [287.85, 148.38, 12.77], [313.38, 148.38, 12.77], [326.15, 148.38, 12.77], [364.46, 148.38, 12.77], [377.23, 148.38, 12.77],
+    [236.77, 161.15, 12.77], [338.92, 161.15, 12.77], [351.69, 161.15, 12.77],
+    [249.54, 173.92, 12.77], [262.31, 173.92, 12.77], [313.38, 173.92, 12.77], [326.15, 173.92, 12.77],
+    [275.08, 186.69, 12.77], [287.85, 186.69, 12.77], [300.62, 186.69, 12.77],
+  ],
+  cv: [
+    [206, 46, 12.77], [231.54, 46, 12.77], [257.08, 46, 12.77], [282.62, 46, 12.77], [308.15, 46, 12.77], [333.69, 46, 12.77], [359.23, 46, 12.77],
+    [206, 71.54, 12.77], [244.31, 71.54, 12.77], [282.62, 71.54, 12.77], [295.38, 71.54, 12.77], [308.15, 71.54, 12.77], [320.92, 71.54, 12.77], [333.69, 71.54, 12.77], [359.23, 71.54, 12.77],
+    [231.54, 84.31, 12.77], [257.08, 84.31, 12.77],
+    [206, 97.08, 12.77], [244.31, 97.08, 12.77], [282.62, 97.08, 12.77], [295.38, 97.08, 12.77], [308.15, 97.08, 12.77], [359.23, 97.08, 12.77],
+    [206, 122.62, 12.77], [359.23, 122.62, 12.77],
+    [206, 148.15, 12.77], [231.54, 148.15, 12.77], [244.31, 148.15, 12.77], [257.08, 148.15, 12.77], [269.85, 148.15, 12.77], [282.62, 148.15, 12.77], [295.38, 148.15, 12.77], [308.15, 148.15, 12.77], [320.92, 148.15, 12.77], [359.23, 148.15, 12.77],
+    [206, 173.69, 12.77], [231.54, 173.69, 12.77], [244.31, 173.69, 12.77], [257.08, 173.69, 12.77], [269.85, 173.69, 12.77], [282.62, 173.69, 12.77], [359.23, 173.69, 12.77],
+    [206, 199.23, 12.77], [231.54, 199.23, 12.77], [257.08, 199.23, 12.77], [282.62, 199.23, 12.77], [308.15, 199.23, 12.77], [333.69, 199.23, 12.77], [359.23, 199.23, 12.77],
+  ],
+};
+
+const dotColorByState: Record<HeroNavigationState, string> = {
+  default: "var(--text-tertiary)",
+  capabilities: "#659d4d",
+  about: "#82409a",
+  contact: "#347694",
+  cv: "#ab5138",
+};
 
 export interface HeroNavigationItem {
   id: string;
@@ -12,62 +90,104 @@ export interface HeroNavigationItem {
 
 export interface HeroNavigationProps extends HTMLAttributes<HTMLElement> {
   items: HeroNavigationItem[];
-  activeItem?: string;
   showPattern?: boolean;
 }
 
-function HeroPattern() {
-  const positions = Array.from({ length: 49 }, (_, index) => {
-    const row = Math.floor(index / 7);
-    const col = index % 7;
-    const x = (col - 3) * 34;
-    const y = (row - 3) * 34;
+function getNavigationState(id: string): HeroNavigationState | null {
+  if (id === "cv") {
+    return "cv";
+  }
 
-    return { x, y };
-  });
+  if (id === "capabilities" || id === "about" || id === "contact") {
+    return id;
+  }
 
+  return null;
+}
+
+function HeroPattern({ state }: { state: HeroNavigationState }) {
   return (
-    <div className="relative mx-auto h-[260px] w-full max-w-[780px]" aria-hidden>
-      {positions.map(({ x, y }, index) => (
-        <img
-          key={`${x}-${y}-${index}`}
-          alt=""
-          className="absolute size-[28px]"
-          src={imgTile21}
-          style={{
-            left: `calc(50% + ${x}px)`,
-            top: `calc(50% + ${y}px)`,
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-      ))}
+    <div
+      aria-hidden
+      className="relative h-[259px] w-full max-w-[577px] shrink-0 overflow-visible"
+    >
+      {dotsByState[state].map(([x, y, size], index) => {
+        const dotSize = 12;
+        const inset = (size - dotSize) / 2;
+        const dotStyle: CSSProperties = {
+          backgroundColor: dotColorByState[state],
+          height: `${(dotSize / 259) * 100}%`,
+          left: `${((x + inset) / 577) * 100}%`,
+          top: `${((y + inset) / 259) * 100}%`,
+          width: `${(dotSize / 577) * 100}%`,
+        };
+
+        return (
+          <span
+            className="absolute rounded-full transition-[background-color,height,left,top,width] duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            key={`${state}-${index}-${x}-${y}`}
+            style={dotStyle}
+          />
+        );
+      })}
     </div>
   );
 }
 
 export default function HeroNavigation({
-  activeItem,
   className,
   items,
   showPattern = true,
+  style,
   ...props
 }: HeroNavigationProps) {
+  const [hoveredItem, setHoveredItem] = useState<HeroNavigationState | null>(null);
+  const state = hoveredItem ?? "default";
+  const heroNavigationStyle = {
+    "--hero-navigation-width": "577px",
+  } satisfies HeroNavigationStyle;
+
   return (
     <section
       {...props}
-      className={["flex flex-col items-center gap-0 transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]", className]
+      className={[
+        "flex flex-col items-center transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
+      onMouseLeave={(event) => {
+        setHoveredItem(null);
+        props.onMouseLeave?.(event);
+      }}
+      style={{ ...heroNavigationStyle, ...style }}
     >
-      <HeroActionGroup className="gap-3 sm:gap-4">
-        {items.map((item) => (
-          <HeroButton key={item.id} selected={item.id === activeItem} type="button">
-            {item.label}
-          </HeroButton>
-        ))}
+      <HeroActionGroup className="max-w-full overflow-visible">
+        {items.map((item) => {
+          const itemState = getNavigationState(item.id);
+
+          return (
+            <HeroButton
+              key={item.id}
+              onBlur={() => {
+                setHoveredItem(null);
+              }}
+              onFocus={() => {
+                setHoveredItem(itemState);
+              }}
+              onMouseEnter={() => {
+                setHoveredItem(itemState);
+              }}
+              selected={itemState !== null && itemState === hoveredItem}
+              type="button"
+            >
+              {item.label}
+            </HeroButton>
+          );
+        })}
       </HeroActionGroup>
 
-      {showPattern ? <HeroPattern /> : null}
+      {showPattern ? <HeroPattern state={state} /> : null}
     </section>
   );
 }

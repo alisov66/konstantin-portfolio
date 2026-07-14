@@ -1,7 +1,5 @@
 import type { CSSProperties, HTMLAttributes, ReactNode } from "react";
 
-import { tokens } from "@/styles/tokens";
-
 type HeroActionGroupStyle = CSSProperties &
   Record<`--hero-action-${string}`, string | number>;
 
@@ -16,14 +14,14 @@ export default function HeroActionGroup({
   ...props
 }: HeroActionGroupProps) {
   const heroActionGroupStyle = {
-    "--hero-action-gap": tokens.spacing.base[3],
+    "--hero-action-gap": 0,
   } satisfies HeroActionGroupStyle;
 
   return (
     <div
       {...props}
       className={[
-        "flex flex-wrap items-center justify-center gap-[var(--hero-action-gap)]",
+        "flex items-center justify-center gap-[var(--hero-action-gap)]",
         className,
       ]
         .filter(Boolean)

@@ -72,7 +72,6 @@ export default function Home() {
         </div>
 
         <HeroNavigation
-          activeItem="capabilities"
           className="w-full"
           items={heroItems}
         />

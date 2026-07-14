@@ -30,7 +30,7 @@ export default function Home() {
           <div className="relative size-[80px] shrink-0 overflow-hidden">
             <img
               alt="Konstantin Alisov"
-              className="absolute left-[-6%] top-[-6%] size-[112%] max-w-none"
+              className="absolute inset-0 size-full object-cover"
               src={imgPic}
             />
           </div>

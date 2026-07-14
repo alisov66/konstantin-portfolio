@@ -8,31 +8,31 @@ import { tokens } from "@/styles/tokens";
 
 const images = {
   msaFig1:
-    "https://www.figma.com/api/mcp/asset/d76f54c0-51f7-4077-b347-a886d8276404",
+    "https://www.figma.com/api/mcp/asset/f82893ce-586a-45ec-991f-deea76e527c7",
   msaFig2:
-    "https://www.figma.com/api/mcp/asset/efc348c9-1759-4331-a278-400f9e5ddf80",
+    "https://www.figma.com/api/mcp/asset/8d4329f7-da7d-4c5c-b13d-277d4cba627b",
   msaFig3:
-    "https://www.figma.com/api/mcp/asset/87862f7a-3a2e-4647-9d0f-d65aaf58b330",
+    "https://www.figma.com/api/mcp/asset/d9044243-97d0-448f-b95d-a43ea231105a",
   msaFig4:
-    "https://www.figma.com/api/mcp/asset/cc6f174f-550f-4012-8f45-26c7900e3bf1",
+    "https://www.figma.com/api/mcp/asset/324e3982-cda1-490b-bf82-057a8b142182",
   msaFig5:
-    "https://www.figma.com/api/mcp/asset/4f8c9851-5636-497d-868c-adb7e74d8816",
+    "https://www.figma.com/api/mcp/asset/1aafdaef-6ddd-4fa6-bef5-698510c55df9",
   msaFig6:
-    "https://www.figma.com/api/mcp/asset/d2d3348d-678c-4b74-9b21-9c6bd59a9f48",
+    "https://www.figma.com/api/mcp/asset/11dc3ef9-36fa-44b8-9bc4-8f7d8c609ffa",
   dataMappingFig1:
-    "https://www.figma.com/api/mcp/asset/50aa8686-6362-4134-a53e-811996fdd105",
+    "https://www.figma.com/api/mcp/asset/efb9e0df-af86-4f67-b5db-3bfff486cf2e",
   dataMappingFig2:
-    "https://www.figma.com/api/mcp/asset/19974705-9161-4d1b-a2b8-9ae1b941520d",
+    "https://www.figma.com/api/mcp/asset/50c4b42f-71e6-482c-9207-44cc2cd8f8a2",
   dataMappingFig3:
-    "https://www.figma.com/api/mcp/asset/2995b689-a881-449f-81df-2f8af8584b52",
+    "https://www.figma.com/api/mcp/asset/4bea918b-91d9-42cf-858b-b2a156cd0a27",
   dataMappingFig4:
-    "https://www.figma.com/api/mcp/asset/2ae864d6-b232-4a31-9ab2-bd4d962866ed",
+    "https://www.figma.com/api/mcp/asset/5946d9d4-1765-4d84-9d5d-c5e1a7486beb",
   dataMappingFig5:
-    "https://www.figma.com/api/mcp/asset/ca5f7764-d01e-45b8-9d7e-6c46330ff348",
+    "https://www.figma.com/api/mcp/asset/22d3ed20-1d85-4f07-b004-94ec25b1e729",
   dataMappingFig6:
-    "https://www.figma.com/api/mcp/asset/a187c5fe-3cc8-4ec4-9d25-191f9826d830",
+    "https://www.figma.com/api/mcp/asset/b6b306dd-2372-4f21-888e-9345fe7a575f",
   dataMappingFig7:
-    "https://www.figma.com/api/mcp/asset/69a2b6b1-6d3b-4500-8715-42ae1b743882",
+    "https://www.figma.com/api/mcp/asset/5f6c3275-d665-418d-a933-03522707bd7b",
   headerArchitecture:
     "https://www.figma.com/api/mcp/asset/0ff04c36-913c-459c-9d55-49c307a66645",
   dialogHeader:
@@ -46,35 +46,35 @@ const images = {
   msaHeader:
     "https://www.figma.com/api/mcp/asset/8bb54494-d7fb-474d-bb01-62325ed4c29d",
   complexDecisions1:
-    "https://www.figma.com/api/mcp/asset/82a15ddc-c08a-492f-ac29-5490e7f658ee",
+    "https://www.figma.com/api/mcp/asset/b4d6870a-a39f-4898-a1cc-1f2d94193364",
   complexDecisions2:
-    "https://www.figma.com/api/mcp/asset/7257c808-2f8e-45c5-9ebf-67bf11fab62e",
+    "https://www.figma.com/api/mcp/asset/288ef9ae-39f5-4a93-97c5-3b291170b2f9",
   complexDecisions3:
-    "https://www.figma.com/api/mcp/asset/fd3cf7cd-9979-41fd-ae57-1dba65beeefa",
+    "https://www.figma.com/api/mcp/asset/de80a44f-e1a8-4e5b-a354-74d1e43924ab",
   complexDecisions4:
-    "https://www.figma.com/api/mcp/asset/1d4419cd-9f50-4892-bc99-90e3f895a240",
+    "https://www.figma.com/api/mcp/asset/45e380bb-0ec3-4ce5-a055-32ca7f4ddd61",
   scalingPlatforma1:
-    "https://www.figma.com/api/mcp/asset/b868dc57-d624-455d-9764-90e5-2fd50931d7af",
+    "https://www.figma.com/api/mcp/asset/16ec9501-4243-433a-8324-4ac752cd4d14",
   scalingPlatforma2:
-    "https://www.figma.com/api/mcp/asset/537726da-7539-4694-90e5-2fd50931d7af",
+    "https://www.figma.com/api/mcp/asset/6d3f43e6-54cd-4606-9315-e780b57efe2b",
   scalingPlatforma3:
-    "https://www.figma.com/api/mcp/asset/bdfb31d9-0ad6-44de-841b-52fd18ce1491",
+    "https://www.figma.com/api/mcp/asset/160d56f1-8adb-4b97-bebc-f57a2aa4819d",
   scalingPlatforma4:
-    "https://www.figma.com/api/mcp/asset/2793f33b-f973-4d13-a82e-abdffe32be70",
+    "https://www.figma.com/api/mcp/asset/6ea91bb5-83bb-4e1a-94f9-bf01e0025017",
   financialOps1:
-    "https://www.figma.com/api/mcp/asset/fcd432cb-4588-4995-9ce8-7186c6e7d72c",
+    "https://www.figma.com/api/mcp/asset/e6c82a52-d8f5-4607-9552-9408253f827b",
   financialOps2:
-    "https://www.figma.com/api/mcp/asset/ed34a54c-5804-42d0-8e58-5fdfd4ce2e6e",
+    "https://www.figma.com/api/mcp/asset/592387f4-ac17-40d3-9ae2-f9951de30dee",
   financialOps3:
-    "https://www.figma.com/api/mcp/asset/c89054fc-7bc1-4a43-96ff-c9da3367dd83",
+    "https://www.figma.com/api/mcp/asset/2fa3211b-f8bc-478a-a379-d362ba927197",
   financialOps4:
-    "https://www.figma.com/api/mcp/asset/14087f87-1c13-42c4-9775-d01ef76abd30",
+    "https://www.figma.com/api/mcp/asset/63f09078-0215-4d28-8044-7938d89c21f2",
   financialOps5:
-    "https://www.figma.com/api/mcp/asset/534e1b83-5456-47ab-9bbe-44a0b85f9df1",
+    "https://www.figma.com/api/mcp/asset/29f9398c-e40a-4e7a-85ab-a344fa857535",
   financialOps6:
-    "https://www.figma.com/api/mcp/asset/b4ba4a59-1610-4251-8b4f-fda4969a8722",
+    "https://www.figma.com/api/mcp/asset/d0f5f5fd-ac86-4bb5-aa7d-5c15518ecc11",
   financialOps7:
-    "https://www.figma.com/api/mcp/asset/5b4f4532-4b9b-416b-b390-4fde4c3e212b",
+    "https://www.figma.com/api/mcp/asset/3258278c-d41b-4bf6-a84e-89f7a92267f0",
 };
 
 const tabs: TabGroupTab[] = [

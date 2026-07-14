@@ -719,6 +719,7 @@ function DesignSystemsArticle() {
       <Gap size={tokens.spacing.article.mediaGap} />
       <ArticleImage
         alt="Scalable header architecture"
+        className="aspect-[1776/1760] max-w-[450px]"
         src={images.headerArchitecture}
       />
       <Gap size={tokens.spacing.article.mediaGap} />
@@ -766,13 +767,25 @@ function DesignSystemsArticle() {
         </Subsection>
         <Gap size={tokens.spacing.article.mediaGap} />
         <Paragraph>Dialog header</Paragraph>
-        <ArticleImage alt="Dialog header pattern" src={images.dialogHeader} />
+        <ArticleImage
+          alt="Dialog header pattern"
+          className="aspect-[2984/1904]"
+          src={images.dialogHeader}
+        />
         <Gap size={tokens.spacing.article.mediaGap} />
         <Paragraph>Sheet header</Paragraph>
-        <ArticleImage alt="Sheet header pattern" src={images.sheetHeader} />
+        <ArticleImage
+          alt="Sheet header pattern"
+          className="aspect-[2984/1904]"
+          src={images.sheetHeader}
+        />
         <Gap size={tokens.spacing.article.mediaGap} />
         <Paragraph>Workspace header</Paragraph>
-        <ArticleImage alt="Workspace header pattern" src={images.workspaceHeader} />
+        <ArticleImage
+          alt="Workspace header pattern"
+          className="aspect-[2984/1904]"
+          src={images.workspaceHeader}
+        />
 
         <Gap size={tokens.spacing.article.mediaGap} />
         <Gap size={tokens.spacing.article.subsectionGap} />
@@ -791,7 +804,11 @@ function DesignSystemsArticle() {
           </CopyBlock>
         </Subsection>
         <Gap size={tokens.spacing.article.mediaGap} />
-        <ArticleImage alt="Header hierarchy model" src={images.hierarchy} />
+        <ArticleImage
+          alt="Header hierarchy model"
+          className="aspect-[2790/902]"
+          src={images.hierarchy}
+        />
 
         <Gap size={tokens.spacing.article.mediaGap} />
         <Gap size={tokens.spacing.article.subsectionGap} />
@@ -812,7 +829,11 @@ function DesignSystemsArticle() {
           </CopyBlock>
         </Subsection>
         <Gap size={tokens.spacing.article.mediaGap} />
-        <ArticleImage alt="MSA header" src={images.msaHeader} />
+        <ArticleImage
+          alt="MSA header"
+          className="aspect-[2560/460]"
+          src={images.msaHeader}
+        />
       </Section>
 
       <Gap size={tokens.spacing.article.sectionGap} />

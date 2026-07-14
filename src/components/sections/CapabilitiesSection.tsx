@@ -150,7 +150,7 @@ function ArticleImage({
     <img
       alt={alt}
       className={[
-        "block w-full border border-[var(--border-primary)] object-cover",
+        "block w-full object-cover",
         className,
       ]
         .filter(Boolean)

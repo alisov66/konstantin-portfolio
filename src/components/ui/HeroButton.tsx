@@ -30,6 +30,8 @@ export default function HeroButton({
     "--hero-button-font-size": tokens.typography.heading.h5.fontSize,
     "--hero-button-line-height": tokens.typography.heading.h5.lineHeight,
     "--hero-button-font-weight": tokens.typography.heading.h5.fontWeight,
+    "--hero-button-transition":
+      "background-color var(--motion-gentle-duration) var(--motion-gentle-easing), color var(--motion-gentle-duration) var(--motion-gentle-easing), box-shadow var(--motion-gentle-duration) var(--motion-gentle-easing), transform var(--motion-gentle-duration) var(--motion-gentle-easing)",
   } satisfies HeroButtonStyle;
 
   return (
@@ -39,7 +41,7 @@ export default function HeroButton({
         "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap",
         "rounded-[var(--hero-button-radius)] bg-[var(--hero-button-bg)] px-[var(--hero-button-padding-x)] py-[var(--hero-button-padding-y)]",
         "text-[length:var(--hero-button-font-size)] font-[var(--hero-button-font-weight)] leading-[var(--hero-button-line-height)] text-[var(--hero-button-text)]",
-        "transition-[background-color,color,box-shadow,transform] duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)] hover:bg-[var(--hero-button-hover-bg)]",
+        "transition-[var(--hero-button-transition)] hover:bg-[var(--hero-button-hover-bg)]",
         className,
       ]
         .filter(Boolean)

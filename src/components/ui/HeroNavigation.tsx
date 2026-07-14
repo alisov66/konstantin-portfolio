@@ -122,7 +122,7 @@ function HeroPattern({ state }: { state: HeroNavigationState }) {
 
         return (
           <span
-            className="absolute rounded-full transition-[background-color,height,left,top,width] duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]"
+            className="absolute rounded-full transition-[var(--hero-navigation-dot-transition)]"
             key={`tile-${index + 1}`}
             style={dotStyle}
           />
@@ -142,6 +142,10 @@ export default function HeroNavigation({
   const [hoveredItem, setHoveredItem] = useState<HeroNavigationState | null>(null);
   const state = hoveredItem ?? "default";
   const heroNavigationStyle = {
+    "--hero-navigation-dot-transition":
+      "background-color var(--motion-gentle-duration) var(--motion-gentle-easing), height var(--motion-gentle-duration) var(--motion-gentle-easing), left var(--motion-gentle-duration) var(--motion-gentle-easing), top var(--motion-gentle-duration) var(--motion-gentle-easing), width var(--motion-gentle-duration) var(--motion-gentle-easing)",
+    "--hero-navigation-shell-transition":
+      "all var(--motion-gentle-duration) var(--motion-gentle-easing)",
     "--hero-navigation-width": "577px",
   } satisfies HeroNavigationStyle;
 
@@ -149,7 +153,7 @@ export default function HeroNavigation({
     <section
       {...props}
       className={[
-        "flex flex-col items-center transition-all duration-[800ms] ease-[cubic-bezier(0.25,0.1,0.25,1)]",
+        "flex flex-col items-center transition-[var(--hero-navigation-shell-transition)]",
         className,
       ]
         .filter(Boolean)

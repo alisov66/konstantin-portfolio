@@ -74,12 +74,16 @@ export default function NavigationHeader({
     };
   }, [heroId]);
 
-  if (!isVisible) {
-    return null;
-  }
-
   return (
-    <header className="fixed left-0 top-0 z-50 flex w-full flex-col items-center justify-center px-[var(--padding-side)] py-5">
+    <header
+      aria-hidden={!isVisible}
+      className={[
+        "fixed left-0 top-0 z-50 flex w-full flex-col items-center justify-center px-[var(--padding-side)] py-5 [transition-duration:150ms] [transition-property:opacity,transform] [transition-timing-function:ease-out]",
+        isVisible
+          ? "pointer-events-auto translate-y-0 opacity-100"
+          : "pointer-events-none -translate-y-10 opacity-0",
+      ].join(" ")}
+    >
       <nav
         aria-label="Primary"
         className="flex h-24 w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--pill)] border border-[var(--text-tertiary)] bg-[var(--bg-beige)] px-[var(--base-6)] py-[var(--base-4)]"
@@ -87,6 +91,7 @@ export default function NavigationHeader({
         <a
           className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline"
           href="#hero"
+          tabIndex={isVisible ? undefined : -1}
         >
           <span className="relative size-16 shrink-0 overflow-hidden">
             <img
@@ -119,6 +124,7 @@ export default function NavigationHeader({
               href={item.href}
               key={item.label}
               style={typeStyle(tokens.typography.button.medium)}
+              tabIndex={isVisible ? undefined : -1}
             >
               {item.label}
             </a>

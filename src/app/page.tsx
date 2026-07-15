@@ -29,7 +29,7 @@ export default function Home() {
     <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
       <NavigationHeader heroId="hero" />
       <section
-        className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pb-[var(--base-30)] pt-[var(--base-10)]"
+        className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pt-[var(--base-10)]"
         id="hero"
       >
         <div className="flex w-full flex-col items-center gap-[var(--base-3)]">

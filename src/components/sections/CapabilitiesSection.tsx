@@ -1868,7 +1868,7 @@ export default function CapabilitiesSection() {
   return (
     <section
       id="work"
-      className="flex w-full flex-col items-start gap-[var(--base-10)] bg-[var(--bg-beige)] px-[var(--padding-side)] pt-[var(--base-10)] lg:flex-row lg:gap-[var(--capabilities-column-gap)]"
+      className="flex w-full flex-col items-start gap-[var(--base-10)] bg-[var(--bg-beige)] px-[var(--padding-side)] pt-[var(--base-30)] lg:flex-row lg:gap-[var(--capabilities-column-gap)]"
       style={sectionStyle}
     >
       <div className="flex w-full shrink-0 flex-col items-start gap-[var(--base-20)] bg-[var(--bg-beige)] pt-[var(--base-10)] lg:sticky lg:top-0 lg:w-[var(--capabilities-menu-width)]">

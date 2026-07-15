@@ -4,24 +4,32 @@ import { tokens } from "@/styles/tokens";
 
 export interface NaviButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
+  state?: "default" | "hover";
 }
 
 export default function NaviButton({
   children,
   className,
+  state = "default",
   ...props
 }: NaviButtonProps) {
+  const isHover = state === "hover";
+
   return (
     <a
       {...props}
       className={[
-        "inline-flex shrink-0 items-start justify-center whitespace-nowrap rounded-[var(--pill)] px-[var(--base-4)] py-[var(--base-4)] text-[var(--text-primary)] no-underline",
-        "hover:bg-[var(--button-primary)] hover:text-[var(--button-secondary-selected-text)]",
-        "focus-visible:bg-[var(--button-primary)] focus-visible:text-[var(--button-secondary-selected-text)] focus-visible:outline-none",
+        "inline-flex shrink-0 flex-col items-start justify-center whitespace-nowrap rounded-[var(--pill)] px-[var(--base-4)] py-[var(--base-4)] no-underline",
+        isHover
+          ? "bg-[var(--button-hero-hover)] text-[var(--button-hero-text)]"
+          : "text-[var(--text-primary)]",
+        "hover:bg-[var(--button-hero-hover)] hover:text-[var(--button-hero-text)]",
+        "focus-visible:bg-[var(--button-hero-hover)] focus-visible:text-[var(--button-hero-text)] focus-visible:outline-none",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
+      data-state={state}
       style={{
         fontSize: tokens.typography.button.medium.fontSize,
         lineHeight: tokens.typography.button.medium.lineHeight,

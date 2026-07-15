@@ -1851,7 +1851,7 @@ export default function CapabilitiesSection() {
     }
 
     const html = document.documentElement;
-    const top = article.getBoundingClientRect().top + window.scrollY;
+    const top = article.getBoundingClientRect().top + window.scrollY - 136;
 
     html.classList.add("no-smooth-scroll");
     window.scrollTo({ top, left: 0, behavior: "auto" });

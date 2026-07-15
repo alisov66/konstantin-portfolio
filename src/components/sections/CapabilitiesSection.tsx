@@ -1836,6 +1836,7 @@ function ActiveArticle({ value }: { value: string }) {
 
 export default function CapabilitiesSection() {
   const [value, setValue] = useState(tabs[0].id);
+  const sectionRef = useRef<HTMLElement>(null);
   const articleRef = useRef<HTMLDivElement>(null);
 
   const sectionStyle: StyleVars = {
@@ -1851,7 +1852,11 @@ export default function CapabilitiesSection() {
     }
 
     const html = document.documentElement;
-    const top = article.getBoundingClientRect().top + window.scrollY;
+    const sectionPaddingTop = sectionRef.current
+      ? parseFloat(window.getComputedStyle(sectionRef.current).paddingTop) || 0
+      : 0;
+    const top =
+      article.getBoundingClientRect().top + window.scrollY - sectionPaddingTop;
 
     html.classList.add("no-smooth-scroll");
     window.scrollTo({ top, left: 0, behavior: "auto" });
@@ -1869,6 +1874,7 @@ export default function CapabilitiesSection() {
     <section
       id="work"
       className="flex w-full flex-col items-start gap-[var(--base-10)] bg-[var(--bg-beige)] px-[var(--padding-side)] pt-[136px] lg:flex-row lg:gap-[var(--capabilities-column-gap)]"
+      ref={sectionRef}
       style={sectionStyle}
     >
       <div className="flex w-full shrink-0 flex-col items-start gap-[var(--base-20)] bg-[var(--bg-beige)] pt-[var(--base-10)] lg:sticky lg:top-[136px] lg:w-[var(--capabilities-menu-width)]">

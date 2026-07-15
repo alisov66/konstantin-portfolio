@@ -1,5 +1,6 @@
 import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
 import HeroNavigation from "@/components/ui/HeroNavigation";
+import NavigationHeader from "@/components/ui/NavigationHeader";
 import { tokens } from "@/styles/tokens";
 
 const imgPic = "https://www.figma.com/api/mcp/asset/a05ed144-e408-496b-95f9-139863977c00";
@@ -26,7 +27,11 @@ function typeStyle(token: {
 export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
-      <section className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pb-[var(--base-30)] pt-[var(--base-10)]">
+      <NavigationHeader heroId="hero" />
+      <section
+        className="mx-auto flex min-h-screen w-full max-w-[1024px] flex-col items-center gap-[var(--base-10)] px-[var(--padding-side)] pb-[var(--base-30)] pt-[var(--base-10)]"
+        id="hero"
+      >
         <div className="flex w-full flex-col items-center gap-[var(--base-3)]">
           <div className="relative size-[80px] shrink-0 overflow-hidden">
             <img

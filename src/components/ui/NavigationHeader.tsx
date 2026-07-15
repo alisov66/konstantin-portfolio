@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import NaviButton from "@/components/ui/NaviButton";
+import { scrollToElementById } from "@/lib/smoothScroll";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
@@ -159,6 +160,12 @@ export default function NavigationHeader({
             <NaviButton
               href={item.href}
               key={item.label}
+              onClick={(event) => {
+                if (item.href === "#work") {
+                  event.preventDefault();
+                  scrollToElementById("work");
+                }
+              }}
             >
               {item.label}
             </NaviButton>

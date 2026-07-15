@@ -10,9 +10,9 @@ const avatarSrc =
   "https://www.figma.com/api/mcp/asset/5c3b4803-e92f-4960-8793-e77f2ed69407";
 
 const navigationItems = [
-  { label: "Capabilities", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Capabilities", href: "#work", sectionId: "work" },
+  { label: "About", href: "#about", sectionId: "about" },
+  { label: "Contact", href: "#contact", sectionId: "contact" },
   { label: "Download CV", href: "#cv" },
 ];
 
@@ -38,7 +38,9 @@ export default function NavigationHeader({
   const [animationState, setAnimationState] = useState<
     "hidden" | "entering" | "exiting"
   >("hidden");
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const isVisibleRef = useRef(false);
+  const activeSectionIdRef = useRef<string | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -53,8 +55,37 @@ export default function NavigationHeader({
       exitTimeoutRef.current = null;
     };
 
+    const updateActiveSection = () => {
+      const marker = window.scrollY + 136;
+      let nextActiveSectionId: string | null = null;
+
+      for (const item of navigationItems) {
+        if (!item.sectionId) {
+          continue;
+        }
+
+        const section = document.getElementById(item.sectionId);
+
+        if (!section) {
+          continue;
+        }
+
+        if (section.offsetTop <= marker) {
+          nextActiveSectionId = item.sectionId;
+        }
+      }
+
+      if (nextActiveSectionId === activeSectionIdRef.current) {
+        return;
+      }
+
+      activeSectionIdRef.current = nextActiveSectionId;
+      setActiveSectionId(nextActiveSectionId);
+    };
+
     const updateVisibility = () => {
       frame = 0;
+      updateActiveSection();
 
       const hero = document.getElementById(heroId);
 
@@ -166,6 +197,11 @@ export default function NavigationHeader({
                   scrollToElementById("work");
                 }
               }}
+              state={
+                item.sectionId && item.sectionId === activeSectionId
+                  ? "active"
+                  : "default"
+              }
             >
               {item.label}
             </NaviButton>

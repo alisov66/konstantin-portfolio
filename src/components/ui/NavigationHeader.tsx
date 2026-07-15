@@ -6,7 +6,7 @@ import NaviButton from "@/components/ui/NaviButton";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
-  "https://www.figma.com/api/mcp/asset/e5020a98-a072-41b3-b1d3-4ba98badad16";
+  "https://www.figma.com/api/mcp/asset/8bf389a7-93e1-4d05-9b16-d27934dc7bbf";
 
 const navigationItems = [
   { label: "Capabilities", href: "#work" },
@@ -124,13 +124,13 @@ export default function NavigationHeader({
     >
       <nav
         aria-label="Primary"
-        className="flex h-24 w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--pill)] border border-[var(--text-tertiary)] bg-[var(--bg-beige-light)] px-[var(--base-6)] py-[var(--base-4)]"
+        className="flex w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--lg)] bg-[var(--bg-beige-light)] py-[var(--base-2)] pl-[var(--base-3)] pr-[var(--base-6)]"
       >
         <a
           className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline"
           href="#hero"
         >
-          <span className="relative size-16 shrink-0 overflow-hidden">
+          <span className="relative size-[52px] shrink-0 overflow-hidden">
             <img
               alt="Konstantin Alisov"
               className="absolute left-[-6%] top-[-6%] size-[112%] max-w-none object-cover"

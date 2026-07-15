@@ -124,7 +124,7 @@ export default function NavigationHeader({
     >
       <nav
         aria-label="Primary"
-        className="flex h-24 w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--pill)] border border-[var(--text-tertiary)] bg-[var(--bg-beige)] px-[var(--base-6)] py-[var(--base-4)]"
+        className="flex h-24 w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--pill)] border border-[var(--text-tertiary)] bg-[var(--bg-beige-light)] px-[var(--base-6)] py-[var(--base-4)]"
       >
         <a
           className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline"

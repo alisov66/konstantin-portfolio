@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import NaviButton from "@/components/ui/NaviButton";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
@@ -155,14 +156,12 @@ export default function NavigationHeader({
 
         <div className="hidden shrink-0 items-center gap-[var(--base-3)] md:flex">
           {navigationItems.map((item) => (
-            <a
-              className="rounded-[var(--pill)] px-[var(--base-4)] py-[var(--base-4)] text-[var(--text-primary)] no-underline outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--text-primary)]"
+            <NaviButton
               href={item.href}
               key={item.label}
-              style={typeStyle(tokens.typography.button.medium)}
             >
               {item.label}
-            </a>
+            </NaviButton>
           ))}
         </div>
       </nav>

@@ -7,7 +7,7 @@ import { scrollToElementById } from "@/lib/smoothScroll";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
-  "https://www.figma.com/api/mcp/asset/5c3b4803-e92f-4960-8793-e77f2ed69407";
+  "https://www.figma.com/api/mcp/asset/3873d125-d8f7-4a45-b838-e33590a4f090";
 
 const navigationItems = [
   { label: "Capabilities", href: "#work", sectionId: "work" },
@@ -186,7 +186,7 @@ export default function NavigationHeader({
           </span>
         </a>
 
-        <div className="hidden shrink-0 items-center gap-[var(--base-3)] md:flex">
+        <div className="hidden shrink-0 items-center md:flex">
           {navigationItems.map((item) => (
             <NaviButton
               href={item.href}

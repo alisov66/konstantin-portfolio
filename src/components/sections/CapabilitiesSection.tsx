@@ -1871,7 +1871,7 @@ export default function CapabilitiesSection() {
       className="flex w-full flex-col items-start gap-[var(--base-10)] bg-[var(--bg-beige)] px-[var(--padding-side)] pt-[var(--base-30)] lg:flex-row lg:gap-[var(--capabilities-column-gap)]"
       style={sectionStyle}
     >
-      <div className="flex w-full shrink-0 flex-col items-start gap-[var(--base-20)] bg-[var(--bg-beige)] pt-[var(--base-10)] lg:sticky lg:top-0 lg:w-[var(--capabilities-menu-width)]">
+      <div className="flex w-full shrink-0 flex-col items-start gap-[var(--base-20)] bg-[var(--bg-beige)] pt-[var(--base-10)] lg:sticky lg:top-[136px] lg:w-[var(--capabilities-menu-width)]">
         <h2
           className="text-center text-[var(--text-accent)]"
           style={typeStyle(tokens.typography.heading.h2)}

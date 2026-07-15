@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { tokens } from "@/styles/tokens";
 
@@ -33,10 +33,23 @@ export interface NavigationHeaderProps {
 export default function NavigationHeader({
   heroId = "hero",
 }: NavigationHeaderProps) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [animationState, setAnimationState] = useState<
+    "hidden" | "entering" | "exiting"
+  >("hidden");
+  const isVisibleRef = useRef(false);
+  const exitTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
     let frame = 0;
+
+    const clearExitTimeout = () => {
+      if (exitTimeoutRef.current === null) {
+        return;
+      }
+
+      window.clearTimeout(exitTimeoutRef.current);
+      exitTimeoutRef.current = null;
+    };
 
     const updateVisibility = () => {
       frame = 0;
@@ -44,12 +57,32 @@ export default function NavigationHeader({
       const hero = document.getElementById(heroId);
 
       if (!hero) {
-        setIsVisible(false);
+        isVisibleRef.current = false;
+        clearExitTimeout();
+        setAnimationState("hidden");
         return;
       }
 
       const heroBottom = hero.offsetTop + hero.offsetHeight;
-      setIsVisible(window.scrollY >= heroBottom);
+      const shouldBeVisible = window.scrollY >= heroBottom;
+
+      if (shouldBeVisible === isVisibleRef.current) {
+        return;
+      }
+
+      isVisibleRef.current = shouldBeVisible;
+      clearExitTimeout();
+
+      if (shouldBeVisible) {
+        setAnimationState("entering");
+        return;
+      }
+
+      setAnimationState("exiting");
+      exitTimeoutRef.current = window.setTimeout(() => {
+        exitTimeoutRef.current = null;
+        setAnimationState("hidden");
+      }, 150);
     };
 
     const scheduleUpdate = () => {
@@ -69,18 +102,24 @@ export default function NavigationHeader({
         window.cancelAnimationFrame(frame);
       }
 
+      clearExitTimeout();
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
   }, [heroId]);
 
-  if (!isVisible) {
+  if (animationState === "hidden") {
     return null;
   }
 
   return (
     <header
-      className="navigation-header-enter fixed left-0 top-0 z-50 flex w-full flex-col items-center justify-center px-[var(--padding-side)] py-5"
+      className={[
+        "fixed left-0 top-0 z-50 flex w-full flex-col items-center justify-center px-[var(--padding-side)] py-5",
+        animationState === "entering"
+          ? "navigation-header-enter"
+          : "navigation-header-exit pointer-events-none",
+      ].join(" ")}
     >
       <nav
         aria-label="Primary"

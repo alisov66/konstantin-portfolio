@@ -214,6 +214,11 @@ html.no-smooth-scroll * {
   will-change: opacity, transform;
 }
 
+.navigation-header-exit {
+  animation: navigation-header-exit 150ms ease-out both;
+  will-change: opacity, transform;
+}
+
 @keyframes navigation-header-enter {
   from {
     opacity: 0;
@@ -223,6 +228,18 @@ html.no-smooth-scroll * {
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes navigation-header-exit {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -40px, 0);
   }
 }
 

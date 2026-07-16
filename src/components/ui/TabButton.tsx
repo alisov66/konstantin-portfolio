@@ -12,7 +12,7 @@ export interface TabButtonProps
 
 export function getTabButtonStyle(selected = false): TabButtonStyle {
   const textColor = selected
-    ? tokens.colors.text.inverted
+    ? tokens.colors.button.secondary.selectedText
     : tokens.colors.text.primary;
 
   return {

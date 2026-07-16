@@ -113,8 +113,11 @@ export default function NavigationHeader({
         return;
       }
 
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const shouldBeVisible = window.scrollY >= heroBottom;
+      const nextSection = document.getElementById("work");
+      const revealOffset = nextSection
+        ? nextSection.offsetTop
+        : hero.offsetTop + hero.offsetHeight;
+      const shouldBeVisible = window.scrollY >= revealOffset;
 
       if (shouldBeVisible === isVisibleRef.current) {
         return;

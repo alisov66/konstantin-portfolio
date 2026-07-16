@@ -90,31 +90,31 @@ export default function CapabilitiesGrid() {
         Capabilities
       </h2>
 
-      <div className="grid w-full max-w-[var(--container-max)] grid-cols-1 gap-[var(--base-6)] lg:grid-cols-3">
+      <div className="grid w-full max-w-[var(--container-max)] auto-rows-fr grid-cols-1 items-stretch gap-[var(--base-6)] lg:grid-cols-3">
         <CapabilityCard
           capability={complexWorkflow}
-          className="h-[280px] w-full"
+          className="h-full w-full"
         />
 
-        <div className="hidden h-[280px] items-center justify-center lg:flex">
+        <div className="hidden min-h-[280px] items-center justify-center lg:flex">
           <GemIcon />
         </div>
 
         <CapabilityCard
           capability={designSystems}
-          className="h-[280px] w-full"
+          className="h-full w-full"
         />
         <CapabilityCard
           capability={documentation}
-          className="h-[280px] w-full"
+          className="h-full w-full"
         />
         <CapabilityCard
           capability={productScale}
-          className="h-[280px] w-full"
+          className="h-full w-full"
         />
         <CapabilityCard
           capability={mobile}
-          className="h-[280px] w-full"
+          className="h-full w-full"
         />
       </div>
     </section>

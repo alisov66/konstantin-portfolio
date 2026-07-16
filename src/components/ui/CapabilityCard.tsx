@@ -108,7 +108,7 @@ export default function CapabilityCard({
   return (
     <Link
       className={[
-        "flex w-[312px] flex-col items-start gap-[var(--base-3)] rounded-[var(--xl)] bg-[var(--bg-beige-light)] p-[var(--base-6)] text-[var(--text-primary)] no-underline",
+        "flex min-h-[280px] w-[312px] flex-col items-start gap-[var(--base-3)] rounded-[var(--xl)] bg-[var(--bg-beige-light)] p-[var(--base-6)] text-[var(--text-primary)] no-underline",
         "transition-[background-color,transform] duration-[150ms] ease-in hover:-translate-y-1 hover:bg-[var(--button-secondary)] focus-visible:-translate-y-1 focus-visible:bg-[var(--button-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]",
         className,
       ]
@@ -121,13 +121,13 @@ export default function CapabilityCard({
 
       <span className="flex w-full flex-col items-start gap-[var(--base-3)]">
         <span
-          className="h-[48px] w-full text-[var(--text-primary)]"
+          className="w-full text-[var(--text-primary)]"
           style={typeStyle(tokens.typography.heading.h5)}
         >
           {capability.label}
         </span>
         <span
-          className="flex h-[72px] w-full flex-col justify-end text-[var(--text-primary)]"
+          className="w-full text-[var(--text-primary)]"
           style={typeStyle(tokens.typography.body.small)}
         >
           {capability.summary}

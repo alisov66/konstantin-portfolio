@@ -7,9 +7,10 @@ import { scrollToElementById } from "@/lib/smoothScroll";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
-  "https://www.figma.com/api/mcp/asset/3873d125-d8f7-4a45-b838-e33590a4f090";
+  "https://www.figma.com/api/mcp/asset/b7bd6e30-8f17-47be-92c0-d2f978151faa";
 
 const navigationItems = [
+  { label: "Main", href: "/#hero" },
   { label: "Capabilities", href: "#work", sectionId: "work" },
   { label: "About", href: "#about", sectionId: "about" },
   { label: "Contact", href: "#contact", sectionId: "contact" },
@@ -30,22 +31,24 @@ function typeStyle(token: {
 
 export interface NavigationHeaderProps {
   alwaysVisible?: boolean;
+  enableActiveStates?: boolean;
   heroId?: string;
 }
 
 export default function NavigationHeader({
   alwaysVisible = false,
+  enableActiveStates = true,
   heroId = "hero",
 }: NavigationHeaderProps) {
   const [animationState, setAnimationState] = useState<
     "hidden" | "entering" | "exiting"
   >(alwaysVisible ? "entering" : "hidden");
   const [activeSectionId, setActiveSectionId] = useState<string | null>(
-    alwaysVisible ? "work" : null,
+    alwaysVisible && enableActiveStates ? "work" : null,
   );
   const isVisibleRef = useRef(alwaysVisible);
   const activeSectionIdRef = useRef<string | null>(
-    alwaysVisible ? "work" : null,
+    alwaysVisible && enableActiveStates ? "work" : null,
   );
   const exitTimeoutRef = useRef<number | null>(null);
 
@@ -66,6 +69,10 @@ export default function NavigationHeader({
     };
 
     const updateActiveSection = () => {
+      if (!enableActiveStates) {
+        return;
+      }
+
       const marker = window.scrollY + 136;
       let nextActiveSectionId: string | null = null;
 
@@ -149,7 +156,7 @@ export default function NavigationHeader({
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [alwaysVisible, heroId]);
+  }, [alwaysVisible, enableActiveStates, heroId]);
 
   if (animationState === "hidden") {
     return null;
@@ -202,13 +209,20 @@ export default function NavigationHeader({
               href={item.href}
               key={item.label}
               onClick={(event) => {
+                if (item.href === "/#hero" && document.getElementById("hero")) {
+                  event.preventDefault();
+                  scrollToElementById("hero");
+                }
+
                 if (item.href === "#work") {
                   event.preventDefault();
                   scrollToElementById("work");
                 }
               }}
               state={
-                item.sectionId && item.sectionId === activeSectionId
+                enableActiveStates &&
+                item.sectionId &&
+                item.sectionId === activeSectionId
                   ? "active"
                   : "default"
               }

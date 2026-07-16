@@ -28,7 +28,10 @@ export default async function CapabilityPage({
 
   return (
     <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
-      <NavigationHeader alwaysVisible />
+      <NavigationHeader
+        alwaysVisible
+        enableActiveStates={false}
+      />
       <CapabilitiesSection value={selectedCapability.id as CapabilityId} />
     </main>
   );

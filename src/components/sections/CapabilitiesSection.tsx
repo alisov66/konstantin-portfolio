@@ -1,9 +1,15 @@
 "use client";
 
 import type { CSSProperties, ReactNode } from "react";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import TabGroup, { type TabGroupTab } from "@/components/ui/TabGroup";
+import {
+  capabilities,
+  defaultCapabilityId,
+  getCapabilityById,
+  type CapabilityId,
+} from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
 
 const images = {
@@ -77,13 +83,11 @@ const images = {
     "https://www.figma.com/api/mcp/asset/3258278c-d41b-4bf6-a84e-89f7a92267f0",
 };
 
-const tabs: TabGroupTab[] = [
-  { id: "complex-workflow-design", label: "Complex workflow design" },
-  { id: "design-systems", label: "Design systems" },
-  { id: "documentation-collaboration", label: "Documentation & collaboration" },
-  { id: "product-design-at-scale", label: "Product design at scale" },
-  { id: "mobile-experiences", label: "Mobile experiences" },
-];
+const tabs: TabGroupTab[] = capabilities.map((capability) => ({
+  href: `/capabilities/${capability.id}`,
+  id: capability.id,
+  label: capability.label,
+}));
 
 type StyleVars = CSSProperties & Record<`--${string}`, string | number>;
 
@@ -1834,10 +1838,16 @@ function ActiveArticle({ value }: { value: string }) {
   return <EmptyArticle label={label} />;
 }
 
-export default function CapabilitiesSection() {
-  const [value, setValue] = useState(tabs[0].id);
+export interface CapabilitiesSectionProps {
+  value?: CapabilityId;
+}
+
+export default function CapabilitiesSection({
+  value = defaultCapabilityId,
+}: CapabilitiesSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const articleRef = useRef<HTMLDivElement>(null);
+  const currentValue = getCapabilityById(value)?.id || defaultCapabilityId;
 
   const sectionStyle: StyleVars = {
     "--capabilities-column-gap": "100px",
@@ -1865,8 +1875,7 @@ export default function CapabilitiesSection() {
     });
   }
 
-  function handleValueChange(nextValue: string) {
-    setValue(nextValue);
+  function handleValueChange() {
     scrollArticleToStart();
   }
 
@@ -1888,7 +1897,7 @@ export default function CapabilitiesSection() {
           className="flex-wrap items-start"
           onValueChange={handleValueChange}
           tabs={tabs}
-          value={value}
+          value={currentValue}
         />
       </div>
 
@@ -1896,7 +1905,7 @@ export default function CapabilitiesSection() {
         ref={articleRef}
         className="flex min-w-0 flex-1 scroll-mt-[var(--base-10)] flex-col items-start pt-[var(--base-10)]"
       >
-        <ActiveArticle value={value} />
+        <ActiveArticle value={currentValue} />
       </div>
     </section>
   );

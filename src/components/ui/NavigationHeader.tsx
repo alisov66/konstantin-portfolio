@@ -17,6 +17,8 @@ const navigationItems = [
   { label: "Download CV", href: "#cv" },
 ];
 
+const headerClearance = 136;
+
 function typeStyle(token: {
   fontSize: string | number;
   lineHeight: string | number;
@@ -73,7 +75,7 @@ export default function NavigationHeader({
         return;
       }
 
-      const marker = window.scrollY + 136;
+      const marker = window.scrollY + headerClearance;
       let nextActiveSectionId: string | null = null;
 
       for (const item of navigationItems) {
@@ -115,7 +117,7 @@ export default function NavigationHeader({
 
       const nextSection = document.getElementById("work");
       const revealOffset = nextSection
-        ? nextSection.offsetTop
+        ? nextSection.offsetTop - headerClearance
         : hero.offsetTop + hero.offsetHeight;
       const shouldBeVisible = window.scrollY >= revealOffset;
 

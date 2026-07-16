@@ -8,7 +8,7 @@ import { scrollToElementById } from "@/lib/smoothScroll";
 import { tokens } from "@/styles/tokens";
 
 const avatarSrc =
-  "https://www.figma.com/api/mcp/asset/b7bd6e30-8f17-47be-92c0-d2f978151faa";
+  "https://www.figma.com/api/mcp/asset/af579064-5b10-4c23-9205-8e636c616322";
 
 const navigationItems = [
   { label: "Main", href: "/#hero" },
@@ -182,7 +182,9 @@ export default function NavigationHeader({
         className="flex w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--lg)] bg-[var(--bg-beige-light)] py-[var(--base-2)] pl-[var(--base-3)] pr-[var(--base-2)]"
       >
         <Link
+          aria-label="Go to homepage"
           className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline transition-opacity duration-[150ms] ease-in hover:opacity-50 focus-visible:opacity-50 focus-visible:outline-none"
+          data-name="logo"
           href="/#hero"
           onClick={(event) => {
             if (document.getElementById("hero")) {

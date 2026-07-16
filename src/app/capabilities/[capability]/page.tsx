@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
+import NavigationHeader from "@/components/ui/NavigationHeader";
 import {
   capabilities,
   getCapabilityById,
@@ -27,6 +28,7 @@ export default async function CapabilityPage({
 
   return (
     <main className="min-h-screen bg-[var(--bg-beige)] text-[var(--text-primary)]">
+      <NavigationHeader alwaysVisible />
       <CapabilitiesSection value={selectedCapability.id as CapabilityId} />
     </main>
   );

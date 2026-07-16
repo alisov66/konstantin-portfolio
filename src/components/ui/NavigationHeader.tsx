@@ -29,21 +29,31 @@ function typeStyle(token: {
 }
 
 export interface NavigationHeaderProps {
+  alwaysVisible?: boolean;
   heroId?: string;
 }
 
 export default function NavigationHeader({
+  alwaysVisible = false,
   heroId = "hero",
 }: NavigationHeaderProps) {
   const [animationState, setAnimationState] = useState<
     "hidden" | "entering" | "exiting"
-  >("hidden");
-  const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
-  const isVisibleRef = useRef(false);
-  const activeSectionIdRef = useRef<string | null>(null);
+  >(alwaysVisible ? "entering" : "hidden");
+  const [activeSectionId, setActiveSectionId] = useState<string | null>(
+    alwaysVisible ? "work" : null,
+  );
+  const isVisibleRef = useRef(alwaysVisible);
+  const activeSectionIdRef = useRef<string | null>(
+    alwaysVisible ? "work" : null,
+  );
   const exitTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
+    if (alwaysVisible) {
+      return;
+    }
+
     let frame = 0;
 
     const clearExitTimeout = () => {
@@ -139,7 +149,7 @@ export default function NavigationHeader({
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [heroId]);
+  }, [alwaysVisible, heroId]);
 
   if (animationState === "hidden") {
     return null;

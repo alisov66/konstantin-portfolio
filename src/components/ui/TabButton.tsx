@@ -12,7 +12,7 @@ export interface TabButtonProps
 
 export function getTabButtonStyle(selected = false): TabButtonStyle {
   const textColor = selected
-    ? tokens.colors.button.secondary.selectedText
+    ? tokens.colors.text.inverted
     : tokens.colors.text.primary;
 
   return {
@@ -35,6 +35,7 @@ export function getTabButtonStyle(selected = false): TabButtonStyle {
     "--tab-button-active-shadow": selected
       ? "none"
       : "inset 0 0 0 999px rgb(17 17 17 / 0.04)",
+    color: textColor,
   } satisfies TabButtonStyle;
 }
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 import NaviButton from "@/components/ui/NaviButton";
 import { scrollToElementById } from "@/lib/smoothScroll";
@@ -180,9 +181,15 @@ export default function NavigationHeader({
         aria-label="Primary"
         className="flex w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--lg)] bg-[var(--bg-beige-light)] py-[var(--base-2)] pl-[var(--base-3)] pr-[var(--base-2)]"
       >
-        <a
-          className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline"
-          href="#hero"
+        <Link
+          className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline transition-opacity duration-[150ms] ease-in hover:opacity-50 focus-visible:opacity-50 focus-visible:outline-none"
+          href="/#hero"
+          onClick={(event) => {
+            if (document.getElementById("hero")) {
+              event.preventDefault();
+              scrollToElementById("hero");
+            }
+          }}
         >
           <span className="relative size-[52px] shrink-0 overflow-hidden">
             <img
@@ -206,7 +213,7 @@ export default function NavigationHeader({
               Product designer
             </span>
           </span>
-        </a>
+        </Link>
 
         <div className="hidden shrink-0 items-center md:flex">
           {navigationItems.map((item) => (

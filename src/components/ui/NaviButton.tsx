@@ -29,7 +29,7 @@ export default function NaviButton({
         isActive
           ? ""
           : "hover:bg-[var(--button-hero)] hover:text-[var(--button-hero-text)] focus-visible:bg-[var(--button-hero)] focus-visible:text-[var(--button-hero-text)]",
-        "focus-visible:outline-none",
+        "transition-[background-color,color] duration-[150ms] ease-in focus-visible:outline-none",
         className,
       ]
         .filter(Boolean)

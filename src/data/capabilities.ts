@@ -3,31 +3,31 @@ export const capabilities = [
     id: "complex-workflow-design",
     label: "Complex workflow design",
     summary:
-      "Adaptive analytical workspaces for complex scientific workflows.",
+      "Designing adaptive interfaces that support expert workflows, dense information, and multiple ways of working",
   },
   {
     id: "design-systems",
     label: "Design systems",
     summary:
-      "Shared foundations, reusable patterns, and scalable product UI.",
+      "Building scalable component systems, interaction patterns, and foundations that improve consistency and speed",
   },
   {
     id: "documentation-collaboration",
     label: "Documentation & collaboration",
     summary:
-      "Clear product knowledge systems that help teams move together.",
+      "Turning design decisions into shared understanding through clear documentation, specifications, and cross-functional collaboration.",
   },
   {
     id: "product-design-at-scale",
     label: "Product design at scale",
     summary:
-      "Navigation models and platform structures for growing products.",
+      "Structuring complex products into coherent ecosystems through information architecture and product communication",
   },
   {
     id: "mobile-experiences",
     label: "Mobile experiences",
     summary:
-      "Focused mobile flows for operational and decision-heavy work.",
+      "Designing intuitive mobile experiences for financial products with complex user flows and high-frequency interactions",
   },
 ] as const;
 

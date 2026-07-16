@@ -119,7 +119,7 @@ export default function CapabilityCard({
     >
       <CapabilityIcon id={capability.id} />
 
-      <span className="flex w-full flex-col items-start gap-[var(--base-3)]">
+      <span className="flex w-full flex-1 flex-col items-start">
         <span
           className="w-full text-[var(--text-primary)]"
           style={typeStyle(tokens.typography.heading.h5)}
@@ -127,7 +127,7 @@ export default function CapabilityCard({
           {capability.label}
         </span>
         <span
-          className="w-full text-[var(--text-primary)]"
+          className="mt-auto w-full pt-[var(--base-3)] text-[var(--text-primary)]"
           style={typeStyle(tokens.typography.body.small)}
         >
           {capability.summary}

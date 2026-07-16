@@ -1,43 +1,8 @@
-import Link from "next/link";
-
-import { capabilities, type CapabilityId } from "@/data/capabilities";
+import CapabilityCard from "@/components/ui/CapabilityCard";
+import { capabilities } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
 
 type Dot = readonly [x: number, y: number];
-
-const iconDotsByCapability: Record<CapabilityId, readonly Dot[]> = {
-  "complex-workflow-design": [
-    [30, 21], [38, 28], [46, 28], [54, 28], [62, 21],
-    [46, 36],
-    [30, 43], [38, 50], [46, 50], [54, 50], [62, 43],
-    [46, 58],
-    [30, 65], [38, 72], [46, 72], [54, 72], [62, 65],
-  ],
-  "design-systems": [
-    [24, 24], [32, 28], [40, 32], [48, 36], [56, 40],
-    [64, 44], [72, 48],
-  ],
-  "documentation-collaboration": [
-    [44, 18], [36, 26], [52, 26],
-    [28, 34], [44, 34], [60, 34],
-    [36, 42], [52, 42],
-    [44, 50],
-    [36, 58], [52, 58],
-    [44, 66],
-  ],
-  "product-design-at-scale": [
-    [44, 18],
-    [36, 26], [52, 26],
-    [28, 34], [44, 34], [60, 34],
-    [36, 42], [52, 42],
-    [44, 50],
-  ],
-  "mobile-experiences": [
-    [28, 36], [36, 28], [44, 28], [52, 28], [60, 36],
-    [20, 44], [36, 44], [52, 44], [68, 44],
-    [28, 52], [44, 52], [60, 52],
-  ],
-};
 
 const gemDots: readonly Dot[] = [
   [96, 18],
@@ -109,47 +74,6 @@ function GemIcon() {
   );
 }
 
-function CapabilityIcon({ id }: { id: CapabilityId }) {
-  return (
-    <DotPattern
-      color="var(--text-accent)"
-      dotSize={4}
-      dots={iconDotsByCapability[id]}
-      size={88}
-    />
-  );
-}
-
-function CapabilityCard({
-  capability,
-}: {
-  capability: (typeof capabilities)[number];
-}) {
-  return (
-    <Link
-      className="flex h-[316px] flex-col items-start gap-[var(--base-3)] rounded-[var(--xl)] bg-[var(--bg-beige-light)] p-[var(--base-6)] text-[var(--text-primary)] no-underline transition-[background-color,transform] duration-[150ms] ease-in hover:-translate-y-1 hover:bg-[var(--button-secondary)] focus-visible:-translate-y-1 focus-visible:bg-[var(--button-secondary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]"
-      href={`/capabilities/${capability.id}`}
-    >
-      <CapabilityIcon id={capability.id} />
-
-      <span className="flex w-full flex-col gap-[var(--base-6)]">
-        <span
-          className="h-[72px] text-[var(--text-primary)]"
-          style={typeStyle(tokens.typography.heading.h4)}
-        >
-          {capability.label}
-        </span>
-        <span
-          className="flex h-[72px] flex-col justify-end text-[var(--text-primary)]"
-          style={typeStyle(tokens.typography.body.small)}
-        >
-          {capability.summary}
-        </span>
-      </span>
-    </Link>
-  );
-}
-
 export default function CapabilitiesGrid() {
   const [complexWorkflow, designSystems, documentation, productScale, mobile] =
     capabilities;
@@ -167,16 +91,31 @@ export default function CapabilitiesGrid() {
       </h2>
 
       <div className="grid w-full max-w-[var(--container-max)] grid-cols-1 gap-[var(--base-6)] lg:grid-cols-3">
-        <CapabilityCard capability={complexWorkflow} />
+        <CapabilityCard
+          capability={complexWorkflow}
+          className="h-[280px] w-full"
+        />
 
-        <div className="hidden h-[316px] items-center justify-center lg:flex">
+        <div className="hidden h-[280px] items-center justify-center lg:flex">
           <GemIcon />
         </div>
 
-        <CapabilityCard capability={designSystems} />
-        <CapabilityCard capability={documentation} />
-        <CapabilityCard capability={productScale} />
-        <CapabilityCard capability={mobile} />
+        <CapabilityCard
+          capability={designSystems}
+          className="h-[280px] w-full"
+        />
+        <CapabilityCard
+          capability={documentation}
+          className="h-[280px] w-full"
+        />
+        <CapabilityCard
+          capability={productScale}
+          className="h-[280px] w-full"
+        />
+        <CapabilityCard
+          capability={mobile}
+          className="h-[280px] w-full"
+        />
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { FocusEventHandler, MouseEventHandler } from "react";
 
 import type { CapabilityId, capabilities } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
@@ -208,11 +209,15 @@ function CapabilityIcon({ id }: { id: CapabilityId }) {
 export interface CapabilityCardProps {
   capability: (typeof capabilities)[number];
   className?: string;
+  onFocus?: FocusEventHandler<HTMLAnchorElement>;
+  onMouseEnter?: MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function CapabilityCard({
   capability,
   className,
+  onFocus,
+  onMouseEnter,
 }: CapabilityCardProps) {
   return (
     <Link
@@ -225,6 +230,8 @@ export default function CapabilityCard({
         .join(" ")}
       data-name="capability card"
       href={`/capabilities/${capability.id}`}
+      onFocus={onFocus}
+      onMouseEnter={onMouseEnter}
     >
       <CapabilityIcon id={capability.id} />
 

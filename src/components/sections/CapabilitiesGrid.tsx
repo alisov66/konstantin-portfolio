@@ -1,4 +1,7 @@
+ "use client";
+
 import type { CSSProperties } from "react";
+import { useCallback, useState } from "react";
 
 import CapabilityCard from "@/components/ui/CapabilityCard";
 import { capabilities } from "@/data/capabilities";
@@ -42,12 +45,14 @@ function typeStyle(token: {
 }
 
 function DotPattern({
+  animationKey,
   dots,
   toDots,
   size,
   color,
   dotSize,
 }: {
+  animationKey?: number;
   dots: readonly Dot[];
   toDots?: readonly Dot[];
   size: number;
@@ -58,13 +63,14 @@ function DotPattern({
     <span
       aria-hidden
       className="relative block shrink-0 overflow-hidden"
+      key={animationKey}
       style={{ height: size, width: size }}
     >
       {dots.map(([x, y], index) => (
         <span
           className={[
             "absolute rounded-full",
-            toDots ? "gem-icon-dot" : undefined,
+            toDots && animationKey ? "gem-icon-dot" : undefined,
           ]
             .filter(Boolean)
             .join(" ")}
@@ -84,9 +90,16 @@ function DotPattern({
   );
 }
 
-function GemIcon({ state = "1" }: { state?: "1" | "2" }) {
+function GemIcon({
+  animationKey,
+  state = "1",
+}: {
+  animationKey: number;
+  state?: "1" | "2";
+}) {
   return (
     <DotPattern
+      animationKey={animationKey}
       color="#659d4d"
       dotSize={8}
       dots={gemDotsByState[state]}
@@ -97,8 +110,12 @@ function GemIcon({ state = "1" }: { state?: "1" | "2" }) {
 }
 
 export default function CapabilitiesGrid() {
+  const [gemAnimationKey, setGemAnimationKey] = useState(0);
   const [complexWorkflow, designSystems, documentation, productScale, mobile] =
     capabilities;
+  const playGemAnimation = useCallback(() => {
+    setGemAnimationKey((currentKey) => currentKey + 1);
+  }, []);
 
   return (
     <section
@@ -116,27 +133,37 @@ export default function CapabilitiesGrid() {
         <CapabilityCard
           capability={complexWorkflow}
           className="h-full w-full"
+          onFocus={playGemAnimation}
+          onMouseEnter={playGemAnimation}
         />
 
         <div className="hidden min-h-[280px] items-center justify-center lg:flex">
-          <GemIcon />
+          <GemIcon animationKey={gemAnimationKey} />
         </div>
 
         <CapabilityCard
           capability={designSystems}
           className="h-full w-full"
+          onFocus={playGemAnimation}
+          onMouseEnter={playGemAnimation}
         />
         <CapabilityCard
           capability={productScale}
           className="h-full w-full"
+          onFocus={playGemAnimation}
+          onMouseEnter={playGemAnimation}
         />
         <CapabilityCard
           capability={documentation}
           className="h-full w-full"
+          onFocus={playGemAnimation}
+          onMouseEnter={playGemAnimation}
         />
         <CapabilityCard
           capability={mobile}
           className="h-full w-full"
+          onFocus={playGemAnimation}
+          onMouseEnter={playGemAnimation}
         />
       </div>
     </section>

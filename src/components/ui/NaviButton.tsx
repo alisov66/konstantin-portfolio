@@ -18,6 +18,10 @@ const blobVariants = [
     offsetY: "-5px",
     rotateA: "18deg",
     rotateB: "-22deg",
+    shadowA:
+      "6px -4px 0 1px var(--button-hero-hover), -5px 5px 0 2px var(--button-hero-hover), 3px 7px 0 -1px var(--button-hero-hover)",
+    shadowB:
+      "-7px -2px 0 0 var(--button-hero-hover), 5px 6px 0 1px var(--button-hero-hover)",
   },
   {
     radiusA: "58% 42% 63% 37% / 39% 61% 45% 55%",
@@ -26,6 +30,10 @@ const blobVariants = [
     offsetY: "6px",
     rotateA: "-14deg",
     rotateB: "28deg",
+    shadowA:
+      "-7px -5px 0 1px var(--button-hero-hover), 6px 4px 0 2px var(--button-hero-hover), -2px 8px 0 -1px var(--button-hero-hover)",
+    shadowB:
+      "7px -3px 0 0 var(--button-hero-hover), -5px 5px 0 1px var(--button-hero-hover)",
   },
   {
     radiusA: "39% 61% 55% 45% / 52% 43% 57% 48%",
@@ -34,6 +42,10 @@ const blobVariants = [
     offsetY: "4px",
     rotateA: "24deg",
     rotateB: "-16deg",
+    shadowA:
+      "8px 2px 0 2px var(--button-hero-hover), -6px -6px 0 1px var(--button-hero-hover), -4px 7px 0 0 var(--button-hero-hover)",
+    shadowB:
+      "-8px 3px 0 1px var(--button-hero-hover), 4px -6px 0 0 var(--button-hero-hover)",
   },
   {
     radiusA: "61% 39% 44% 56% / 46% 54% 36% 64%",
@@ -42,6 +54,10 @@ const blobVariants = [
     offsetY: "-4px",
     rotateA: "-26deg",
     rotateB: "19deg",
+    shadowA:
+      "-8px 2px 0 2px var(--button-hero-hover), 5px -6px 0 1px var(--button-hero-hover), 6px 6px 0 0 var(--button-hero-hover)",
+    shadowB:
+      "8px 4px 0 1px var(--button-hero-hover), -4px -6px 0 0 var(--button-hero-hover)",
   },
 ];
 
@@ -138,6 +154,8 @@ export default function NaviButton({
         "--navi-blob-offset-y": blobVariant.offsetY,
         "--navi-blob-rotate-a": blobVariant.rotateA,
         "--navi-blob-rotate-b": blobVariant.rotateB,
+        "--navi-blob-shadow-a": blobVariant.shadowA,
+        "--navi-blob-shadow-b": blobVariant.shadowB,
         fontSize: tokens.typography.button.medium.fontSize,
         lineHeight: tokens.typography.button.medium.lineHeight,
         fontWeight: tokens.typography.button.medium.fontWeight,

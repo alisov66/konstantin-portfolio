@@ -289,18 +289,18 @@ html.no-smooth-scroll * {
   opacity: 1;
   transform: translate3d(-50%, -50%, 0) scale(18);
   transition:
-    transform 150ms ease-in,
-    border-radius 150ms ease-in,
-    opacity 150ms ease-in;
+    transform 300ms ease-in,
+    border-radius 300ms ease-in,
+    opacity 300ms ease-in;
 }
 
 .navi-button[data-hover="fill"]::after {
   opacity: 0.75;
   transform: translate3d(calc(-50% + 7px), calc(-50% - 4px), 0) scale(15);
   transition:
-    transform 180ms ease-in 20ms,
-    border-radius 180ms ease-in 20ms,
-    opacity 120ms ease-in;
+    transform 330ms ease-in 20ms,
+    border-radius 330ms ease-in 20ms,
+    opacity 240ms ease-in;
 }
 
 body {

@@ -62,7 +62,7 @@ export default function NaviButton({
   const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
     updateHoverOrigin(event);
     setHoverState("dot");
-    startFill(100);
+    startFill(300);
     onPointerEnter?.(event);
   };
 

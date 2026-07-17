@@ -21,6 +21,7 @@ export default function NaviButton({
   state = "default",
   onPointerEnter,
   onPointerLeave,
+  onPointerMove,
   onFocus,
   onBlur,
   ...props
@@ -49,16 +50,28 @@ export default function NaviButton({
     }, delay);
   };
 
-  const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
+  const updateHoverOrigin = (event: Parameters<PointerEventHandler<HTMLAnchorElement>>[0]) => {
     const rect = event.currentTarget.getBoundingClientRect();
 
     setHoverOrigin({
       x: `${event.clientX - rect.left}px`,
       y: `${event.clientY - rect.top}px`,
     });
+  };
+
+  const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
+    updateHoverOrigin(event);
     setHoverState("dot");
     startFill(100);
     onPointerEnter?.(event);
+  };
+
+  const handlePointerMove: PointerEventHandler<HTMLAnchorElement> = (event) => {
+    if (hoverState === "dot") {
+      updateHoverOrigin(event);
+    }
+
+    onPointerMove?.(event);
   };
 
   const handlePointerLeave: PointerEventHandler<HTMLAnchorElement> = (event) => {
@@ -99,6 +112,7 @@ export default function NaviButton({
       }}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
+      onPointerMove={handlePointerMove}
       style={{
         "--navi-hover-x": hoverOrigin.x,
         "--navi-hover-y": hoverOrigin.y,

@@ -3,39 +3,148 @@ import Link from "next/link";
 import type { CapabilityId, capabilities } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
 
-type Dot = readonly [x: number, y: number];
+type CapabilityIconDot = {
+  readonly x: number;
+  readonly y: number;
+  readonly size: 4 | 8;
+  readonly tone: "accent" | "tertiary";
+};
 
-const iconDotsByCapability: Record<CapabilityId, readonly Dot[]> = {
+const capabilityIconDots: Record<CapabilityId, readonly CapabilityIconDot[]> = {
   "complex-workflow-design": [
-    [30, 21], [38, 28], [46, 28], [54, 28], [62, 21],
-    [46, 36],
-    [30, 43], [38, 50], [46, 50], [54, 50], [62, 43],
-    [46, 58],
-    [30, 65], [38, 72], [46, 72], [54, 72], [62, 65],
+    { x: 16, y: 16, size: 8, tone: "accent" },
+    { x: 30, y: 18, size: 4, tone: "accent" },
+    { x: 42, y: 18, size: 4, tone: "accent" },
+    { x: 54, y: 18, size: 4, tone: "tertiary" },
+    { x: 64, y: 16, size: 8, tone: "accent" },
+    { x: 18, y: 30, size: 4, tone: "tertiary" },
+    { x: 30, y: 30, size: 4, tone: "tertiary" },
+    { x: 42, y: 30, size: 4, tone: "accent" },
+    { x: 54, y: 30, size: 4, tone: "tertiary" },
+    { x: 66, y: 30, size: 4, tone: "tertiary" },
+    { x: 18, y: 42, size: 4, tone: "tertiary" },
+    { x: 30, y: 42, size: 4, tone: "tertiary" },
+    { x: 40, y: 40, size: 8, tone: "accent" },
+    { x: 54, y: 42, size: 4, tone: "accent" },
+    { x: 66, y: 42, size: 4, tone: "accent" },
+    { x: 18, y: 54, size: 4, tone: "accent" },
+    { x: 30, y: 54, size: 4, tone: "accent" },
+    { x: 42, y: 54, size: 4, tone: "accent" },
+    { x: 54, y: 54, size: 4, tone: "tertiary" },
+    { x: 66, y: 54, size: 4, tone: "accent" },
+    { x: 16, y: 64, size: 8, tone: "accent" },
+    { x: 30, y: 66, size: 4, tone: "tertiary" },
+    { x: 42, y: 66, size: 4, tone: "tertiary" },
+    { x: 54, y: 66, size: 4, tone: "tertiary" },
+    { x: 64, y: 64, size: 8, tone: "accent" },
   ],
   "design-systems": [
-    [24, 24], [32, 28], [40, 32], [48, 36], [56, 40],
-    [64, 44], [72, 48],
+    { x: 18, y: 18, size: 4, tone: "accent" },
+    { x: 30, y: 18, size: 4, tone: "tertiary" },
+    { x: 42, y: 18, size: 4, tone: "accent" },
+    { x: 54, y: 18, size: 4, tone: "tertiary" },
+    { x: 66, y: 18, size: 4, tone: "accent" },
+    { x: 18, y: 30, size: 4, tone: "tertiary" },
+    { x: 28, y: 28, size: 8, tone: "accent" },
+    { x: 42, y: 30, size: 4, tone: "accent" },
+    { x: 52, y: 28, size: 8, tone: "accent" },
+    { x: 66, y: 30, size: 4, tone: "tertiary" },
+    { x: 18, y: 42, size: 4, tone: "accent" },
+    { x: 30, y: 42, size: 4, tone: "accent" },
+    { x: 42, y: 42, size: 4, tone: "tertiary" },
+    { x: 54, y: 42, size: 4, tone: "accent" },
+    { x: 66, y: 42, size: 4, tone: "accent" },
+    { x: 18, y: 54, size: 4, tone: "tertiary" },
+    { x: 28, y: 52, size: 8, tone: "accent" },
+    { x: 42, y: 54, size: 4, tone: "accent" },
+    { x: 52, y: 52, size: 8, tone: "accent" },
+    { x: 66, y: 54, size: 4, tone: "tertiary" },
+    { x: 18, y: 66, size: 4, tone: "accent" },
+    { x: 30, y: 66, size: 4, tone: "tertiary" },
+    { x: 42, y: 66, size: 4, tone: "accent" },
+    { x: 54, y: 66, size: 4, tone: "tertiary" },
+    { x: 66, y: 66, size: 4, tone: "accent" },
   ],
   "documentation-collaboration": [
-    [44, 18], [36, 26], [52, 26],
-    [28, 34], [44, 34], [60, 34],
-    [36, 42], [52, 42],
-    [44, 50],
-    [36, 58], [52, 58],
-    [44, 66],
+    { x: 16, y: 16, size: 8, tone: "accent" },
+    { x: 30, y: 18, size: 4, tone: "tertiary" },
+    { x: 40, y: 16, size: 8, tone: "accent" },
+    { x: 54, y: 18, size: 4, tone: "tertiary" },
+    { x: 66, y: 18, size: 4, tone: "accent" },
+    { x: 18, y: 30, size: 4, tone: "tertiary" },
+    { x: 30, y: 30, size: 4, tone: "tertiary" },
+    { x: 42, y: 30, size: 4, tone: "tertiary" },
+    { x: 54, y: 30, size: 4, tone: "accent" },
+    { x: 66, y: 30, size: 4, tone: "tertiary" },
+    { x: 16, y: 40, size: 8, tone: "accent" },
+    { x: 30, y: 42, size: 4, tone: "tertiary" },
+    { x: 40, y: 40, size: 8, tone: "accent" },
+    { x: 54, y: 42, size: 4, tone: "tertiary" },
+    { x: 64, y: 40, size: 8, tone: "accent" },
+    { x: 18, y: 54, size: 4, tone: "tertiary" },
+    { x: 30, y: 54, size: 4, tone: "accent" },
+    { x: 42, y: 54, size: 4, tone: "tertiary" },
+    { x: 54, y: 54, size: 4, tone: "tertiary" },
+    { x: 66, y: 54, size: 4, tone: "tertiary" },
+    { x: 18, y: 66, size: 4, tone: "accent" },
+    { x: 30, y: 66, size: 4, tone: "tertiary" },
+    { x: 40, y: 64, size: 8, tone: "accent" },
+    { x: 54, y: 66, size: 4, tone: "tertiary" },
+    { x: 64, y: 64, size: 8, tone: "accent" },
   ],
   "product-design-at-scale": [
-    [44, 18],
-    [36, 26], [52, 26],
-    [28, 34], [44, 34], [60, 34],
-    [36, 42], [52, 42],
-    [44, 50],
+    { x: 18, y: 18, size: 4, tone: "accent" },
+    { x: 30, y: 18, size: 4, tone: "tertiary" },
+    { x: 40, y: 16, size: 8, tone: "accent" },
+    { x: 54, y: 18, size: 4, tone: "tertiary" },
+    { x: 66, y: 18, size: 4, tone: "accent" },
+    { x: 18, y: 30, size: 4, tone: "tertiary" },
+    { x: 30, y: 30, size: 4, tone: "accent" },
+    { x: 42, y: 30, size: 4, tone: "tertiary" },
+    { x: 54, y: 30, size: 4, tone: "accent" },
+    { x: 66, y: 30, size: 4, tone: "tertiary" },
+    { x: 16, y: 40, size: 8, tone: "accent" },
+    { x: 30, y: 42, size: 4, tone: "tertiary" },
+    { x: 42, y: 42, size: 4, tone: "accent" },
+    { x: 54, y: 42, size: 4, tone: "tertiary" },
+    { x: 64, y: 40, size: 8, tone: "accent" },
+    { x: 18, y: 54, size: 4, tone: "tertiary" },
+    { x: 30, y: 54, size: 4, tone: "accent" },
+    { x: 42, y: 54, size: 4, tone: "tertiary" },
+    { x: 54, y: 54, size: 4, tone: "accent" },
+    { x: 66, y: 54, size: 4, tone: "tertiary" },
+    { x: 18, y: 66, size: 4, tone: "accent" },
+    { x: 30, y: 66, size: 4, tone: "tertiary" },
+    { x: 40, y: 64, size: 8, tone: "accent" },
+    { x: 54, y: 66, size: 4, tone: "tertiary" },
+    { x: 66, y: 66, size: 4, tone: "accent" },
   ],
   "mobile-experiences": [
-    [28, 36], [36, 28], [44, 28], [52, 28], [60, 36],
-    [20, 44], [36, 44], [52, 44], [68, 44],
-    [28, 52], [44, 52], [60, 52],
+    { x: 18, y: 18, size: 4, tone: "tertiary" },
+    { x: 30, y: 18, size: 4, tone: "tertiary" },
+    { x: 42, y: 18, size: 4, tone: "tertiary" },
+    { x: 54, y: 18, size: 4, tone: "tertiary" },
+    { x: 64, y: 16, size: 8, tone: "accent" },
+    { x: 16, y: 28, size: 8, tone: "accent" },
+    { x: 30, y: 30, size: 4, tone: "accent" },
+    { x: 40, y: 28, size: 8, tone: "accent" },
+    { x: 54, y: 30, size: 4, tone: "tertiary" },
+    { x: 66, y: 30, size: 4, tone: "tertiary" },
+    { x: 18, y: 42, size: 4, tone: "accent" },
+    { x: 30, y: 42, size: 4, tone: "tertiary" },
+    { x: 42, y: 42, size: 4, tone: "accent" },
+    { x: 54, y: 42, size: 4, tone: "accent" },
+    { x: 66, y: 42, size: 4, tone: "tertiary" },
+    { x: 18, y: 54, size: 4, tone: "accent" },
+    { x: 30, y: 54, size: 4, tone: "tertiary" },
+    { x: 42, y: 54, size: 4, tone: "accent" },
+    { x: 54, y: 54, size: 4, tone: "accent" },
+    { x: 66, y: 54, size: 4, tone: "accent" },
+    { x: 16, y: 64, size: 8, tone: "accent" },
+    { x: 30, y: 66, size: 4, tone: "tertiary" },
+    { x: 40, y: 64, size: 8, tone: "accent" },
+    { x: 54, y: 66, size: 4, tone: "accent" },
+    { x: 66, y: 66, size: 4, tone: "accent" },
   ],
 };
 
@@ -54,13 +163,11 @@ function typeStyle(token: {
 function DotPattern({
   dots,
   size,
-  color,
-  dotSize,
+  colorByTone,
 }: {
-  dots: readonly Dot[];
+  dots: readonly CapabilityIconDot[];
   size: number;
-  color: string;
-  dotSize: number;
+  colorByTone: Record<CapabilityIconDot["tone"], string>;
 }) {
   return (
     <span
@@ -68,16 +175,16 @@ function DotPattern({
       className="relative block shrink-0 overflow-hidden"
       style={{ height: size, width: size }}
     >
-      {dots.map(([x, y], index) => (
+      {dots.map((dot, index) => (
         <span
           className="absolute rounded-full"
-          key={`${x}-${y}-${index}`}
+          key={`${dot.x}-${dot.y}-${index}`}
           style={{
-            backgroundColor: color,
-            height: dotSize,
-            left: x,
-            top: y,
-            width: dotSize,
+            backgroundColor: colorByTone[dot.tone],
+            height: dot.size,
+            left: dot.x,
+            top: dot.y,
+            width: dot.size,
           }}
         />
       ))}
@@ -88,9 +195,11 @@ function DotPattern({
 function CapabilityIcon({ id }: { id: CapabilityId }) {
   return (
     <DotPattern
-      color="var(--text-accent)"
-      dotSize={4}
-      dots={iconDotsByCapability[id]}
+      colorByTone={{
+        accent: "var(--text-accent)",
+        tertiary: "var(--text-tertiary)",
+      }}
+      dots={capabilityIconDots[id]}
       size={88}
     />
   );

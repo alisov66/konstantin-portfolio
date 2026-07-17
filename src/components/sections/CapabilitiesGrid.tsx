@@ -127,11 +127,11 @@ export default function CapabilitiesGrid() {
           className="h-full w-full"
         />
         <CapabilityCard
-          capability={documentation}
+          capability={productScale}
           className="h-full w-full"
         />
         <CapabilityCard
-          capability={productScale}
+          capability={documentation}
           className="h-full w-full"
         />
         <CapabilityCard

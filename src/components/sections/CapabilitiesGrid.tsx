@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+
 import CapabilityCard from "@/components/ui/CapabilityCard";
 import { capabilities } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
@@ -8,12 +10,12 @@ const gemDotsByState: Record<"1" | "2", readonly Dot[]> = {
   "1": [
     [69, 27], [140, 41], [126, 27], [12, 55], [69, 112], [169, 41],
     [55, 41], [112, 98], [83, 98], [183, 55], [154, 27], [126, 112],
-    [40, 27], [140, 127], [55, 127], [26, 41], [97, 27], [83, 41],
-    [83, 70], [112, 41], [97, 84], [126, 55], [69, 55], [112, 70],
-    [55, 98], [69, 84], [55, 70], [12, 84], [26, 70], [40, 55],
-    [26, 98], [40, 112], [97, 112], [83, 126], [112, 126], [97, 169],
-    [112, 155], [69, 141], [83, 155], [126, 141], [140, 70], [169, 70],
-    [140, 98], [126, 84], [155, 55], [155, 112], [183, 84], [169, 98],
+    [40, 27], [140, 127], [55, 127], [26, 41], [55, 98], [69, 84],
+    [55, 70], [12, 84], [26, 70], [40, 55], [26, 98], [40, 112],
+    [97, 27], [83, 41], [83, 70], [112, 41], [97, 84], [126, 55],
+    [69, 55], [112, 70], [140, 70], [169, 70], [140, 98], [126, 84],
+    [155, 55], [155, 112], [183, 84], [169, 98], [97, 112], [83, 126],
+    [112, 126], [97, 169], [112, 155], [69, 141], [83, 155], [126, 141],
   ],
   "2": [
     [69, 27], [140, 41], [126, 27], [12, 55], [69, 112], [169, 41],
@@ -41,11 +43,13 @@ function typeStyle(token: {
 
 function DotPattern({
   dots,
+  toDots,
   size,
   color,
   dotSize,
 }: {
   dots: readonly Dot[];
+  toDots?: readonly Dot[];
   size: number;
   color: string;
   dotSize: number;
@@ -58,15 +62,22 @@ function DotPattern({
     >
       {dots.map(([x, y], index) => (
         <span
-          className="absolute rounded-full"
+          className={[
+            "absolute rounded-full",
+            toDots ? "gem-icon-dot" : undefined,
+          ]
+            .filter(Boolean)
+            .join(" ")}
           key={`${x}-${y}-${index}`}
           style={{
+            "--gem-dot-x": toDots ? `${toDots[index][0] - x}px` : "0px",
+            "--gem-dot-y": toDots ? `${toDots[index][1] - y}px` : "0px",
             backgroundColor: color,
             height: dotSize,
             left: x,
             top: y,
             width: dotSize,
-          }}
+          } as CSSProperties}
         />
       ))}
     </span>
@@ -80,6 +91,7 @@ function GemIcon({ state = "1" }: { state?: "1" | "2" }) {
       dotSize={8}
       dots={gemDotsByState[state]}
       size={194}
+      toDots={gemDotsByState[state === "1" ? "2" : "1"]}
     />
   );
 }

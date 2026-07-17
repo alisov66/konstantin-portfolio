@@ -217,6 +217,7 @@ export interface CapabilityCardProps {
   onFocus?: FocusEventHandler<HTMLAnchorElement>;
   onMouseEnter?: MouseEventHandler<HTMLAnchorElement>;
   onMouseLeave?: MouseEventHandler<HTMLAnchorElement>;
+  onMouseMove?: MouseEventHandler<HTMLAnchorElement>;
   style?: CSSProperties;
 }
 
@@ -227,6 +228,7 @@ export default function CapabilityCard({
   onFocus,
   onMouseEnter,
   onMouseLeave,
+  onMouseMove,
   style,
 }: CapabilityCardProps) {
   return (
@@ -244,6 +246,7 @@ export default function CapabilityCard({
       onFocus={onFocus}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onMouseMove={onMouseMove}
       style={style}
     >
       <CapabilityIcon id={capability.id} />

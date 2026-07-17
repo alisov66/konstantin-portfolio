@@ -131,6 +131,24 @@ export default function CapabilitiesGrid() {
     );
   }, []);
 
+  const pointCardAtCursor = useCallback(
+    (id: CapabilityId, card: HTMLElement, clientX: number, clientY: number) => {
+      const cardRect = card.getBoundingClientRect();
+      const offsetX = (clientX - cardRect.left) / cardRect.width;
+      const offsetY = (clientY - cardRect.top) / cardRect.height;
+      const lookX = Math.max(-1, Math.min(1, offsetX * 2 - 1));
+      const lookY = Math.max(-1, Math.min(1, offsetY * 2 - 1));
+      const rotateX = -lookY * maxCardRotateX;
+      const rotateY = lookX * maxCardRotateY;
+
+      setActiveCardId(id);
+      setCardTransform(
+        `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`,
+      );
+    },
+    [],
+  );
+
   const resetCardTransform = useCallback(() => {
     setActiveCardId(null);
     setCardTransform("perspective(800px) rotateX(0deg) rotateY(0deg)");
@@ -167,10 +185,15 @@ export default function CapabilitiesGrid() {
           onFocus={(event) =>
             pointCardAtGem(complexWorkflow.id, event.currentTarget)
           }
-          onMouseEnter={(event) =>
-            pointCardAtGem(complexWorkflow.id, event.currentTarget)
-          }
           onMouseLeave={resetCardTransform}
+          onMouseMove={(event) =>
+            pointCardAtCursor(
+              complexWorkflow.id,
+              event.currentTarget,
+              event.clientX,
+              event.clientY,
+            )
+          }
           style={getCardStyle(complexWorkflow.id)}
         />
 
@@ -189,10 +212,15 @@ export default function CapabilitiesGrid() {
           onFocus={(event) =>
             pointCardAtGem(designSystems.id, event.currentTarget)
           }
-          onMouseEnter={(event) =>
-            pointCardAtGem(designSystems.id, event.currentTarget)
-          }
           onMouseLeave={resetCardTransform}
+          onMouseMove={(event) =>
+            pointCardAtCursor(
+              designSystems.id,
+              event.currentTarget,
+              event.clientX,
+              event.clientY,
+            )
+          }
           style={getCardStyle(designSystems.id)}
         />
         <CapabilityCard
@@ -202,10 +230,15 @@ export default function CapabilitiesGrid() {
           onFocus={(event) =>
             pointCardAtGem(productScale.id, event.currentTarget)
           }
-          onMouseEnter={(event) =>
-            pointCardAtGem(productScale.id, event.currentTarget)
-          }
           onMouseLeave={resetCardTransform}
+          onMouseMove={(event) =>
+            pointCardAtCursor(
+              productScale.id,
+              event.currentTarget,
+              event.clientX,
+              event.clientY,
+            )
+          }
           style={getCardStyle(productScale.id)}
         />
         <CapabilityCard
@@ -215,10 +248,15 @@ export default function CapabilitiesGrid() {
           onFocus={(event) =>
             pointCardAtGem(documentation.id, event.currentTarget)
           }
-          onMouseEnter={(event) =>
-            pointCardAtGem(documentation.id, event.currentTarget)
-          }
           onMouseLeave={resetCardTransform}
+          onMouseMove={(event) =>
+            pointCardAtCursor(
+              documentation.id,
+              event.currentTarget,
+              event.clientX,
+              event.clientY,
+            )
+          }
           style={getCardStyle(documentation.id)}
         />
         <CapabilityCard
@@ -226,10 +264,15 @@ export default function CapabilitiesGrid() {
           className="h-full w-full"
           onBlur={resetCardTransform}
           onFocus={(event) => pointCardAtGem(mobile.id, event.currentTarget)}
-          onMouseEnter={(event) =>
-            pointCardAtGem(mobile.id, event.currentTarget)
-          }
           onMouseLeave={resetCardTransform}
+          onMouseMove={(event) =>
+            pointCardAtCursor(
+              mobile.id,
+              event.currentTarget,
+              event.clientX,
+              event.clientY,
+            )
+          }
           style={getCardStyle(mobile.id)}
         />
       </div>

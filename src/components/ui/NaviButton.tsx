@@ -14,50 +14,74 @@ const blobVariants = [
   {
     radiusA: "47% 53% 41% 59% / 56% 38% 62% 44%",
     radiusB: "62% 38% 59% 41% / 44% 58% 42% 56%",
-    offsetX: "7px",
-    offsetY: "-5px",
+    radiusC: "39% 61% 57% 43% / 48% 62% 38% 52%",
+    radiusD: "56% 44% 38% 62% / 61% 36% 64% 39%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "12px",
+    offsetBY: "-7px",
+    offsetCX: "-10px",
+    offsetCY: "8px",
+    offsetDX: "5px",
+    offsetDY: "12px",
     rotateA: "18deg",
     rotateB: "-22deg",
-    shadowA:
-      "6px -4px 0 1px var(--button-hero-hover), -5px 5px 0 2px var(--button-hero-hover), 3px 7px 0 -1px var(--button-hero-hover)",
-    shadowB:
-      "-7px -2px 0 0 var(--button-hero-hover), 5px 6px 0 1px var(--button-hero-hover)",
+    rotateC: "31deg",
+    rotateD: "-13deg",
   },
   {
     radiusA: "58% 42% 63% 37% / 39% 61% 45% 55%",
     radiusB: "43% 57% 38% 62% / 60% 40% 57% 43%",
-    offsetX: "-6px",
-    offsetY: "6px",
+    radiusC: "64% 36% 48% 52% / 45% 55% 63% 37%",
+    radiusD: "41% 59% 60% 40% / 58% 42% 39% 61%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "-11px",
+    offsetBY: "8px",
+    offsetCX: "11px",
+    offsetCY: "7px",
+    offsetDX: "-4px",
+    offsetDY: "-12px",
     rotateA: "-14deg",
     rotateB: "28deg",
-    shadowA:
-      "-7px -5px 0 1px var(--button-hero-hover), 6px 4px 0 2px var(--button-hero-hover), -2px 8px 0 -1px var(--button-hero-hover)",
-    shadowB:
-      "7px -3px 0 0 var(--button-hero-hover), -5px 5px 0 1px var(--button-hero-hover)",
+    rotateC: "-32deg",
+    rotateD: "12deg",
   },
   {
     radiusA: "39% 61% 55% 45% / 52% 43% 57% 48%",
     radiusB: "56% 44% 46% 54% / 37% 59% 41% 63%",
-    offsetX: "9px",
-    offsetY: "4px",
+    radiusC: "45% 55% 65% 35% / 59% 41% 53% 47%",
+    radiusD: "62% 38% 42% 58% / 40% 60% 36% 64%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "13px",
+    offsetBY: "6px",
+    offsetCX: "-8px",
+    offsetCY: "-10px",
+    offsetDX: "-12px",
+    offsetDY: "3px",
     rotateA: "24deg",
     rotateB: "-16deg",
-    shadowA:
-      "8px 2px 0 2px var(--button-hero-hover), -6px -6px 0 1px var(--button-hero-hover), -4px 7px 0 0 var(--button-hero-hover)",
-    shadowB:
-      "-8px 3px 0 1px var(--button-hero-hover), 4px -6px 0 0 var(--button-hero-hover)",
+    rotateC: "9deg",
+    rotateD: "-28deg",
   },
   {
     radiusA: "61% 39% 44% 56% / 46% 54% 36% 64%",
     radiusB: "42% 58% 61% 39% / 58% 42% 63% 37%",
-    offsetX: "-8px",
-    offsetY: "-4px",
+    radiusC: "37% 63% 52% 48% / 63% 37% 55% 45%",
+    radiusD: "59% 41% 36% 64% / 44% 56% 62% 38%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "-13px",
+    offsetBY: "-6px",
+    offsetCX: "8px",
+    offsetCY: "10px",
+    offsetDX: "12px",
+    offsetDY: "-3px",
     rotateA: "-26deg",
     rotateB: "19deg",
-    shadowA:
-      "-8px 2px 0 2px var(--button-hero-hover), 5px -6px 0 1px var(--button-hero-hover), 6px 6px 0 0 var(--button-hero-hover)",
-    shadowB:
-      "8px 4px 0 1px var(--button-hero-hover), -4px -6px 0 0 var(--button-hero-hover)",
+    rotateC: "-9deg",
+    rotateD: "27deg",
   },
 ];
 
@@ -150,18 +174,42 @@ export default function NaviButton({
         "--navi-hover-y": hoverOrigin.y,
         "--navi-blob-radius-a": blobVariant.radiusA,
         "--navi-blob-radius-b": blobVariant.radiusB,
-        "--navi-blob-offset-x": blobVariant.offsetX,
-        "--navi-blob-offset-y": blobVariant.offsetY,
+        "--navi-blob-radius-c": blobVariant.radiusC,
+        "--navi-blob-radius-d": blobVariant.radiusD,
+        "--navi-blob-offset-a-x": blobVariant.offsetAX,
+        "--navi-blob-offset-a-y": blobVariant.offsetAY,
+        "--navi-blob-offset-b-x": blobVariant.offsetBX,
+        "--navi-blob-offset-b-y": blobVariant.offsetBY,
+        "--navi-blob-offset-c-x": blobVariant.offsetCX,
+        "--navi-blob-offset-c-y": blobVariant.offsetCY,
+        "--navi-blob-offset-d-x": blobVariant.offsetDX,
+        "--navi-blob-offset-d-y": blobVariant.offsetDY,
         "--navi-blob-rotate-a": blobVariant.rotateA,
         "--navi-blob-rotate-b": blobVariant.rotateB,
-        "--navi-blob-shadow-a": blobVariant.shadowA,
-        "--navi-blob-shadow-b": blobVariant.shadowB,
+        "--navi-blob-rotate-c": blobVariant.rotateC,
+        "--navi-blob-rotate-d": blobVariant.rotateD,
         fontSize: tokens.typography.button.medium.fontSize,
         lineHeight: tokens.typography.button.medium.lineHeight,
         fontWeight: tokens.typography.button.medium.fontWeight,
         ...props.style,
       } as CSSProperties}
     >
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--a"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--b"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--c"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--d"
+      />
       <span className="relative z-[1]">{children}</span>
     </a>
   );

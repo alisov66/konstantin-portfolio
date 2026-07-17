@@ -245,30 +245,18 @@ html.no-smooth-scroll * {
 }
 
 .gem-icon-dot {
-  animation: gem-icon-smart-animate 2501ms infinite both;
+  transform: translate3d(0, 0, 0);
+  transition: transform 1250ms ease-in-out;
   will-change: transform;
 }
 
-@keyframes gem-icon-smart-animate {
-  0%,
-  49.98% {
-    transform: translate3d(0, 0, 0);
-    animation-timing-function: ease-in-out;
-  }
-
-  99.96% {
-    transform: translate3d(var(--gem-dot-x), var(--gem-dot-y), 0);
-    animation-timing-function: step-end;
-  }
-
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
+.capabilities-grid:has(.capability-card:is(:hover, :focus-visible)) .gem-icon-dot {
+  transform: translate3d(var(--gem-dot-x), var(--gem-dot-y), 0);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .gem-icon-dot {
-    animation: none;
+    transition: none;
   }
 }
 

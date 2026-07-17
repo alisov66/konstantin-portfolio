@@ -112,7 +112,7 @@ export default function CapabilitiesGrid() {
         Capabilities
       </h2>
 
-      <div className="grid w-full max-w-[var(--container-max)] auto-rows-fr grid-cols-1 items-stretch gap-[var(--base-6)] lg:grid-cols-3">
+      <div className="capabilities-grid grid w-full max-w-[var(--container-max)] auto-rows-fr grid-cols-1 items-stretch gap-[var(--base-6)] lg:grid-cols-3">
         <CapabilityCard
           capability={complexWorkflow}
           className="h-full w-full"

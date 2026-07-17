@@ -244,6 +244,35 @@ html.no-smooth-scroll * {
   }
 }
 
+.navi-button {
+  isolation: isolate;
+  overflow: hidden;
+  position: relative;
+}
+
+.navi-button::before {
+  background: var(--button-hero-hover);
+  clip-path: circle(0 at var(--navi-hover-x, 50%) var(--navi-hover-y, 50%));
+  content: "";
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.navi-button[data-hover="dot"]::before {
+  clip-path: circle(8px at var(--navi-hover-x, 50%) var(--navi-hover-y, 50%));
+  opacity: 1;
+  transition: none;
+}
+
+.navi-button[data-hover="fill"]::before {
+  clip-path: circle(150% at var(--navi-hover-x, 50%) var(--navi-hover-y, 50%));
+  opacity: 1;
+  transition: clip-path 150ms ease-in;
+}
+
 body {
   margin: 0;
   min-height: 100vh;

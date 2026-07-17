@@ -1,16 +1,17 @@
 "use client";
 
 import { useCallback, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 
 import CapabilityCard from "@/components/ui/CapabilityCard";
-import { capabilities } from "@/data/capabilities";
+import { capabilities, type CapabilityId } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
 
 type Dot = readonly [x: number, y: number];
 
 const gemSize = 208;
-const maxGemRotateX = 12;
-const maxGemRotateY = 14;
+const maxCardRotateX = 8;
+const maxCardRotateY = 10;
 
 const gemDotsByState: Record<"1" | "2", readonly Dot[]> = {
   "1": [
@@ -49,15 +50,11 @@ function typeStyle(token: {
 
 function DotPattern({
   dots,
-  lookX,
-  lookY,
   size,
   color,
   dotSize,
 }: {
   dots: readonly Dot[];
-  lookX: number;
-  lookY: number;
   size: number;
   color: string;
   dotSize: number;
@@ -68,66 +65,47 @@ function DotPattern({
       className="relative block shrink-0 overflow-hidden"
       style={{
         height: size,
-        transformStyle: "preserve-3d",
         width: size,
       }}
     >
-      {dots.map(([x, y], index) => {
-        const normalizedX = (x + dotSize / 2 - size / 2) / (size / 2);
-        const normalizedY = (y + dotSize / 2 - size / 2) / (size / 2);
-        const depth = normalizedX * lookX + normalizedY * lookY;
-        const translateX = lookX * depth * 7;
-        const translateY = lookY * depth * 7;
-        const translateZ = depth * 28;
-        const scale = 1 + depth * 0.08;
-
-        return (
-          <span
-            className="absolute rounded-full transition-transform duration-300 ease-out will-change-transform"
-            key={`${x}-${y}-${index}`}
-            style={{
-              backgroundColor: color,
-              height: dotSize,
-              left: x,
-              top: y,
-              transform: `translate3d(${translateX.toFixed(2)}px, ${translateY.toFixed(2)}px, ${translateZ.toFixed(2)}px) scale(${scale.toFixed(3)})`,
-              width: dotSize,
-            }}
-          />
-        );
-      })}
+      {dots.map(([x, y], index) => (
+        <span
+          className="absolute rounded-full"
+          key={`${x}-${y}-${index}`}
+          style={{
+            backgroundColor: color,
+            height: dotSize,
+            left: x,
+            top: y,
+            width: dotSize,
+          }}
+        />
+      ))}
     </span>
   );
 }
 
-function GemIcon({
-  lookX,
-  lookY,
-  state = "1",
-}: {
-  lookX: number;
-  lookY: number;
-  state?: "1" | "2";
-}) {
+function GemIcon({ state = "1" }: { state?: "1" | "2" }) {
   return (
     <DotPattern
       color="#659d4d"
       dotSize={8}
       dots={gemDotsByState[state]}
-      lookX={lookX}
-      lookY={lookY}
       size={gemSize}
     />
   );
 }
 
 export default function CapabilitiesGrid() {
-  const [gemLook, setGemLook] = useState({ x: 0, y: 0 });
+  const [activeCardId, setActiveCardId] = useState<CapabilityId | null>(null);
+  const [cardTransform, setCardTransform] = useState(
+    "perspective(800px) rotateX(0deg) rotateY(0deg)",
+  );
   const gemRef = useRef<HTMLDivElement | null>(null);
   const [complexWorkflow, designSystems, documentation, productScale, mobile] =
     capabilities;
 
-  const pointGemAtCard = useCallback((card: HTMLElement) => {
+  const pointCardAtGem = useCallback((id: CapabilityId, card: HTMLElement) => {
     const gem = gemRef.current;
 
     if (!gem) {
@@ -142,15 +120,32 @@ export default function CapabilitiesGrid() {
     const gemCenterY = gemRect.top + gemRect.height / 2;
     const rangeX = Math.max(window.innerWidth / 2, 1);
     const rangeY = Math.max(window.innerHeight / 2, 1);
-    const lookX = Math.max(-1, Math.min(1, (cardCenterX - gemCenterX) / rangeX));
-    const lookY = Math.max(-1, Math.min(1, (cardCenterY - gemCenterY) / rangeY));
+    const lookX = Math.max(-1, Math.min(1, (gemCenterX - cardCenterX) / rangeX));
+    const lookY = Math.max(-1, Math.min(1, (gemCenterY - cardCenterY) / rangeY));
+    const rotateX = lookY * maxCardRotateX;
+    const rotateY = lookX * maxCardRotateY;
 
-    setGemLook({ x: lookX, y: lookY });
+    setActiveCardId(id);
+    setCardTransform(
+      `perspective(800px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`,
+    );
   }, []);
 
-  const resetGemTransform = useCallback(() => {
-    setGemLook({ x: 0, y: 0 });
+  const resetCardTransform = useCallback(() => {
+    setActiveCardId(null);
+    setCardTransform("perspective(800px) rotateX(0deg) rotateY(0deg)");
   }, []);
+
+  const getCardStyle = useCallback(
+    (id: CapabilityId): CSSProperties => ({
+      transform:
+        activeCardId === id
+          ? cardTransform
+          : "perspective(800px) rotateX(0deg) rotateY(0deg)",
+      transformStyle: "preserve-3d",
+    }),
+    [activeCardId, cardTransform],
+  );
 
   return (
     <section
@@ -168,59 +163,74 @@ export default function CapabilitiesGrid() {
         <CapabilityCard
           capability={complexWorkflow}
           className="h-full w-full"
-          onBlur={resetGemTransform}
-          onFocus={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseEnter={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseLeave={resetGemTransform}
+          onBlur={resetCardTransform}
+          onFocus={(event) =>
+            pointCardAtGem(complexWorkflow.id, event.currentTarget)
+          }
+          onMouseEnter={(event) =>
+            pointCardAtGem(complexWorkflow.id, event.currentTarget)
+          }
+          onMouseLeave={resetCardTransform}
+          style={getCardStyle(complexWorkflow.id)}
         />
 
         <div className="hidden min-h-[280px] items-center justify-center lg:flex">
           <div
-            className="transition-transform duration-300 ease-out will-change-transform"
             ref={gemRef}
-            style={{
-              transform: `perspective(700px) rotateX(${(-gemLook.y * maxGemRotateX).toFixed(2)}deg) rotateY(${(gemLook.x * maxGemRotateY).toFixed(2)}deg)`,
-              transformStyle: "preserve-3d",
-            }}
           >
-            <GemIcon
-              lookX={gemLook.x}
-              lookY={gemLook.y}
-            />
+            <GemIcon />
           </div>
         </div>
 
         <CapabilityCard
           capability={designSystems}
           className="h-full w-full"
-          onBlur={resetGemTransform}
-          onFocus={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseEnter={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseLeave={resetGemTransform}
+          onBlur={resetCardTransform}
+          onFocus={(event) =>
+            pointCardAtGem(designSystems.id, event.currentTarget)
+          }
+          onMouseEnter={(event) =>
+            pointCardAtGem(designSystems.id, event.currentTarget)
+          }
+          onMouseLeave={resetCardTransform}
+          style={getCardStyle(designSystems.id)}
         />
         <CapabilityCard
           capability={productScale}
           className="h-full w-full"
-          onBlur={resetGemTransform}
-          onFocus={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseEnter={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseLeave={resetGemTransform}
+          onBlur={resetCardTransform}
+          onFocus={(event) =>
+            pointCardAtGem(productScale.id, event.currentTarget)
+          }
+          onMouseEnter={(event) =>
+            pointCardAtGem(productScale.id, event.currentTarget)
+          }
+          onMouseLeave={resetCardTransform}
+          style={getCardStyle(productScale.id)}
         />
         <CapabilityCard
           capability={documentation}
           className="h-full w-full"
-          onBlur={resetGemTransform}
-          onFocus={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseEnter={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseLeave={resetGemTransform}
+          onBlur={resetCardTransform}
+          onFocus={(event) =>
+            pointCardAtGem(documentation.id, event.currentTarget)
+          }
+          onMouseEnter={(event) =>
+            pointCardAtGem(documentation.id, event.currentTarget)
+          }
+          onMouseLeave={resetCardTransform}
+          style={getCardStyle(documentation.id)}
         />
         <CapabilityCard
           capability={mobile}
           className="h-full w-full"
-          onBlur={resetGemTransform}
-          onFocus={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseEnter={(event) => pointGemAtCard(event.currentTarget)}
-          onMouseLeave={resetGemTransform}
+          onBlur={resetCardTransform}
+          onFocus={(event) => pointCardAtGem(mobile.id, event.currentTarget)}
+          onMouseEnter={(event) =>
+            pointCardAtGem(mobile.id, event.currentTarget)
+          }
+          onMouseLeave={resetCardTransform}
+          style={getCardStyle(mobile.id)}
         />
       </div>
     </section>

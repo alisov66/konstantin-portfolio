@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type {
+  CSSProperties,
   FocusEventHandler,
   MouseEventHandler,
 } from "react";
@@ -216,6 +217,7 @@ export interface CapabilityCardProps {
   onFocus?: FocusEventHandler<HTMLAnchorElement>;
   onMouseEnter?: MouseEventHandler<HTMLAnchorElement>;
   onMouseLeave?: MouseEventHandler<HTMLAnchorElement>;
+  style?: CSSProperties;
 }
 
 export default function CapabilityCard({
@@ -225,12 +227,13 @@ export default function CapabilityCard({
   onFocus,
   onMouseEnter,
   onMouseLeave,
+  style,
 }: CapabilityCardProps) {
   return (
     <Link
       className={[
         "capability-card flex min-h-[280px] w-[312px] flex-col items-start gap-[var(--base-3)] rounded-[var(--xl)] bg-[var(--bg-beige-light)] p-[var(--base-6)] text-[var(--text-primary)] no-underline",
-        "transition-colors duration-300 ease-out hover:bg-[var(--button-hero-hover)] focus-visible:bg-[var(--button-hero-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]",
+        "transition-[background-color,transform] duration-300 ease-out hover:bg-[var(--button-hero-hover)] focus-visible:bg-[var(--button-hero-hover)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--text-primary)]",
         className,
       ]
         .filter(Boolean)
@@ -241,6 +244,7 @@ export default function CapabilityCard({
       onFocus={onFocus}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      style={style}
     >
       <CapabilityIcon id={capability.id} />
 

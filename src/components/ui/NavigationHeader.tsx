@@ -192,7 +192,6 @@ export default function NavigationHeader({
                   scrollToElementById("work");
                 }
               }}
-              state="default"
             >
               {item.label}
             </NaviButton>

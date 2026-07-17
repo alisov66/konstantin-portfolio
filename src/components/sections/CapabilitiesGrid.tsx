@@ -10,6 +10,8 @@ import { tokens } from "@/styles/tokens";
 type Dot = readonly [x: number, y: number];
 
 const gemAnimationDuration = 1251;
+const maxGemRotateX = 8;
+const maxGemRotateY = 10;
 
 const gemDotsByState: Record<"1" | "2", readonly Dot[]> = {
   "1": [
@@ -113,6 +115,10 @@ function GemIcon({
 
 export default function CapabilitiesGrid() {
   const [gemAnimationKey, setGemAnimationKey] = useState(0);
+  const [gemTransform, setGemTransform] = useState(
+    "perspective(700px) rotateX(0deg) rotateY(0deg)",
+  );
+  const gemRef = useRef<HTMLDivElement | null>(null);
   const gemIsAnimatingRef = useRef(false);
   const gemAnimationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -133,6 +139,45 @@ export default function CapabilitiesGrid() {
       gemAnimationTimeoutRef.current = null;
     }, gemAnimationDuration);
   }, []);
+
+  const pointGemAtCard = useCallback((card: HTMLElement) => {
+    const gem = gemRef.current;
+
+    if (!gem) {
+      return;
+    }
+
+    const cardRect = card.getBoundingClientRect();
+    const gemRect = gem.getBoundingClientRect();
+    const cardCenterX = cardRect.left + cardRect.width / 2;
+    const cardCenterY = cardRect.top + cardRect.height / 2;
+    const gemCenterX = gemRect.left + gemRect.width / 2;
+    const gemCenterY = gemRect.top + gemRect.height / 2;
+    const rangeX = Math.max(window.innerWidth / 2, 1);
+    const rangeY = Math.max(window.innerHeight / 2, 1);
+    const rotateY =
+      Math.max(-1, Math.min(1, (cardCenterX - gemCenterX) / rangeX)) *
+      maxGemRotateY;
+    const rotateX =
+      Math.max(-1, Math.min(1, (gemCenterY - cardCenterY) / rangeY)) *
+      maxGemRotateX;
+
+    setGemTransform(
+      `perspective(700px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg)`,
+    );
+  }, []);
+
+  const resetGemTransform = useCallback(() => {
+    setGemTransform("perspective(700px) rotateX(0deg) rotateY(0deg)");
+  }, []);
+
+  const handleCardInteractionStart = useCallback(
+    (card: HTMLElement) => {
+      pointGemAtCard(card);
+      playGemAnimation();
+    },
+    [playGemAnimation, pointGemAtCard],
+  );
 
   useEffect(() => {
     return () => {
@@ -158,37 +203,63 @@ export default function CapabilitiesGrid() {
         <CapabilityCard
           capability={complexWorkflow}
           className="h-full w-full"
-          onFocus={playGemAnimation}
-          onMouseEnter={playGemAnimation}
+          onBlur={resetGemTransform}
+          onFocus={(event) => handleCardInteractionStart(event.currentTarget)}
+          onMouseEnter={(event) =>
+            handleCardInteractionStart(event.currentTarget)
+          }
+          onMouseLeave={resetGemTransform}
         />
 
         <div className="hidden min-h-[280px] items-center justify-center lg:flex">
-          <GemIcon animationKey={gemAnimationKey} />
+          <div
+            className="transition-transform duration-300 ease-out will-change-transform"
+            ref={gemRef}
+            style={{ transform: gemTransform }}
+          >
+            <GemIcon animationKey={gemAnimationKey} />
+          </div>
         </div>
 
         <CapabilityCard
           capability={designSystems}
           className="h-full w-full"
-          onFocus={playGemAnimation}
-          onMouseEnter={playGemAnimation}
+          onBlur={resetGemTransform}
+          onFocus={(event) => handleCardInteractionStart(event.currentTarget)}
+          onMouseEnter={(event) =>
+            handleCardInteractionStart(event.currentTarget)
+          }
+          onMouseLeave={resetGemTransform}
         />
         <CapabilityCard
           capability={productScale}
           className="h-full w-full"
-          onFocus={playGemAnimation}
-          onMouseEnter={playGemAnimation}
+          onBlur={resetGemTransform}
+          onFocus={(event) => handleCardInteractionStart(event.currentTarget)}
+          onMouseEnter={(event) =>
+            handleCardInteractionStart(event.currentTarget)
+          }
+          onMouseLeave={resetGemTransform}
         />
         <CapabilityCard
           capability={documentation}
           className="h-full w-full"
-          onFocus={playGemAnimation}
-          onMouseEnter={playGemAnimation}
+          onBlur={resetGemTransform}
+          onFocus={(event) => handleCardInteractionStart(event.currentTarget)}
+          onMouseEnter={(event) =>
+            handleCardInteractionStart(event.currentTarget)
+          }
+          onMouseLeave={resetGemTransform}
         />
         <CapabilityCard
           capability={mobile}
           className="h-full w-full"
-          onFocus={playGemAnimation}
-          onMouseEnter={playGemAnimation}
+          onBlur={resetGemTransform}
+          onFocus={(event) => handleCardInteractionStart(event.currentTarget)}
+          onMouseEnter={(event) =>
+            handleCardInteractionStart(event.currentTarget)
+          }
+          onMouseLeave={resetGemTransform}
         />
       </div>
     </section>

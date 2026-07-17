@@ -197,7 +197,7 @@ function CapabilityIcon({ id }: { id: CapabilityId }) {
     <DotPattern
       colorByTone={{
         accent: "var(--text-accent)",
-        tertiary: "var(--text-tertiary)",
+        tertiary: "var(--bg-beige)",
       }}
       dots={capabilityIconDots[id]}
       size={88}

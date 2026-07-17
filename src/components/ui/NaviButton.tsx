@@ -32,6 +32,13 @@ export default function NaviButton({
     isHover ? "fill" : "idle",
   );
   const [hoverOrigin, setHoverOrigin] = useState({ x: "50%", y: "50%" });
+  const entryPointRef = useRef<{ x: number; y: number } | null>(null);
+  const [hoverTrail, setHoverTrail] = useState({
+    angle: "0deg",
+    width: "16px",
+    x: "50%",
+    y: "50%",
+  });
 
   const clearFillTimeout = () => {
     if (!fillTimeoutRef.current) {
@@ -50,17 +57,38 @@ export default function NaviButton({
     }, delay);
   };
 
-  const updateHoverOrigin = (event: Parameters<PointerEventHandler<HTMLAnchorElement>>[0]) => {
+  const updateHoverOrigin = (
+    event: Parameters<PointerEventHandler<HTMLAnchorElement>>[0],
+    resetEntry = false,
+  ) => {
     const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    if (resetEntry || !entryPointRef.current) {
+      entryPointRef.current = { x, y };
+    }
+
+    const entryPoint = entryPointRef.current;
+    const deltaX = x - entryPoint.x;
+    const deltaY = y - entryPoint.y;
+    const distance = Math.hypot(deltaX, deltaY);
+    const trailWidth = Math.max(16, distance + 16);
 
     setHoverOrigin({
-      x: `${event.clientX - rect.left}px`,
-      y: `${event.clientY - rect.top}px`,
+      x: `${x}px`,
+      y: `${y}px`,
+    });
+    setHoverTrail({
+      angle: `${Math.atan2(deltaY, deltaX)}rad`,
+      width: `${trailWidth}px`,
+      x: `${entryPoint.x + deltaX / 2}px`,
+      y: `${entryPoint.y + deltaY / 2}px`,
     });
   };
 
   const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
-    updateHoverOrigin(event);
+    updateHoverOrigin(event, true);
     setHoverState("dot");
     startFill(300);
     onPointerEnter?.(event);
@@ -76,6 +104,7 @@ export default function NaviButton({
 
   const handlePointerLeave: PointerEventHandler<HTMLAnchorElement> = (event) => {
     clearFillTimeout();
+    entryPointRef.current = null;
     setHoverState(isHover ? "fill" : "idle");
     onPointerLeave?.(event);
   };
@@ -102,11 +131,19 @@ export default function NaviButton({
       data-state={state}
       onBlur={(event) => {
         clearFillTimeout();
+        entryPointRef.current = null;
         setHoverState(isHover ? "fill" : "idle");
         onBlur?.(event);
       }}
       onFocus={(event) => {
+        entryPointRef.current = null;
         setHoverOrigin({ x: "50%", y: "50%" });
+        setHoverTrail({
+          angle: "0deg",
+          width: "16px",
+          x: "50%",
+          y: "50%",
+        });
         setHoverState("fill");
         onFocus?.(event);
       }}
@@ -116,6 +153,10 @@ export default function NaviButton({
       style={{
         "--navi-hover-x": hoverOrigin.x,
         "--navi-hover-y": hoverOrigin.y,
+        "--navi-trail-angle": hoverTrail.angle,
+        "--navi-trail-width": hoverTrail.width,
+        "--navi-trail-x": hoverTrail.x,
+        "--navi-trail-y": hoverTrail.y,
         fontSize: tokens.typography.button.medium.fontSize,
         lineHeight: tokens.typography.button.medium.lineHeight,
         fontWeight: tokens.typography.button.medium.fontWeight,

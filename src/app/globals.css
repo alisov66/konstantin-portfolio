@@ -270,19 +270,29 @@ html.no-smooth-scroll * {
 .navi-button::after {
   border-radius: 57% 43% 48% 52%;
   filter: blur(1px);
+  left: var(--navi-trail-x, var(--navi-hover-x, 50%));
+  top: var(--navi-trail-y, var(--navi-hover-y, 50%));
+  width: var(--navi-trail-width, 16px);
 }
 
 .navi-button[data-hover="dot"]::before {
   opacity: 1;
-  transform: translate3d(-50%, -50%, 0) scale(1);
+  transform: translate3d(-50%, -50%, 0) scale(1.05);
   transition:
-    left 35ms linear,
-    top 35ms linear;
+    left 90ms cubic-bezier(0.16, 1, 0.3, 1),
+    top 90ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 120ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navi-button[data-hover="dot"]::after {
-  opacity: 0;
-  transition: none;
+  opacity: 0.72;
+  transform: translate3d(-50%, -50%, 0) rotate(var(--navi-trail-angle, 0deg)) scaleY(0.82);
+  transition:
+    left 90ms cubic-bezier(0.16, 1, 0.3, 1),
+    top 90ms cubic-bezier(0.16, 1, 0.3, 1),
+    width 90ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 120ms ease-out;
 }
 
 .navi-button[data-hover="fill"]::before {
@@ -296,7 +306,7 @@ html.no-smooth-scroll * {
 
 .navi-button[data-hover="fill"]::after {
   opacity: 0.75;
-  transform: translate3d(calc(-50% + 7px), calc(-50% - 4px), 0) scale(15);
+  transform: translate3d(calc(-50% + 7px), calc(-50% - 4px), 0) rotate(var(--navi-trail-angle, 0deg)) scale(15);
   transition:
     transform 330ms ease-in 20ms,
     border-radius 330ms ease-in 20ms,

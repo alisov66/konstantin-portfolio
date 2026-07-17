@@ -34,25 +34,17 @@ function typeStyle(token: {
 
 export interface NavigationHeaderProps {
   alwaysVisible?: boolean;
-  enableActiveStates?: boolean;
   heroId?: string;
 }
 
 export default function NavigationHeader({
   alwaysVisible = false,
-  enableActiveStates = true,
   heroId = "hero",
 }: NavigationHeaderProps) {
   const [animationState, setAnimationState] = useState<
     "hidden" | "entering" | "exiting"
   >(alwaysVisible ? "entering" : "hidden");
-  const [activeSectionId, setActiveSectionId] = useState<string | null>(
-    alwaysVisible && enableActiveStates ? "work" : null,
-  );
   const isVisibleRef = useRef(alwaysVisible);
-  const activeSectionIdRef = useRef<string | null>(
-    alwaysVisible && enableActiveStates ? "work" : null,
-  );
   const exitTimeoutRef = useRef<number | null>(null);
 
   useEffect(() => {
@@ -71,41 +63,8 @@ export default function NavigationHeader({
       exitTimeoutRef.current = null;
     };
 
-    const updateActiveSection = () => {
-      if (!enableActiveStates) {
-        return;
-      }
-
-      const marker = window.scrollY + headerClearance;
-      let nextActiveSectionId: string | null = null;
-
-      for (const item of navigationItems) {
-        if (!item.sectionId) {
-          continue;
-        }
-
-        const section = document.getElementById(item.sectionId);
-
-        if (!section) {
-          continue;
-        }
-
-        if (section.offsetTop <= marker) {
-          nextActiveSectionId = item.sectionId;
-        }
-      }
-
-      if (nextActiveSectionId === activeSectionIdRef.current) {
-        return;
-      }
-
-      activeSectionIdRef.current = nextActiveSectionId;
-      setActiveSectionId(nextActiveSectionId);
-    };
-
     const updateVisibility = () => {
       frame = 0;
-      updateActiveSection();
 
       const hero = document.getElementById(heroId);
 
@@ -162,7 +121,7 @@ export default function NavigationHeader({
       window.removeEventListener("scroll", scheduleUpdate);
       window.removeEventListener("resize", scheduleUpdate);
     };
-  }, [alwaysVisible, enableActiveStates, heroId]);
+  }, [alwaysVisible, heroId]);
 
   if (animationState === "hidden") {
     return null;
@@ -233,13 +192,7 @@ export default function NavigationHeader({
                   scrollToElementById("work");
                 }
               }}
-              state={
-                enableActiveStates &&
-                item.sectionId &&
-                item.sectionId === activeSectionId
-                  ? "active"
-                  : "default"
-              }
+              state="default"
             >
               {item.label}
             </NaviButton>

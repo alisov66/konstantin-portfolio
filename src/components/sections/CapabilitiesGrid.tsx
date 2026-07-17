@@ -1,13 +1,15 @@
- "use client";
+"use client";
 
 import type { CSSProperties } from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import CapabilityCard from "@/components/ui/CapabilityCard";
 import { capabilities } from "@/data/capabilities";
 import { tokens } from "@/styles/tokens";
 
 type Dot = readonly [x: number, y: number];
+
+const gemAnimationDuration = 1251;
 
 const gemDotsByState: Record<"1" | "2", readonly Dot[]> = {
   "1": [
@@ -111,10 +113,33 @@ function GemIcon({
 
 export default function CapabilitiesGrid() {
   const [gemAnimationKey, setGemAnimationKey] = useState(0);
+  const gemIsAnimatingRef = useRef(false);
+  const gemAnimationTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [complexWorkflow, designSystems, documentation, productScale, mobile] =
     capabilities;
+
   const playGemAnimation = useCallback(() => {
+    if (gemIsAnimatingRef.current) {
+      return;
+    }
+
+    gemIsAnimatingRef.current = true;
     setGemAnimationKey((currentKey) => currentKey + 1);
+
+    gemAnimationTimeoutRef.current = setTimeout(() => {
+      gemIsAnimatingRef.current = false;
+      gemAnimationTimeoutRef.current = null;
+    }, gemAnimationDuration);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (gemAnimationTimeoutRef.current) {
+        clearTimeout(gemAnimationTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (

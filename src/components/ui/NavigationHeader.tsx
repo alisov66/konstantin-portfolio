@@ -155,7 +155,7 @@ export default function NavigationHeader({
           <span className="relative size-[52px] shrink-0 overflow-hidden">
             <img
               alt="Konstantin Alisov"
-              className="absolute left-[-6%] top-[-6%] size-[112%] max-w-none object-cover"
+              className="absolute inset-0 size-full max-w-none object-cover"
               src={avatarSrc}
             />
           </span>

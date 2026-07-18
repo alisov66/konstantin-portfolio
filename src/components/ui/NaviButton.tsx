@@ -6,7 +6,7 @@ import type {
   PointerEventHandler,
   ReactNode,
 } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { tokens } from "@/styles/tokens";
 
@@ -101,12 +101,24 @@ export default function NaviButton({
   ...props
 }: NaviButtonProps) {
   const isHover = state === "hover";
-  const [hoverState, setHoverState] = useState<"idle" | "fill">(
+  const [hoverState, setHoverState] = useState<"idle" | "fill" | "drain">(
     isHover ? "fill" : "idle",
   );
   const [hoverOrigin, setHoverOrigin] = useState({ x: "50%", y: "50%" });
   const [blobVariantIndex, setBlobVariantIndex] = useState(0);
   const blobVariant = blobVariants[blobVariantIndex];
+  const drainTimeoutRef = useRef<number | null>(null);
+
+  const clearDrainTimeout = () => {
+    if (drainTimeoutRef.current === null) {
+      return;
+    }
+
+    window.clearTimeout(drainTimeoutRef.current);
+    drainTimeoutRef.current = null;
+  };
+
+  useEffect(() => clearDrainTimeout, []);
 
   const updateHoverOrigin = (
     event: Parameters<PointerEventHandler<HTMLAnchorElement>>[0],
@@ -122,6 +134,7 @@ export default function NaviButton({
   };
 
   const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
+    clearDrainTimeout();
     updateHoverOrigin(event);
     setBlobVariantIndex((currentIndex) => {
       const nextIndex = Math.floor(Math.random() * blobVariants.length);
@@ -135,7 +148,19 @@ export default function NaviButton({
   };
 
   const handlePointerLeave: PointerEventHandler<HTMLAnchorElement> = (event) => {
-    setHoverState(isHover ? "fill" : "idle");
+    clearDrainTimeout();
+    updateHoverOrigin(event);
+
+    if (isHover) {
+      setHoverState("fill");
+    } else {
+      setHoverState("drain");
+      drainTimeoutRef.current = window.setTimeout(() => {
+        drainTimeoutRef.current = null;
+        setHoverState("idle");
+      }, 300);
+    }
+
     onPointerLeave?.(event);
   };
 
@@ -156,10 +181,16 @@ export default function NaviButton({
       data-hover={hoverState}
       data-state={state}
       onBlur={(event) => {
-        setHoverState(isHover ? "fill" : "idle");
+        clearDrainTimeout();
+        setHoverState(isHover ? "fill" : "drain");
+        drainTimeoutRef.current = window.setTimeout(() => {
+          drainTimeoutRef.current = null;
+          setHoverState(isHover ? "fill" : "idle");
+        }, 300);
         onBlur?.(event);
       }}
       onFocus={(event) => {
+        clearDrainTimeout();
         setHoverOrigin({ x: "50%", y: "50%" });
         setBlobVariantIndex(
           (currentIndex) => (currentIndex + 1) % blobVariants.length,

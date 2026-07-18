@@ -314,6 +314,22 @@ html.no-smooth-scroll * {
   animation: navi-blob-fill-d 300ms ease-in 42ms forwards;
 }
 
+.navi-button[data-hover="drain"] .navi-button__blob--a {
+  animation: navi-blob-drain-a 300ms ease-in forwards;
+}
+
+.navi-button[data-hover="drain"] .navi-button__blob--b {
+  animation: navi-blob-drain-b 300ms ease-in 16ms forwards;
+}
+
+.navi-button[data-hover="drain"] .navi-button__blob--c {
+  animation: navi-blob-drain-c 300ms ease-in 28ms forwards;
+}
+
+.navi-button[data-hover="drain"] .navi-button__blob--d {
+  animation: navi-blob-drain-d 300ms ease-in 42ms forwards;
+}
+
 @keyframes navi-blob-fill-a {
   0% {
     opacity: 1;
@@ -342,6 +358,37 @@ html.no-smooth-scroll * {
         0
       )
       rotate(var(--navi-blob-rotate-a, 0deg)) scaleX(20) scaleY(16);
+  }
+}
+
+@keyframes navi-blob-drain-a {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-a, 0deg)) scaleX(20) scaleY(16);
+  }
+
+  64% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-a, 0deg)) scaleX(5.8) scaleY(3.4);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-a, 0deg)) scale(0.08);
   }
 }
 
@@ -376,6 +423,37 @@ html.no-smooth-scroll * {
   }
 }
 
+@keyframes navi-blob-drain-b {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scaleX(18) scaleY(14);
+  }
+
+  56% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scaleX(5.2) scaleY(3.7);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scale(0.06);
+  }
+}
+
 @keyframes navi-blob-fill-c {
   0% {
     opacity: 1;
@@ -407,6 +485,37 @@ html.no-smooth-scroll * {
   }
 }
 
+@keyframes navi-blob-drain-c {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scaleX(17) scaleY(13);
+  }
+
+  48% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scaleX(4.6) scaleY(3);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scale(0.1);
+  }
+}
+
 @keyframes navi-blob-fill-d {
   0% {
     opacity: 1;
@@ -435,6 +544,37 @@ html.no-smooth-scroll * {
         0
       )
       rotate(var(--navi-blob-rotate-d, 0deg)) scaleX(16) scaleY(12);
+  }
+}
+
+@keyframes navi-blob-drain-d {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scaleX(16) scaleY(12);
+  }
+
+  42% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scaleX(4.2) scaleY(2.8);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scale(0.08);
   }
 }
 

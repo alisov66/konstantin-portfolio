@@ -6,34 +6,89 @@ import type {
   PointerEventHandler,
   ReactNode,
 } from "react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 import { tokens } from "@/styles/tokens";
+
+const blobVariants = [
+  {
+    radiusA: "47% 53% 41% 59% / 56% 38% 62% 44%",
+    radiusB: "62% 38% 59% 41% / 44% 58% 42% 56%",
+    radiusC: "39% 61% 57% 43% / 48% 62% 38% 52%",
+    radiusD: "56% 44% 38% 62% / 61% 36% 64% 39%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "12px",
+    offsetBY: "-7px",
+    offsetCX: "-10px",
+    offsetCY: "8px",
+    offsetDX: "5px",
+    offsetDY: "12px",
+    rotateA: "18deg",
+    rotateB: "-22deg",
+    rotateC: "31deg",
+    rotateD: "-13deg",
+  },
+  {
+    radiusA: "58% 42% 63% 37% / 39% 61% 45% 55%",
+    radiusB: "43% 57% 38% 62% / 60% 40% 57% 43%",
+    radiusC: "64% 36% 48% 52% / 45% 55% 63% 37%",
+    radiusD: "41% 59% 60% 40% / 58% 42% 39% 61%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "-11px",
+    offsetBY: "8px",
+    offsetCX: "11px",
+    offsetCY: "7px",
+    offsetDX: "-4px",
+    offsetDY: "-12px",
+    rotateA: "-14deg",
+    rotateB: "28deg",
+    rotateC: "-32deg",
+    rotateD: "12deg",
+  },
+  {
+    radiusA: "39% 61% 55% 45% / 52% 43% 57% 48%",
+    radiusB: "56% 44% 46% 54% / 37% 59% 41% 63%",
+    radiusC: "45% 55% 65% 35% / 59% 41% 53% 47%",
+    radiusD: "62% 38% 42% 58% / 40% 60% 36% 64%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "13px",
+    offsetBY: "6px",
+    offsetCX: "-8px",
+    offsetCY: "-10px",
+    offsetDX: "-12px",
+    offsetDY: "3px",
+    rotateA: "24deg",
+    rotateB: "-16deg",
+    rotateC: "9deg",
+    rotateD: "-28deg",
+  },
+  {
+    radiusA: "61% 39% 44% 56% / 46% 54% 36% 64%",
+    radiusB: "42% 58% 61% 39% / 58% 42% 63% 37%",
+    radiusC: "37% 63% 52% 48% / 63% 37% 55% 45%",
+    radiusD: "59% 41% 36% 64% / 44% 56% 62% 38%",
+    offsetAX: "0px",
+    offsetAY: "0px",
+    offsetBX: "-13px",
+    offsetBY: "-6px",
+    offsetCX: "8px",
+    offsetCY: "10px",
+    offsetDX: "12px",
+    offsetDY: "-3px",
+    rotateA: "-26deg",
+    rotateB: "19deg",
+    rotateC: "-9deg",
+    rotateD: "27deg",
+  },
+];
 
 export interface NaviButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   children: ReactNode;
   state?: "default" | "hover";
 }
-
-type WaterState = {
-  angle: string;
-  driftX: string;
-  driftY: string;
-  radiusX: string;
-  strength: string;
-  x: string;
-  y: string;
-};
-
-const defaultWaterState: WaterState = {
-  angle: "0deg",
-  driftX: "0px",
-  driftY: "0px",
-  radiusX: "150px",
-  strength: "1",
-  x: "50%",
-  y: "50%",
-};
 
 export default function NaviButton({
   children,
@@ -41,68 +96,46 @@ export default function NaviButton({
   state = "default",
   onPointerEnter,
   onPointerLeave,
-  onPointerMove,
   onFocus,
   onBlur,
   ...props
 }: NaviButtonProps) {
   const isHover = state === "hover";
-  const [hoverState, setHoverState] = useState<"idle" | "open">(
-    isHover ? "open" : "idle",
+  const [hoverState, setHoverState] = useState<"idle" | "fill">(
+    isHover ? "fill" : "idle",
   );
-  const [waterState, setWaterState] =
-    useState<WaterState>(defaultWaterState);
-  const previousPointRef = useRef<{ x: number; y: number } | null>(null);
+  const [hoverOrigin, setHoverOrigin] = useState({ x: "50%", y: "50%" });
+  const [blobVariantIndex, setBlobVariantIndex] = useState(0);
+  const blobVariant = blobVariants[blobVariantIndex];
 
-  const updateWaterState = (
+  const updateHoverOrigin = (
     event: Parameters<PointerEventHandler<HTMLAnchorElement>>[0],
-    isEntry = false,
   ) => {
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
-    const previousPoint = previousPointRef.current;
-    const fallbackX = x - rect.width / 2;
-    const fallbackY = y - rect.height / 2;
-    const movementX = previousPoint ? x - previousPoint.x : fallbackX;
-    const movementY = previousPoint ? y - previousPoint.y : fallbackY;
-    const distance = Math.hypot(movementX, movementY);
-    const normalizedDistance = Math.min(distance / 28, 1);
-    const angle = Math.atan2(movementY, movementX);
-    const driftDistance = isEntry
-      ? 4 + normalizedDistance * 8
-      : 2 + normalizedDistance * 10;
-    const driftX = Math.cos(angle) * driftDistance;
-    const driftY = Math.sin(angle) * driftDistance;
-    const strength = 1 + normalizedDistance * 0.42;
 
-    previousPointRef.current = { x, y };
-    setWaterState({
-      angle: `${angle}rad`,
-      driftX: `${driftX.toFixed(2)}px`,
-      driftY: `${driftY.toFixed(2)}px`,
-      radiusX: `${(150 * strength).toFixed(2)}px`,
-      strength: `${strength}`,
+    setHoverOrigin({
       x: `${x}px`,
       y: `${y}px`,
     });
   };
 
   const handlePointerEnter: PointerEventHandler<HTMLAnchorElement> = (event) => {
-    previousPointRef.current = null;
-    updateWaterState(event, true);
-    setHoverState("open");
+    updateHoverOrigin(event);
+    setBlobVariantIndex((currentIndex) => {
+      const nextIndex = Math.floor(Math.random() * blobVariants.length);
+
+      return nextIndex === currentIndex
+        ? (nextIndex + 1) % blobVariants.length
+        : nextIndex;
+    });
+    setHoverState("fill");
     onPointerEnter?.(event);
   };
 
-  const handlePointerMove: PointerEventHandler<HTMLAnchorElement> = (event) => {
-    updateWaterState(event);
-    onPointerMove?.(event);
-  };
-
   const handlePointerLeave: PointerEventHandler<HTMLAnchorElement> = (event) => {
-    previousPointRef.current = null;
-    setHoverState(isHover ? "open" : "idle");
+    setHoverState(isHover ? "fill" : "idle");
     onPointerLeave?.(event);
   };
 
@@ -123,36 +156,61 @@ export default function NaviButton({
       data-hover={hoverState}
       data-state={state}
       onBlur={(event) => {
-        setHoverState(isHover ? "open" : "idle");
+        setHoverState(isHover ? "fill" : "idle");
         onBlur?.(event);
       }}
       onFocus={(event) => {
-        setWaterState(defaultWaterState);
-        setHoverState("open");
+        setHoverOrigin({ x: "50%", y: "50%" });
+        setBlobVariantIndex(
+          (currentIndex) => (currentIndex + 1) % blobVariants.length,
+        );
+        setHoverState("fill");
         onFocus?.(event);
       }}
       onPointerEnter={handlePointerEnter}
       onPointerLeave={handlePointerLeave}
-      onPointerMove={handlePointerMove}
-      style={
-        {
-          "--navi-water-angle": waterState.angle,
-          "--navi-water-drift-x": waterState.driftX,
-          "--navi-water-drift-y": waterState.driftY,
-          "--navi-water-radius-open-x": waterState.radiusX,
-          "--navi-water-strength": waterState.strength,
-          "--navi-water-x": waterState.x,
-          "--navi-water-y": waterState.y,
-          fontSize: tokens.typography.button.medium.fontSize,
-          lineHeight: tokens.typography.button.medium.lineHeight,
-          fontWeight: tokens.typography.button.medium.fontWeight,
-          ...props.style,
-        } as CSSProperties
-      }
+      style={{
+        "--navi-hover-x": hoverOrigin.x,
+        "--navi-hover-y": hoverOrigin.y,
+        "--navi-blob-radius-a": blobVariant.radiusA,
+        "--navi-blob-radius-b": blobVariant.radiusB,
+        "--navi-blob-radius-c": blobVariant.radiusC,
+        "--navi-blob-radius-d": blobVariant.radiusD,
+        "--navi-blob-offset-a-x": blobVariant.offsetAX,
+        "--navi-blob-offset-a-y": blobVariant.offsetAY,
+        "--navi-blob-offset-b-x": blobVariant.offsetBX,
+        "--navi-blob-offset-b-y": blobVariant.offsetBY,
+        "--navi-blob-offset-c-x": blobVariant.offsetCX,
+        "--navi-blob-offset-c-y": blobVariant.offsetCY,
+        "--navi-blob-offset-d-x": blobVariant.offsetDX,
+        "--navi-blob-offset-d-y": blobVariant.offsetDY,
+        "--navi-blob-rotate-a": blobVariant.rotateA,
+        "--navi-blob-rotate-b": blobVariant.rotateB,
+        "--navi-blob-rotate-c": blobVariant.rotateC,
+        "--navi-blob-rotate-d": blobVariant.rotateD,
+        fontSize: tokens.typography.button.medium.fontSize,
+        lineHeight: tokens.typography.button.medium.lineHeight,
+        fontWeight: tokens.typography.button.medium.fontWeight,
+        ...props.style,
+      } as CSSProperties}
     >
-      <span aria-hidden="true" className="navi-button__surface" />
-      <span aria-hidden="true" className="navi-button__wake" />
-      <span className="relative z-[2]">{children}</span>
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--a"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--b"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--c"
+      />
+      <span
+        aria-hidden="true"
+        className="navi-button__blob navi-button__blob--d"
+      />
+      <span className="relative z-[1]">{children}</span>
     </a>
   );
 }

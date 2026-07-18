@@ -244,111 +244,197 @@ html.no-smooth-scroll * {
   }
 }
 
-@property --navi-water-radius-x {
-  inherits: true;
-  initial-value: 0px;
-  syntax: "<length>";
-}
-
-@property --navi-water-radius-y {
-  inherits: true;
-  initial-value: 0px;
-  syntax: "<length>";
-}
-
 .navi-button {
-  background: var(--button-hero-hover);
   isolation: isolate;
   overflow: hidden;
   position: relative;
 }
 
-.navi-button__surface,
-.navi-button__wake {
-  inset: 0;
+.navi-button__blob {
+  background: var(--button-hero-hover);
+  left: var(--navi-hover-x, 50%);
+  opacity: 0;
   pointer-events: none;
   position: absolute;
+  top: var(--navi-hover-y, 50%);
+  transform: translate3d(-50%, -50%, 0) scale(0);
+  transform-origin: center;
   z-index: 0;
 }
 
-.navi-button__surface {
-  --navi-water-radius-x: 0px;
-  --navi-water-radius-y: 0px;
-  background: var(--bg-beige-light);
-  mask-image: radial-gradient(
-    ellipse var(--navi-water-radius-x) var(--navi-water-radius-y) at
-      calc(var(--navi-water-x, 50%) + var(--navi-water-drift-x, 0px))
-      calc(var(--navi-water-y, 50%) + var(--navi-water-drift-y, 0px)),
-    transparent 0%,
-    transparent 62%,
-    rgba(0, 0, 0, 0.25) 73%,
-    #000 100%
+.navi-button__blob--a {
+  border-radius: var(
+    --navi-blob-radius-a,
+    47% 53% 41% 59% / 56% 38% 62% 44%
   );
-  transition:
-    --navi-water-radius-x 300ms ease-out,
-    --navi-water-radius-y 300ms ease-out;
-  -webkit-mask-image: radial-gradient(
-    ellipse var(--navi-water-radius-x) var(--navi-water-radius-y) at
-      calc(var(--navi-water-x, 50%) + var(--navi-water-drift-x, 0px))
-      calc(var(--navi-water-y, 50%) + var(--navi-water-drift-y, 0px)),
-    transparent 0%,
-    transparent 62%,
-    rgba(0, 0, 0, 0.25) 73%,
-    #000 100%
-  );
+  height: 16px;
+  width: 16px;
 }
 
-.navi-button__wake {
-  background: var(--bg-beige-light);
-  border-radius: 45% 55% 58% 42% / 52% 38% 62% 48%;
+.navi-button__blob--b {
+  border-radius: var(
+    --navi-blob-radius-b,
+    62% 38% 59% 41% / 44% 58% 42% 56%
+  );
   height: 18px;
-  left: var(--navi-water-x, 50%);
-  opacity: 0;
-  top: var(--navi-water-y, 50%);
-  transform: translate3d(-50%, -50%, 0) rotate(var(--navi-water-angle, 0deg))
-    scaleX(calc(0.1 * var(--navi-water-strength, 1))) scaleY(0.08);
-  transform-origin: center;
   width: 18px;
-  z-index: 1;
 }
 
-.navi-button[data-hover="open"] .navi-button__surface {
-  --navi-water-radius-x: var(--navi-water-radius-open-x, 150px);
-  --navi-water-radius-y: 96px;
+.navi-button__blob--c {
+  border-radius: var(
+    --navi-blob-radius-c,
+    39% 61% 57% 43% / 48% 62% 38% 52%
+  );
+  height: 13px;
+  width: 13px;
 }
 
-.navi-button[data-hover="open"] .navi-button__wake {
-  animation: navi-water-wake 300ms ease-out forwards;
+.navi-button__blob--d {
+  border-radius: var(
+    --navi-blob-radius-d,
+    56% 44% 38% 62% / 61% 36% 64% 39%
+  );
+  height: 14px;
+  width: 14px;
 }
 
-@keyframes navi-water-wake {
+.navi-button[data-hover="fill"] .navi-button__blob--a {
+  animation: navi-blob-fill-a 300ms ease-in forwards;
+}
+
+.navi-button[data-hover="fill"] .navi-button__blob--b {
+  animation: navi-blob-fill-b 300ms ease-in 16ms forwards;
+}
+
+.navi-button[data-hover="fill"] .navi-button__blob--c {
+  animation: navi-blob-fill-c 300ms ease-in 28ms forwards;
+}
+
+.navi-button[data-hover="fill"] .navi-button__blob--d {
+  animation: navi-blob-fill-d 300ms ease-in 42ms forwards;
+}
+
+@keyframes navi-blob-fill-a {
   0% {
-    opacity: 0.95;
-    transform: translate3d(-50%, -50%, 0) rotate(var(--navi-water-angle, 0deg))
-      scaleX(calc(0.2 * var(--navi-water-strength, 1))) scaleY(0.12);
-  }
-
-  45% {
-    border-radius: 58% 42% 48% 52% / 38% 59% 41% 62%;
-    opacity: 0.78;
+    opacity: 1;
     transform: translate3d(
-        calc(-50% + var(--navi-water-drift-x, 0px)),
-        calc(-50% + var(--navi-water-drift-y, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
         0
       )
-      rotate(var(--navi-water-angle, 0deg))
-      scaleX(calc(3.8 * var(--navi-water-strength, 1))) scaleY(1.8);
+      rotate(var(--navi-blob-rotate-a, 0deg)) scale(0.08);
+  }
+
+  36% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-a, 0deg)) scaleX(5.8) scaleY(3.4);
   }
 
   100% {
-    opacity: 0;
+    opacity: 1;
     transform: translate3d(
-        calc(-50% + var(--navi-water-drift-x, 0px)),
-        calc(-50% + var(--navi-water-drift-y, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-x, 0px)),
+        calc(-50% + var(--navi-blob-offset-a-y, 0px)),
         0
       )
-      rotate(var(--navi-water-angle, 0deg))
-      scaleX(calc(8 * var(--navi-water-strength, 1))) scaleY(3.1);
+      rotate(var(--navi-blob-rotate-a, 0deg)) scaleX(20) scaleY(16);
+  }
+}
+
+@keyframes navi-blob-fill-b {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scale(0.06);
+  }
+
+  44% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scaleX(5.2) scaleY(3.7);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-b-x, 12px)),
+        calc(-50% + var(--navi-blob-offset-b-y, -7px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-b, 0deg)) scaleX(18) scaleY(14);
+  }
+}
+
+@keyframes navi-blob-fill-c {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scale(0.1);
+  }
+
+  52% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scaleX(4.6) scaleY(3);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-c-x, -10px)),
+        calc(-50% + var(--navi-blob-offset-c-y, 8px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-c, 0deg)) scaleX(17) scaleY(13);
+  }
+}
+
+@keyframes navi-blob-fill-d {
+  0% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scale(0.08);
+  }
+
+  58% {
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scaleX(4.2) scaleY(2.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(
+        calc(-50% + var(--navi-blob-offset-d-x, 5px)),
+        calc(-50% + var(--navi-blob-offset-d-y, 12px)),
+        0
+      )
+      rotate(var(--navi-blob-rotate-d, 0deg)) scaleX(16) scaleY(12);
   }
 }
 

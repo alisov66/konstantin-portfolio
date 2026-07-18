@@ -244,7 +244,8 @@ html.no-smooth-scroll * {
   }
 }
 
-.navi-button {
+.navi-button,
+.hero-button {
   isolation: isolate;
   overflow: hidden;
   position: relative;
@@ -298,35 +299,43 @@ html.no-smooth-scroll * {
   width: 14px;
 }
 
-.navi-button[data-hover="fill"] .navi-button__blob--a {
+.navi-button[data-hover="fill"] .navi-button__blob--a,
+.hero-button[data-hover="fill"] .navi-button__blob--a {
   animation: navi-blob-fill-a 300ms ease-in forwards;
 }
 
-.navi-button[data-hover="fill"] .navi-button__blob--b {
+.navi-button[data-hover="fill"] .navi-button__blob--b,
+.hero-button[data-hover="fill"] .navi-button__blob--b {
   animation: navi-blob-fill-b 300ms ease-in 16ms forwards;
 }
 
-.navi-button[data-hover="fill"] .navi-button__blob--c {
+.navi-button[data-hover="fill"] .navi-button__blob--c,
+.hero-button[data-hover="fill"] .navi-button__blob--c {
   animation: navi-blob-fill-c 300ms ease-in 28ms forwards;
 }
 
-.navi-button[data-hover="fill"] .navi-button__blob--d {
+.navi-button[data-hover="fill"] .navi-button__blob--d,
+.hero-button[data-hover="fill"] .navi-button__blob--d {
   animation: navi-blob-fill-d 300ms ease-in 42ms forwards;
 }
 
-.navi-button[data-hover="drain"] .navi-button__blob--a {
+.navi-button[data-hover="drain"] .navi-button__blob--a,
+.hero-button[data-hover="drain"] .navi-button__blob--a {
   animation: navi-blob-drain-a 300ms ease-in forwards;
 }
 
-.navi-button[data-hover="drain"] .navi-button__blob--b {
+.navi-button[data-hover="drain"] .navi-button__blob--b,
+.hero-button[data-hover="drain"] .navi-button__blob--b {
   animation: navi-blob-drain-b 300ms ease-in 16ms forwards;
 }
 
-.navi-button[data-hover="drain"] .navi-button__blob--c {
+.navi-button[data-hover="drain"] .navi-button__blob--c,
+.hero-button[data-hover="drain"] .navi-button__blob--c {
   animation: navi-blob-drain-c 300ms ease-in 28ms forwards;
 }
 
-.navi-button[data-hover="drain"] .navi-button__blob--d {
+.navi-button[data-hover="drain"] .navi-button__blob--d,
+.hero-button[data-hover="drain"] .navi-button__blob--d {
   animation: navi-blob-drain-d 300ms ease-in 42ms forwards;
 }
 

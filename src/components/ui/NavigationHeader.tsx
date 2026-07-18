@@ -138,7 +138,7 @@ export default function NavigationHeader({
     >
       <nav
         aria-label="Primary"
-        className="flex w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--lg)] bg-[var(--bg-beige-light)] py-[var(--base-2)] pl-[var(--base-3)] pr-[var(--base-2)]"
+        className="flex w-full max-w-[var(--container-max)] items-center justify-between gap-[var(--base-6)] rounded-[var(--lg)] bg-[var(--bg-beige-light)] px-[var(--base-3)] py-[var(--base-2)]"
       >
         <Link
           aria-label="Go to homepage"

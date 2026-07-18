@@ -168,7 +168,7 @@ export default function NaviButton({
     <a
       {...props}
       className={[
-        "navi-button inline-flex shrink-0 flex-col items-start justify-center whitespace-nowrap rounded-[var(--pill)] px-[var(--base-4)] py-[var(--base-4)] no-underline",
+        "navi-button inline-flex shrink-0 flex-col items-start justify-center whitespace-nowrap rounded-[var(--pill)] bg-[var(--bg-beige-light)] px-[var(--base-4)] py-[var(--base-3)] no-underline",
         isHover
           ? "text-[var(--button-hero-text)]"
           : "text-[var(--text-primary)]",

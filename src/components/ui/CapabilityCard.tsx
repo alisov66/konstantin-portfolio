@@ -243,10 +243,25 @@ export default function CapabilityCard({
       data-name="capability card"
       href={`/capabilities/${capability.id}`}
       onBlur={onBlur}
+      onClick={(event) => {
+        if (
+          event.defaultPrevented ||
+          event.button !== 0 ||
+          event.metaKey ||
+          event.altKey ||
+          event.ctrlKey ||
+          event.shiftKey
+        ) {
+          return;
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      }}
       onFocus={onFocus}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}
+      scroll={false}
       style={style}
     >
       <CapabilityIcon id={capability.id} />

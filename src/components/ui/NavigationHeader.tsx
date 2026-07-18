@@ -142,7 +142,7 @@ export default function NavigationHeader({
       >
         <Link
           aria-label="Go to homepage"
-          className="flex min-w-0 shrink-0 items-center gap-[var(--base-3)] text-[var(--text-primary)] no-underline transition-opacity duration-[150ms] ease-in hover:opacity-50 focus-visible:opacity-50 focus-visible:outline-none"
+          className="flex min-w-0 shrink-0 items-center gap-[var(--base-2)] text-[var(--text-primary)] no-underline transition-opacity duration-[150ms] ease-in hover:opacity-50 focus-visible:opacity-50 focus-visible:outline-none"
           data-name="logo"
           href="/#hero"
           onClick={(event) => {

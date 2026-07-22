@@ -3,7 +3,7 @@ import HeroNavigation from "@/components/ui/HeroNavigation";
 import NavigationHeader from "@/components/ui/NavigationHeader";
 import { tokens } from "@/styles/tokens";
 
-const imgPic = "https://www.figma.com/api/mcp/asset/a05ed144-e408-496b-95f9-139863977c00";
+const imgPic = "https://www.figma.com/api/mcp/asset/eb178129-96cf-4168-98a4-9dbf54cd0dc6";
 
 const heroItems = [
   { id: "capabilities", label: "Capabilities" },
@@ -35,7 +35,7 @@ export default function Home() {
         <div className="flex w-full flex-col items-center gap-[var(--base-3)]">
           <div className="relative size-[80px] shrink-0 overflow-hidden">
             <img
-              alt="Konstantin Alisov"
+              alt=""
               className="absolute inset-0 size-full object-cover"
               src={imgPic}
             />

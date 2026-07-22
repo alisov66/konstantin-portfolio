@@ -164,7 +164,7 @@ export default function HeroButton({
   };
 
   const heroButtonStyle = {
-    "--hero-button-bg": tokens.colors.button.hero.default,
+    "--hero-button-bg": tokens.colors.button.hero.hover,
     "--hero-button-hover-bg": tokens.colors.button.hero.hover,
     "--hero-button-text": tokens.colors.button.hero.text,
     "--hero-button-radius": tokens.radius.pill,
@@ -175,6 +175,7 @@ export default function HeroButton({
     "--hero-button-font-weight": tokens.typography.heading.h5.fontWeight,
     "--hero-button-transition":
       "background-color 300ms ease-in, color 150ms ease-in, box-shadow 300ms ease-in, transform 300ms ease-in",
+    "--navi-blob-color": tokens.colors.button.hero.default,
     "--navi-hover-x": hoverOrigin.x,
     "--navi-hover-y": hoverOrigin.y,
     "--navi-blob-radius-a": blobVariant.radiusA,

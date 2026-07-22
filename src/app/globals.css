@@ -252,7 +252,7 @@ html.no-smooth-scroll * {
 }
 
 .navi-button__blob {
-  background: var(--button-hero-hover);
+  background: var(--navi-blob-color, var(--button-hero-hover));
   left: var(--navi-hover-x, 50%);
   opacity: 0;
   pointer-events: none;
